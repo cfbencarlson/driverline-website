@@ -1481,6 +1481,17 @@ p {
   color: var(--color-text-inverse);
 }
 
+.footer__address {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  margin-top: var(--space-3);
+}
+
+.footer__legal-note {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+}
+
 /* ============================================
    About Page Specific
    ============================================ */
@@ -1985,6 +1996,92 @@ p {
   width: 64px;
   height: 64px;
   stroke: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   Legal Content (Privacy, Terms)
+   ============================================ */
+
+.legal-content {
+  max-width: 100%;
+}
+
+.legal-content__updated {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+}
+
+.legal-content__heading {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.legal-content__subheading {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+  color: var(--color-text-primary);
+}
+
+.legal-content p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.legal-content__list {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+.legal-content__list li {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+  position: relative;
+}
+
+.legal-content__list li::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-4));
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+.legal-content a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-content a:hover {
+  color: var(--color-accent-hover);
+}
+
+.legal-content__contact {
+  background-color: var(--color-bg-secondary);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-4);
+}
+
+.legal-content__contact p {
+  margin-bottom: var(--space-4);
+}
+
+.legal-content__contact p:last-child {
+  margin-bottom: 0;
 }
 
 /* ============================================
