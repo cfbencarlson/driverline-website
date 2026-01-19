@@ -1403,7 +1403,6 @@ p {
   height: 28px;
   width: auto;
   display: block;
-  filter: brightness(0) invert(1);
 }
 
 @media (min-width: 768px) {
