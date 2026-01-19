@@ -471,14 +471,14 @@ p {
 }
 
 .logo__img {
-  height: 28px;
+  max-height: 34px;
   width: auto;
   display: block;
 }
 
 @media (min-width: 768px) {
   .logo__img {
-    height: 36px;
+    max-height: 40px;
   }
 }
 
@@ -1392,22 +1392,24 @@ p {
 
 .footer__brand {
   max-width: 300px;
+  background: transparent;
 }
 
 .footer__logo {
   display: inline-block;
   margin-bottom: var(--space-4);
+  background: transparent;
 }
 
 .footer__logo-img {
-  height: 28px;
+  max-height: 32px;
   width: auto;
   display: block;
 }
 
 @media (min-width: 768px) {
   .footer__logo-img {
-    height: 32px;
+    max-height: 36px;
   }
 }
 
