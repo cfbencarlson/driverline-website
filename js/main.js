@@ -398,6 +398,44 @@
   }
 
   // ===========================================
+  // Calculator Query Params Handler
+  // ===========================================
+
+  function initCalculatorParams() {
+    // Only run on contact page with the form
+    if (!contactForm) return;
+
+    // Parse query params from hash (format: #request-coverage?param=value)
+    const hash = window.location.hash;
+    if (!hash || !hash.includes('?')) return;
+
+    const queryString = hash.split('?')[1];
+    if (!queryString) return;
+
+    const params = new URLSearchParams(queryString);
+
+    // Populate hidden fields
+    const monthlyTotal = params.get('monthly_total');
+    const drivers = params.get('drivers');
+    const vehicles = params.get('vehicles');
+
+    if (monthlyTotal) {
+      const monthlyTotalField = document.getElementById('calculatorMonthlyTotal');
+      if (monthlyTotalField) monthlyTotalField.value = monthlyTotal;
+    }
+
+    if (drivers) {
+      const driversField = document.getElementById('calculatorDrivers');
+      if (driversField) driversField.value = drivers;
+    }
+
+    if (vehicles) {
+      const vehiclesField = document.getElementById('calculatorVehicles');
+      if (vehiclesField) vehiclesField.value = vehicles;
+    }
+  }
+
+  // ===========================================
   // Initialize Everything
   // ===========================================
 
@@ -408,6 +446,7 @@
     initSmoothScroll();
     initScrollAnimations();
     initPhoneFormatting();
+    initCalculatorParams();
   }
 
   // Run on DOM ready

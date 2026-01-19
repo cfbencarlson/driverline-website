@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Use our free In-House Delivery Cost Estimator to understand the true cost of running your own delivery drivers and vehicles.">
+  <meta name="keywords" content="delivery cost calculator, in-house delivery costs, driver cost estimator, auto parts delivery costs">
+  <meta name="author" content="DriverLine">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Resources - In-House Delivery Cost Estimator | DriverLine">
+  <meta property="og:description" content="Calculate what in-house delivery really costs your auto parts store or dealership.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://driverline.com/resources">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/driverline-logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>In-House Delivery Cost Estimator - DriverLine Resources</title>
+
+  <!-- Analytics placeholder -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header__inner">
+        <!-- Logo -->
+        <a href="index.html" class="logo" aria-label="DriverLine Home">
+          <img src="images/driverline-logo.png" alt="DriverLine" class="logo__img">
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html" class="nav__link">Home</a>
+          <a href="about.html" class="nav__link">About</a>
+          <a href="resources.html" class="nav__link nav__link--active">Resources</a>
+          <a href="contact.html" class="nav__link">Contact</a>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header__actions">
+          <a href="contact.html#request-coverage" class="btn btn--primary">Request Coverage</a>
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg class="mobile-menu-btn__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html" class="mobile-nav__link">Home</a>
+      <a href="about.html" class="mobile-nav__link">About</a>
+      <a href="resources.html" class="mobile-nav__link mobile-nav__link--active">Resources</a>
+      <a href="contact.html" class="mobile-nav__link">Contact</a>
+      <div class="mobile-nav__cta">
+        <a href="contact.html#request-coverage" class="btn btn--primary btn--full">Request Coverage</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Resources Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="about-hero__content animate-slide-up">
+          <h1 class="about-hero__title">Resources</h1>
+          <p class="about-hero__description">
+            Tools and insights to help you make informed decisions about your delivery operations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cost Estimator Section -->
+    <section class="section" id="cost-estimator" aria-labelledby="estimator-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Calculator</span>
+          <h2 class="section-header__title" id="estimator-title">In-House Delivery Cost Estimator</h2>
+          <p class="section-header__description">
+            Most teams think wages + gas. This estimator includes the costs that usually get missed.
+          </p>
+        </div>
+
+        <div class="calculator">
+          <form class="calculator__form" id="cost-calculator-form">
+            <!-- Labor Costs -->
+            <div class="calculator__section">
+              <h3 class="calculator__section-title">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                Labor Costs
+              </h3>
+
+              <div class="calculator__grid">
+                <div class="form-group">
+                  <label for="drivers" class="form-label">Number of Drivers</label>
+                  <input type="number" id="drivers" name="drivers" class="form-input" value="1" min="1" max="50" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label for="hourlyWage" class="form-label">Hourly Wage ($)</label>
+                  <input type="number" id="hourlyWage" name="hourlyWage" class="form-input" value="17" min="7" max="50" step="0.50">
+                </div>
+
+                <div class="form-group">
+                  <label for="hoursPerDay" class="form-label">Hours per Day</label>
+                  <input type="number" id="hoursPerDay" name="hoursPerDay" class="form-input" value="8" min="1" max="12" step="0.5">
+                </div>
+
+                <div class="form-group">
+                  <label for="daysPerWeek" class="form-label">Days per Week</label>
+                  <input type="number" id="daysPerWeek" name="daysPerWeek" class="form-input" value="5" min="1" max="7" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label for="overtimeHours" class="form-label">Overtime Hours/Week</label>
+                  <input type="number" id="overtimeHours" name="overtimeHours" class="form-input" value="0" min="0" max="40" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label for="employerBurden" class="form-label">
+                    Employer Burden (%)
+                    <button type="button" class="tooltip-trigger" aria-label="More information about employer burden">
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                    </button>
+                    <span class="tooltip" role="tooltip">Includes FICA (7.65%), unemployment insurance, workers' comp, and any benefits. 14% is a conservative estimate for W-2 employees.</span>
+                  </label>
+                  <input type="number" id="employerBurden" name="employerBurden" class="form-input" value="14" min="7" max="40" step="1">
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle Costs -->
+            <div class="calculator__section">
+              <h3 class="calculator__section-title">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                </svg>
+                Vehicle Costs (Company-Owned)
+              </h3>
+
+              <div class="calculator__grid">
+                <div class="form-group">
+                  <label for="vehicles" class="form-label">Number of Vehicles</label>
+                  <input type="number" id="vehicles" name="vehicles" class="form-input" value="1" min="1" max="50" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label for="milesPerDay" class="form-label">Miles per Day (per vehicle)</label>
+                  <input type="number" id="milesPerDay" name="milesPerDay" class="form-input" value="120" min="10" max="500" step="10">
+                </div>
+
+                <div class="form-group">
+                  <label for="mpg" class="form-label">Average MPG</label>
+                  <input type="number" id="mpg" name="mpg" class="form-input" value="18" min="8" max="40" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label for="gasPrice" class="form-label">Gas Price ($/gallon)</label>
+                  <input type="number" id="gasPrice" name="gasPrice" class="form-input" value="3.50" min="2" max="7" step="0.10">
+                </div>
+
+                <div class="form-group">
+                  <label for="insurancePerVehicle" class="form-label">Insurance ($/vehicle/month)</label>
+                  <input type="number" id="insurancePerVehicle" name="insurancePerVehicle" class="form-input" value="200" min="50" max="1000" step="25">
+                </div>
+
+                <div class="form-group">
+                  <label for="maintenancePerVehicle" class="form-label">Maintenance ($/vehicle/month)</label>
+                  <input type="number" id="maintenancePerVehicle" name="maintenancePerVehicle" class="form-input" value="150" min="50" max="500" step="25">
+                </div>
+
+                <div class="form-group">
+                  <label for="depreciationPerVehicle" class="form-label">Depreciation ($/vehicle/month)</label>
+                  <input type="number" id="depreciationPerVehicle" name="depreciationPerVehicle" class="form-input" value="450" min="100" max="1500" step="50">
+                </div>
+              </div>
+            </div>
+
+            <!-- Admin Costs -->
+            <div class="calculator__section">
+              <h3 class="calculator__section-title">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                </svg>
+                Administrative Costs
+              </h3>
+
+              <div class="calculator__grid">
+                <div class="form-group">
+                  <label for="adminHoursPerWeek" class="form-label">Admin Hours per Week</label>
+                  <input type="number" id="adminHoursPerWeek" name="adminHoursPerWeek" class="form-input" value="3" min="0" max="40" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label for="adminHourlyRate" class="form-label">Admin Hourly Rate ($)</label>
+                  <input type="number" id="adminHourlyRate" name="adminHourlyRate" class="form-input" value="25" min="10" max="75" step="1">
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- Results -->
+          <div class="calculator__results" id="calculator-results">
+            <h3 class="calculator__results-title">Estimated Monthly Costs</h3>
+
+            <div class="calculator__results-breakdown">
+              <div class="calculator__result-row">
+                <span class="calculator__result-label">Monthly Wages</span>
+                <span class="calculator__result-value" id="result-wages">$0</span>
+              </div>
+              <div class="calculator__result-row">
+                <span class="calculator__result-label">Employer Burden</span>
+                <span class="calculator__result-value" id="result-burden">$0</span>
+              </div>
+              <div class="calculator__result-row">
+                <span class="calculator__result-label">Fuel Cost</span>
+                <span class="calculator__result-value" id="result-fuel">$0</span>
+              </div>
+              <div class="calculator__result-row">
+                <span class="calculator__result-label">Vehicle Fixed Costs</span>
+                <span class="calculator__result-value" id="result-vehicle-fixed">$0</span>
+              </div>
+              <div class="calculator__result-row">
+                <span class="calculator__result-label">Admin Cost</span>
+                <span class="calculator__result-value" id="result-admin">$0</span>
+              </div>
+            </div>
+
+            <div class="calculator__total">
+              <span class="calculator__total-label">Total Estimated Monthly Cost</span>
+              <span class="calculator__total-value" id="result-total">$0</span>
+            </div>
+
+            <div class="calculator__cta">
+              <a href="contact.html#request-coverage" class="btn btn--primary btn--lg" id="request-coverage-btn">Request Coverage</a>
+              <p class="calculator__cta-note">See how DriverLine can reduce your delivery costs and headaches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Counts Section -->
+    <section class="section section--gray" aria-labelledby="what-counts-title">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <h2 class="section-header__title" id="what-counts-title">What Counts as Delivery Cost?</h2>
+          <p class="section-header__description">
+            In-house delivery involves more than most managers realize. Here's what often gets overlooked.
+          </p>
+        </div>
+
+        <div class="cost-factors">
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Wages & overtime</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"/>
+            </svg>
+            <span>Payroll taxes (FICA, FUTA, SUTA)</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+            <span>Vehicle purchase or lease</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <span>Fuel costs</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span>Commercial auto insurance</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>Maintenance & repairs</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
+            </svg>
+            <span>Vehicle depreciation</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+            <span>Scheduling & admin time</span>
+          </div>
+          <div class="cost-factor">
+            <svg class="cost-factor__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+            </svg>
+            <span>Coverage gaps & callouts</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band" aria-labelledby="resources-cta-title">
+      <div class="container">
+        <h2 class="cta-band__title" id="resources-cta-title">Ready to Simplify Your Delivery Operations?</h2>
+        <p class="cta-band__description">
+          Let us show you how outsourcing drivers can reduce costs and eliminate headaches.
+        </p>
+        <div class="cta-band__actions">
+          <a href="contact.html#request-coverage" class="btn btn--secondary btn--lg">Request Coverage</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="images/driverline-logo.png" alt="DriverLine" class="footer__logo-img">
+          </a>
+          <p class="footer__description">
+            Outsourced, compliant delivery driver solutions for automotive parts stores and dealerships.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer__column-title">Navigation</h4>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="about.html" class="footer__link">About</a>
+            <a href="resources.html" class="footer__link">Resources</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+          </nav>
+        </div>
+
+        <div>
+          <h4 class="footer__column-title">Services</h4>
+          <div class="footer__links">
+            <span class="footer__link">Driver Staffing</span>
+            <span class="footer__link">Route Design</span>
+            <span class="footer__link">Compliance Management</span>
+            <span class="footer__link">Operations Support</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__column-title">Contact</h4>
+          <div class="footer__links">
+            <a href="mailto:info@driverline.com" class="footer__link">info@driverline.com</a>
+            <a href="tel:+15551234567" class="footer__link">(555) 123-4567</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2025 DriverLine. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#" class="footer__legal-link">Privacy Policy</a>
+          <a href="#" class="footer__legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/cost-calculator.js"></script>
+</body>
+</html>
