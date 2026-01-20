@@ -1548,6 +1548,33 @@ p {
 }
 
 /* ============================================
+   Subpage Hero (About, Resources, Contact)
+   ============================================ */
+
+.subpage-hero {
+  background: linear-gradient(135deg, #2E5BFF 0%, #1E2B55 100%);
+  padding: 64px 0;
+  padding-top: calc(72px + 64px);
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .subpage-hero {
+    padding-top: calc(80px + 64px);
+  }
+}
+
+.subpage-hero h1,
+.subpage-hero p {
+  color: #fff !important;
+}
+
+.subpage-hero p {
+  opacity: .9;
+  max-width: 900px;
+}
+
+/* ============================================
    About Page Specific
    ============================================ */
 
