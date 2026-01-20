@@ -1872,6 +1872,7 @@ p {
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
 .calculator__results-breakdown {
@@ -1889,24 +1890,26 @@ p {
 
 .calculator__result-label {
   font-size: var(--text-sm);
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .calculator__result-value {
   font-weight: 600;
+  color: #ffffff;
 }
 
 .calculator__total {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
   padding: var(--space-4);
   margin-bottom: var(--space-5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .calculator__total-label {
   display: block;
   font-size: var(--text-sm);
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: var(--space-2);
 }
 
@@ -1914,6 +1917,7 @@ p {
   display: block;
   font-size: var(--text-3xl);
   font-weight: 700;
+  color: #ffffff;
 }
 
 .calculator__cta {
