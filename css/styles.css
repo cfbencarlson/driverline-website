@@ -1605,6 +1605,25 @@ p {
   line-height: var(--leading-relaxed);
 }
 
+/* Leadership Section */
+.leadership-section {
+  text-align: center;
+}
+
+.leadership-section__subhead {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.leadership-section__text {
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
+  margin: 0;
+}
+
 .values-grid {
   display: grid;
   gap: var(--space-8);
