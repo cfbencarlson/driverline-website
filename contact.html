@@ -275,6 +275,36 @@
                 <span class="form-error" id="locations-error" role="alert" aria-live="polite"></span>
               </div>
 
+              <div class="form-row form-row--2">
+                <div class="form-group">
+                  <label for="driversNeeded" class="form-label form-label--required">Estimated Number of Drivers Needed</label>
+                  <input
+                    type="number"
+                    id="driversNeeded"
+                    name="driversNeeded"
+                    class="form-input"
+                    placeholder="e.g. 4"
+                    required
+                    min="1"
+                  >
+                  <span class="form-error" id="driversNeeded-error" role="alert" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="dailyMileage" class="form-label form-label--required">Estimated Daily Mileage per Driver (miles)</label>
+                  <input
+                    type="number"
+                    id="dailyMileage"
+                    name="dailyMileage"
+                    class="form-input"
+                    placeholder="e.g. 120"
+                    required
+                    min="1"
+                  >
+                  <span class="form-error" id="dailyMileage-error" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+
               <div class="form-group">
                 <label for="message" class="form-label">Additional Details</label>
                 <textarea
