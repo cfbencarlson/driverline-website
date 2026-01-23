@@ -265,17 +265,19 @@
       const formData = new FormData(contactForm);
       const data = Object.fromEntries(formData.entries());
 
-      // Simulate form submission (replace with actual API endpoint)
+      // Submit to Web3Forms
       try {
-        // In production, replace this with actual API call:
-        // const response = await fetch('/api/contact', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(data),
-        // });
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData,
+        });
 
-        // Simulated delay for demo
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Form submission failed');
+        }
 
         // Analytics event (placeholder)
         if (window.dataLayer) {
