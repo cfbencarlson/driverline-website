@@ -1322,12 +1322,46 @@ p {
 }
 
 .form-success {
-  padding: var(--space-4);
+  padding: var(--space-8);
   background-color: rgba(5, 150, 105, 0.1);
   border: 1px solid var(--color-success);
   border-radius: var(--radius-md);
   color: var(--color-success);
   text-align: center;
+}
+
+.form-success__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-4);
+}
+
+.form-success__title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-success);
+}
+
+.form-success__message {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.form-error-message {
+  padding: var(--space-4);
+  background-color: rgba(220, 38, 38, 0.1);
+  border: 1px solid #dc2626;
+  border-radius: var(--radius-md);
+  color: #dc2626;
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.form-error-message a {
+  color: #dc2626;
+  text-decoration: underline;
 }
 
 /* ============================================

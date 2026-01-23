@@ -136,6 +136,7 @@
     const submitText = document.getElementById('submit-text');
     const submitSpinner = document.getElementById('submit-spinner');
     const formSuccess = document.getElementById('form-success');
+    const formError = document.getElementById('form-error');
 
     // Validation rules
     const validators = {
@@ -256,7 +257,8 @@
         return;
       }
 
-      // Show loading state
+      // Hide any previous error and show loading state
+      formError.style.display = 'none';
       submitBtn.disabled = true;
       submitText.textContent = 'Submitting...';
       submitSpinner.style.display = 'inline-block';
@@ -303,8 +305,9 @@
         submitText.textContent = 'Request Coverage';
         submitSpinner.style.display = 'none';
 
-        // Show error (in production, show a proper error message)
-        alert('There was an error submitting the form. Please try again or contact us directly.');
+        // Show inline error message
+        formError.style.display = 'block';
+        formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   }

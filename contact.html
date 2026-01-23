@@ -339,6 +339,11 @@
                 </select>
               </div>
 
+              <!-- Error Message -->
+              <div class="form-error-message" id="form-error" style="display: none;" role="alert">
+                <strong>Something went wrong.</strong> Please try again or contact us directly at <a href="mailto:info@yourdriverline.com">info@yourdriverline.com</a>.
+              </div>
+
               <button type="submit" class="btn btn--primary btn--lg btn--full" id="submit-btn">
                 <span id="submit-text">Request Coverage</span>
                 <svg id="submit-spinner" class="btn__icon" style="display: none;" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -349,12 +354,17 @@
                 </svg>
               </button>
 
-              <!-- Success Message -->
-              <div class="form-success" id="form-success" style="display: none;">
-                <strong>Thank you for your interest!</strong><br>
-                We've received your request and will be in touch within one business day.
-              </div>
             </form>
+
+            <!-- Success Message -->
+            <div class="form-success" id="form-success" style="display: none;">
+              <svg class="form-success__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="2"/>
+                <path d="M7 12.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3 class="form-success__title">Request received</h3>
+              <p class="form-success__message">Thanks for reaching out. We've received your coverage request and will follow up within one business day.</p>
+            </div>
           </div>
         </div>
       </div>
