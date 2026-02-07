@@ -18,6 +18,7 @@
   const resultFuel = document.getElementById('result-fuel');
   const resultVehicleFixed = document.getElementById('result-vehicle-fixed');
   const resultAdmin = document.getElementById('result-admin');
+  const resultDailyTotal = document.getElementById('result-daily-total');
   const resultTotal = document.getElementById('result-total');
 
   if (!form) return;
@@ -88,12 +89,16 @@
     // Calculate total
     const totalMonthlyCost = monthlyWages + monthlyBurden + monthlyFuelCost + monthlyVehicleFixed + monthlyAdminCost;
 
+    // Calculate daily total (21 working days per month)
+    const totalDailyCost = Math.round(totalMonthlyCost / 21);
+
     // Update display
     if (resultWages) resultWages.textContent = formatCurrency(monthlyWages);
     if (resultBurden) resultBurden.textContent = formatCurrency(monthlyBurden);
     if (resultFuel) resultFuel.textContent = formatCurrency(monthlyFuelCost);
     if (resultVehicleFixed) resultVehicleFixed.textContent = formatCurrency(monthlyVehicleFixed);
     if (resultAdmin) resultAdmin.textContent = formatCurrency(monthlyAdminCost);
+    if (resultDailyTotal) resultDailyTotal.textContent = formatCurrency(totalDailyCost);
     if (resultTotal) resultTotal.textContent = formatCurrency(totalMonthlyCost);
 
     // Update CTA button link with query params
