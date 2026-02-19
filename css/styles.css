@@ -691,8 +691,9 @@ p {
 
 .hero {
   padding-top: calc(72px + var(--space-16));
-  padding-bottom: var(--space-16);
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  padding-bottom: var(--space-12);
+  min-height: 80vh;
+  background: #06162B;
   color: var(--color-text-inverse);
   position: relative;
   overflow: hidden;
@@ -700,81 +701,33 @@ p {
 
 @media (min-width: 768px) {
   .hero {
-    padding-top: calc(80px + var(--space-20));
-    padding-bottom: var(--space-20);
+    padding-top: calc(80px + var(--space-16));
+    padding-bottom: var(--space-12);
   }
 }
 
 @media (min-width: 1024px) {
   .hero {
-    padding-top: calc(80px + var(--space-24));
-    padding-bottom: var(--space-24);
+    padding-top: calc(80px + var(--space-20));
+    padding-bottom: var(--space-16);
   }
 }
 
+/* Aerial highway network SVG - routes concentrated on right */
 .hero__background {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* Layer 1: Non-uniform plus marks with varied opacity/scale */
-.hero__background::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M25 22v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z' opacity='0.9'/%3E%3Cpath d='M95 18v-3h-1.5v3h-3v1.5h3v3h1.5v-3h3v-1.5h-3z' opacity='0.5' transform='scale(0.8)'/%3E%3Cpath d='M170 30v-5h-2v5h-5v2h5v5h2v-5h5v-2h-5z' opacity='0.7'/%3E%3Cpath d='M45 85v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z' opacity='0.6'/%3E%3Cpath d='M130 75v-5h-2v5h-5v2h5v5h2v-5h5v-2h-5z' opacity='0.8'/%3E%3Cpath d='M185 95v-3h-1.5v3h-3v1.5h3v3h1.5v-3h3v-1.5h-3z' opacity='0.4'/%3E%3Cpath d='M70 140v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z' opacity='0.7'/%3E%3Cpath d='M155 155v-5h-2v5h-5v2h5v5h2v-5h5v-2h-5z' opacity='0.5'/%3E%3Cpath d='M20 170v-3h-1.5v3h-3v1.5h3v3h1.5v-3h3v-1.5h-3z' opacity='0.6'/%3E%3Cpath d='M110 185v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z' opacity='0.8'/%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-}
-
-/* Layer 2: Abstract logistics flow - dotted paths and nodes */
-.hero__background::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-linecap='round'%3E%3Cpath d='M50 450 Q 200 380, 350 420 T 600 350 T 780 400' stroke-width='1' stroke-dasharray='8 12' opacity='0.6'/%3E%3Cpath d='M100 150 Q 250 200, 400 140 T 650 180' stroke-width='0.8' stroke-dasharray='4 8' opacity='0.4'/%3E%3Cpath d='M650 80 Q 700 150, 680 250 T 720 400' stroke-width='1' stroke-dasharray='6 10' opacity='0.5'/%3E%3Cpath d='M-20 300 Q 100 280, 180 320' stroke-width='0.8' stroke-dasharray='3 6' opacity='0.3'/%3E%3C/g%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='50' cy='450' r='3' opacity='0.5'/%3E%3Ccircle cx='350' cy='418' r='2.5' opacity='0.4'/%3E%3Ccircle cx='600' cy='352' r='3' opacity='0.5'/%3E%3Ccircle cx='780' cy='400' r='2' opacity='0.3'/%3E%3Ccircle cx='100' cy='150' r='2.5' opacity='0.4'/%3E%3Ccircle cx='400' cy='142' r='2' opacity='0.3'/%3E%3Ccircle cx='650' cy='178' r='2.5' opacity='0.4'/%3E%3Ccircle cx='650' cy='80' r='2' opacity='0.3'/%3E%3Ccircle cx='720' cy='400' r='2.5' opacity='0.4'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  animation: heroFlowDrift 45s linear infinite;
-  pointer-events: none;
-}
-
-/* Subtle slow drift animation */
-@keyframes heroFlowDrift {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  50% {
-    transform: translateX(15px) translateY(-8px);
-  }
-  100% {
-    transform: translateX(0) translateY(0);
-  }
-}
-
-/* Respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .hero__background::after {
-    animation: none;
-  }
-}
-
-/* Soft spotlight gradient behind hero text for contrast */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 70% at 20% 50%, rgba(0, 0, 0, 0.12) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
+.hero__background svg {
+  width: 100%;
+  height: 100%;
 }
 
 .hero__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 800px;
 }
 
