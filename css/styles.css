@@ -3060,21 +3060,95 @@ p {
 }
 
 .calculator__results {
-  background: var(--color-primary);
+  position: relative;
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 0%, rgba(37, 99, 235, 0.16) 0%, transparent 60%),
+    linear-gradient(165deg, #0d2240 0%, #07172d 100%);
   color: white;
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  position: sticky;
-  top: 100px;
+  border: 1px solid rgba(147, 197, 253, 0.16);
+  border-radius: var(--radius-xl);
+  padding: var(--space-7);
+  overflow: hidden;
+  box-shadow: 0 20px 40px -24px rgba(15, 26, 46, 0.4);
+}
+
+/* Subtle blueprint grid texture */
+.calculator__results::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.calculator__results > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sticky only on desktop — mobile/tablet flows normally */
+@media (min-width: 1024px) {
+  .calculator__results {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.calculator__results-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.calculator__results-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #93c5fd;
+  line-height: 1;
+}
+
+.calculator__results-live {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.calculator__results-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);
+  animation: calcLivePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes calcLivePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
 }
 
 .calculator__results-title {
-  font-size: var(--text-lg);
-  font-weight: 600;
+  font-size: var(--text-xl);
+  font-weight: 700;
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
 .calculator__results-breakdown {
@@ -3088,38 +3162,79 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.calculator__result-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .calculator__result-label {
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 500;
 }
 
 .calculator__result-value {
   font-weight: 600;
   color: #ffffff;
+  font-variant-numeric: tabular-nums;
 }
 
 .calculator__total {
-  background: rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
-  margin-bottom: var(--space-5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+/* Daily — secondary emphasis */
+.calculator__total--daily {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Monthly — primary emphasis (decision-driving number) */
+.calculator__total--monthly {
+  background:
+    radial-gradient(ellipse 100% 100% at 0% 0%, rgba(96, 165, 250, 0.16) 0%, transparent 70%),
+    rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  margin-bottom: var(--space-6);
+  padding: var(--space-5);
 }
 
 .calculator__total-label {
   display: block;
-  font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0;
+}
+
+.calculator__total--monthly .calculator__total-label {
+  color: #93c5fd;
 }
 
 .calculator__total-value {
   display: block;
-  font-size: var(--text-3xl);
+  font-size: var(--text-2xl);
   font-weight: 700;
   color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.calculator__total--monthly .calculator__total-value {
+  font-size: var(--text-4xl);
 }
 
 .calculator__cta {
@@ -3132,8 +3247,10 @@ p {
 }
 
 .calculator__cta-note {
-  font-size: var(--text-sm);
-  opacity: 0.8;
+  font-size: var(--text-xs);
+  color: rgba(234, 240, 255, 0.78);
+  line-height: var(--leading-relaxed);
+  margin: 0;
 }
 
 /* Tooltip */
@@ -3217,7 +3334,97 @@ p {
 
 .cost-factor span {
   font-size: var(--text-sm);
-  color: var(--color-text);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+/* ============================================
+   Resources Page — Estimator Refinements
+   ============================================ */
+
+/* Pre-estimator framing note */
+.estimator-note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-6);
+  margin: 0 0 var(--space-8);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.04) 0%, transparent 100%);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 768px) {
+  .estimator-note {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-5);
+    padding: var(--space-5) var(--space-7);
+  }
+}
+
+.estimator-note__label {
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.estimator-note__text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+}
+
+/* Numbered section prefix chip on calculator section titles */
+.calculator__section-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 24px;
+  padding: 0 6px;
+  background: linear-gradient(135deg, #eef2f7 0%, #e2e8f0 100%);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-right: var(--space-1);
+}
+
+.calculator__section-text {
+  /* keeps title text flow consistent across the existing flex header */
+}
+
+/* Tighten cost-factor chips so they read as reference, not card competitor */
+.cost-factor {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  gap: var(--space-3);
+}
+
+.cost-factor__icon {
+  color: var(--color-accent);
+}
+
+@media (max-width: 639px) {
+  .cost-factors {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Estimator Teaser */
