@@ -451,8 +451,9 @@ p {
 .header--scrolled {
   box-shadow: 0 2px 20px -4px rgba(0, 0, 0, 0.12), 0 1px 4px -1px rgba(0, 0, 0, 0.07);
   background-color: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* Note: backdrop-filter intentionally removed — it creates a containing block
+     for fixed-position descendants, which traps the mobile-nav inside the header
+     after scroll and prevents the menu from opening properly. */
 }
 
 .header__inner {
