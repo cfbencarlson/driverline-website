@@ -2849,6 +2849,246 @@ p {
   .cta-band {
     padding: var(--space-10) 0;
   }
+
+  /* =============================================================
+     Mobile structure pass — convert selected card grids to
+     compact left-aligned list rows (mobile-only). Desktop layout
+     is preserved by living entirely inside @media (max-width: 767px).
+     ============================================================= */
+
+  /* --- Home How It Works (.step) ---
+     4 centered numbered blocks → left-aligned [44 number | title+desc] rows.
+     Scoped: .step exists only on Home How It Works. */
+  .steps {
+    gap: var(--space-2);
+  }
+
+  .step {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    align-items: start;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .step:last-child {
+    border-bottom: none;
+  }
+
+  .step__number {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    grid-row: 1 / span 2;
+    align-self: start;
+    font-size: var(--text-base);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  }
+
+  .step__title {
+    grid-column: 2;
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.3;
+  }
+
+  .step__description {
+    grid-column: 2;
+    margin: 0;
+    max-width: none;
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  /* --- Home Who We Serve (.audience-card) ---
+     3 centered cards → left-aligned [44 icon | title+desc] rows.
+     Scoped: .audience-card exists only on Home Who We Serve. */
+  .audience-grid {
+    gap: var(--space-2);
+  }
+
+  .audience-card {
+    text-align: left;
+    background: transparent;
+    padding: var(--space-4) 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    align-items: start;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .audience-card:last-child {
+    border-bottom: none;
+  }
+
+  .audience-card:hover {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .audience-card__icon {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    grid-row: 1 / span 2;
+    align-self: start;
+    border-radius: var(--radius-md);
+  }
+
+  .audience-card__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .audience-card__title {
+    grid-column: 2;
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.3;
+  }
+
+  .audience-card__description {
+    grid-column: 2;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* --- Light capability cards (.card no modifier) ---
+     Scoped: bare .card is only used on About Capabilities (6 cards).
+     Verified via grep — not present on Home, Resources, Contact, Privacy, or Terms.
+     Convert to flat list-rows with a thin border-bottom. */
+  .card:not(.card--dark) {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: var(--space-4) 0;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    align-items: start;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .card:not(.card--dark):hover {
+    box-shadow: none;
+    transform: none;
+    border-color: transparent;
+    border-bottom-color: var(--color-border);
+  }
+
+  .card:not(.card--dark):last-child {
+    border-bottom: none;
+  }
+
+  .card:not(.card--dark) .card__icon {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    grid-row: 1 / span 2;
+    align-self: start;
+    border-radius: var(--radius-md);
+  }
+
+  .card:not(.card--dark) .card__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .card:not(.card--dark) .card__title {
+    grid-column: 2;
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.3;
+  }
+
+  .card:not(.card--dark) .card__description {
+    grid-column: 2;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* --- Dark compliance/reliability cards (.card--dark) ---
+     Scoped: .card--dark on Home Reliability (6) + About Compliance (4).
+     Strip card chrome on dark sections, keep dark bg, thin light divider. */
+  .card.card--dark {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    padding: var(--space-4) 0;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    align-items: start;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .card.card--dark:hover {
+    box-shadow: none;
+    transform: none;
+    border-bottom-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .card.card--dark:last-child {
+    border-bottom: none;
+  }
+
+  .card.card--dark .card__icon {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    grid-row: 1 / span 2;
+    align-self: start;
+    border-radius: var(--radius-md);
+  }
+
+  .card.card--dark .card__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .card.card--dark .card__title {
+    grid-column: 2;
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.3;
+  }
+
+  .card.card--dark .card__description {
+    grid-column: 2;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* When .card grids switch to list rows, collapse the .grid gap so rows
+     touch each other (the per-row border-bottom acts as the divider).
+     Only applies where the grid contains exactly these card variants. */
+  .grid--2:has(> .card.card--dark),
+  .grid--3:has(> .card.card--dark),
+  .grid--2:has(> .card:not(.card--dark)),
+  .grid--3:has(> .card:not(.card--dark)) {
+    gap: 0;
+  }
 }
 
 /* ============================================
