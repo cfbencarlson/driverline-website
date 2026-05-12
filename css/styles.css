@@ -2676,6 +2676,22 @@ p {
    ============================================ */
 
 @media (max-width: 767px) {
+  /* ----- Global section rhythm tightening ----- */
+  .section {
+    padding: var(--space-10) 0;
+  }
+
+  .section-header {
+    margin: 0 auto var(--space-8);
+  }
+
+  /* Walk back the About Problem-section header bump on mobile —
+     it was originally +80px (var(--space-20)) which feels excessive on a phone */
+  .section--gray .section-header:has(+ .issue-grid) {
+    margin-bottom: var(--space-8);
+  }
+
+  /* ----- Subpage hero ----- */
   .subpage-hero {
     padding: 56px 0;
     padding-top: calc(72px + 48px);
@@ -2693,6 +2709,7 @@ p {
     font-size: var(--text-base);
   }
 
+  /* ----- Leadership / dossier ----- */
   .leadership-monogram__mark {
     width: 56px;
     height: 56px;
@@ -2701,20 +2718,22 @@ p {
 
   .leadership-bio p {
     font-size: 1rem;
+    margin-bottom: var(--space-4);
   }
 
   .leadership-bio__pull {
-    padding: var(--space-4) var(--space-5);
+    padding: var(--space-3) var(--space-4);
     font-size: 0.9375rem;
   }
 
   .dossier {
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-5) var(--space-5);
   }
 
   .dossier__row {
     grid-template-columns: 28px 1fr;
     gap: var(--space-2);
+    padding: var(--space-2) 0;
   }
 
   .dossier__value {
@@ -2726,6 +2745,22 @@ p {
     letter-spacing: 0.12em;
   }
 
+  /* ----- Cards (Capability, Reliability, Compliance, generic .card) ----- */
+  .card {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .card__icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: var(--space-4);
+  }
+
+  .card__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .capability {
     padding: var(--space-6) var(--space-5);
   }
@@ -2734,12 +2769,85 @@ p {
     padding: var(--space-6) var(--space-5);
   }
 
+  /* ----- Issue cards (Home + About problem sections) ----- */
+  .issue-grid {
+    gap: var(--space-4);
+  }
+
   .issue-card {
-    padding: var(--space-7) var(--space-6) var(--space-6);
+    padding: var(--space-6) var(--space-5);
+    gap: var(--space-3);
+  }
+
+  .issue-card__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .issue-card__icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .issue-card__title {
     font-size: 1.0625rem;
+  }
+
+  /* ----- Solution problem-list (Home only after FAQ migration) ----- */
+  .problem-list {
+    gap: var(--space-3);
+  }
+
+  .problem-list__item {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  /* ----- Resources calculator (markup/IDs untouched, padding only) ----- */
+  .calculator {
+    gap: var(--space-5);
+  }
+
+  .calculator__form {
+    gap: var(--space-4);
+  }
+
+  .calculator__section {
+    padding: var(--space-5);
+  }
+
+  .calculator__section-title {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+  }
+
+  .calculator__results {
+    padding: var(--space-5);
+  }
+
+  .estimator-note {
+    padding: var(--space-4) var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Cost-factor chips: 2-col on mobile so the reference list is half as tall */
+  .cost-factors {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .cost-factor {
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .cost-factor span {
+    font-size: 0.8125rem;
+  }
+
+  /* ----- CTA band tightening ----- */
+  .cta-band {
+    padding: var(--space-10) 0;
   }
 }
 
@@ -3595,9 +3703,12 @@ p {
   color: var(--color-accent);
 }
 
-@media (max-width: 639px) {
+/* Mobile: force 2-col cost-factor chips so the reference list reads compactly.
+   Lives after the base .cost-factors rule so it wins the cascade. */
+@media (max-width: 767px) {
   .cost-factors {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
   }
 }
 
