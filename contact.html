@@ -87,10 +87,16 @@
     <!-- Contact Hero -->
     <section class="subpage-hero">
       <div class="container">
-        <h1 class="contact-hero__title">Request Coverage</h1>
-        <p class="contact-hero__description">
-          Tell us about your delivery needs. We'll assess your situation and show you how DriverLine can help.
-        </p>
+        <div class="subpage-hero__content">
+          <span class="hero-tag">
+            <span class="hero-tag__dot" aria-hidden="true"></span>
+            <span class="hero-tag__text">DriverLine · Request Coverage</span>
+          </span>
+          <h1 class="contact-hero__title">Tell Us About Your Routes</h1>
+          <p class="contact-hero__description">
+            Share a few details about your operation. We'll respond within one business day with how DriverLine can help.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -100,16 +106,16 @@
         <div class="contact-section">
           <!-- Contact Information -->
           <div class="contact-info">
-            <div>
-              <h2 class="section-header__title" style="margin-bottom: var(--space-4);">Get in Touch</h2>
-              <p class="text-large" style="color: var(--color-text-muted); margin-bottom: var(--space-8);">
+            <div class="contact-info__intro">
+              <h2 class="contact-info__title">Get in Touch</h2>
+              <p class="contact-info__lede">
                 Whether you need coverage for one location or twenty, we're here to help you simplify your delivery operations.
               </p>
             </div>
 
             <div class="contact-info__item">
               <div class="contact-info__icon">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
               </div>
@@ -121,7 +127,7 @@
 
             <div class="contact-info__item">
               <div class="contact-info__icon">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                 </svg>
               </div>
@@ -133,19 +139,19 @@
 
             <div class="contact-info__item" id="schedule">
               <div class="contact-info__icon">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
               </div>
               <div class="contact-info__content">
                 <h4>Schedule a Call</h4>
-                <p>Prefer to talk through your needs? We're happy to schedule a call at your convenience.</p>
+                <p>Prefer to talk through your needs? <a href="tel:3155052365">Call us at (315) 505-2365</a> and we'll walk through it with you.</p>
               </div>
             </div>
 
             <div class="contact-info__item">
               <div class="contact-info__icon">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
@@ -162,6 +168,7 @@
             <p class="contact-form-wrapper__description">
               Fill out the form below and we'll get back to you to discuss your delivery needs.
             </p>
+            <p class="form-required-legend"><span aria-hidden="true">*</span> Required fields marked with an asterisk.</p>
 
             <form class="form" id="contact-form" novalidate>
               <!-- Web3Forms configuration -->
@@ -174,6 +181,8 @@
               <input type="hidden" id="calculatorMonthlyTotal" name="calculatorMonthlyTotal" value="">
               <input type="hidden" id="calculatorDrivers" name="calculatorDrivers" value="">
               <input type="hidden" id="calculatorVehicles" name="calculatorVehicles" value="">
+
+              <div class="form-group-label" aria-hidden="true">About you</div>
 
               <div class="form-row form-row--2">
                 <div class="form-group">
@@ -248,6 +257,8 @@
                   <span class="form-error" id="phone-error" role="alert" aria-live="polite"></span>
                 </div>
               </div>
+
+              <div class="form-group-label" aria-hidden="true">About your operation</div>
 
               <div class="form-group">
                 <label for="businessType" class="form-label form-label--required">Business Type</label>
@@ -350,7 +361,7 @@
 
               <button type="submit" class="btn btn--primary btn--lg btn--full" id="submit-btn">
                 <span id="submit-text">Request Coverage</span>
-                <svg id="submit-spinner" class="btn__icon" style="display: none;" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                <svg id="submit-spinner" class="btn__icon" width="18" height="18" style="display: none;" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"/>
                   <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                     <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
@@ -362,12 +373,13 @@
 
             <!-- Success Message -->
             <div class="form-success" id="form-success" style="display: none;">
-              <svg class="form-success__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg class="form-success__icon" width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="2"/>
                 <path d="M7 12.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
               <h3 class="form-success__title">Request received</h3>
               <p class="form-success__message">Thanks for reaching out. We've received your coverage request and will follow up within one business day.</p>
+              <p class="form-success__fallback">Need to talk sooner? <a href="tel:3155052365">Call (315) 505-2365</a>.</p>
             </div>
           </div>
         </div>
@@ -382,44 +394,52 @@
           <h2 class="section-header__title" id="faq-title">Before You Reach Out</h2>
         </div>
 
-        <div class="problem-list">
-          <div class="problem-list__item">
-            <svg class="problem-list__icon problem-list__icon--check" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <div class="problem-list__content">
-              <h4>What areas do you serve?</h4>
-              <p>DriverLine provides dedicated delivery coverage in markets across the United States — metro and rural. We deploy drivers wherever coverage is needed, whether for short-term stabilization, seasonal support, or long-term operational coverage.</p>
+        <div class="faq-list">
+          <div class="faq-list__item">
+            <span class="faq-list__mark" aria-hidden="true">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </span>
+            <div class="faq-list__content">
+              <h4 class="faq-list__question">What areas do you serve?</h4>
+              <p class="faq-list__answer">DriverLine provides dedicated delivery coverage in markets across the United States &mdash; metro and rural. We deploy drivers wherever coverage is needed, whether for short-term stabilization, seasonal support, or long-term operational coverage.</p>
             </div>
           </div>
 
-          <div class="problem-list__item">
-            <svg class="problem-list__icon problem-list__icon--check" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <div class="problem-list__content">
-              <h4>How quickly can you provide coverage?</h4>
-              <p>Coverage typically begins within about one week of agreement. Urgent situations may allow for accelerated deployment depending on market conditions and driver availability.</p>
+          <div class="faq-list__item">
+            <span class="faq-list__mark" aria-hidden="true">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </span>
+            <div class="faq-list__content">
+              <h4 class="faq-list__question">How quickly can you provide coverage?</h4>
+              <p class="faq-list__answer">Coverage typically begins within about one week of agreement. Urgent situations may allow for accelerated deployment depending on market conditions and driver availability.</p>
             </div>
           </div>
 
-          <div class="problem-list__item">
-            <svg class="problem-list__icon problem-list__icon--check" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <div class="problem-list__content">
-              <h4>What's the minimum commitment?</h4>
-              <p>There is no minimum location requirement. We can support a single dedicated store driver, a shuttle route, or multi-location operations. Coverage is structured around consistent route volume to ensure stability, retention, and long-term service quality.</p>
+          <div class="faq-list__item">
+            <span class="faq-list__mark" aria-hidden="true">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </span>
+            <div class="faq-list__content">
+              <h4 class="faq-list__question">What's the minimum commitment?</h4>
+              <p class="faq-list__answer">There is no minimum location requirement. We can support a single dedicated store driver, a shuttle route, or multi-location operations. Coverage is structured around consistent route volume to ensure stability, retention, and long-term service quality.</p>
             </div>
           </div>
 
-          <div class="problem-list__item">
-            <svg class="problem-list__icon problem-list__icon--check" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <div class="problem-list__content">
-              <h4>How do you handle driver issues or service concerns?</h4>
-              <p>DriverLine manages all driver oversight, accountability, and performance directly. If a concern arises, you contact us — and we handle it promptly. We take full responsibility for resolution and ongoing service standards.</p>
+          <div class="faq-list__item">
+            <span class="faq-list__mark" aria-hidden="true">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </span>
+            <div class="faq-list__content">
+              <h4 class="faq-list__question">How do you handle driver issues or service concerns?</h4>
+              <p class="faq-list__answer">DriverLine manages all driver oversight, accountability, and performance directly. If a concern arises, you contact us &mdash; and we handle it promptly. We take full responsibility for resolution and ongoing service standards.</p>
             </div>
           </div>
         </div>
