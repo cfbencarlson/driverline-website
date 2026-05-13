@@ -2037,33 +2037,15 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
+/* Section-index numbered chip hidden — felt like decorative scaffolding on
+   public pages. Label text remains visible inside .section-index. The chip
+   markup stays in the HTML so it can be re-enabled by removing this rule. */
 .section-index__num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  height: 22px;
-  padding: 0 6px;
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-primary);
-  color: var(--color-primary);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.section--gray .section-index__num {
-  background: #ffffff;
+  display: none;
 }
 
 .section--dark .section-index {
   color: rgba(255, 255, 255, 0.55);
-}
-
-.section--dark .section-index__num {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #cfe1ff;
 }
 
 /* ============================================
@@ -2651,25 +2633,10 @@ p {
   position: relative;
 }
 
-.card--indexed::before {
-  content: attr(data-index);
-  position: absolute;
-  top: var(--space-6);
-  right: var(--space-7);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: rgba(147, 197, 253, 0.5);
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-
-@media (max-width: 639px) {
-  .card--indexed::before {
-    top: var(--space-5);
-    right: var(--space-5);
-  }
-}
+/* Note: the corner index badge that used to render data-index in the top-right
+   was removed. It only ever appeared on About Compliance cards and felt
+   decorative. The .card--indexed class itself is kept as a position:relative
+   utility in case any future content wants to absolutely position children. */
 
 /* ============================================
    Mobile fine-tuning for About v2
@@ -3239,6 +3206,86 @@ p {
   .subpage-hero {
     padding: 56px 0;
     padding-top: calc(64px + 40px);
+  }
+
+  /* =============================================================
+     About page Problem section — compact mobile rows
+     Scoped via :has(.issue-card__head) so this matches About only
+     (About uses numbered chips in __head; Home uses .issue-card__icon
+     and is handled by a separate :has(.issue-card__icon) rule above).
+     Preserves the numbered chip identity that pairs with the
+     leadership dossier panel on the same page.
+     ============================================================= */
+
+  .issue-grid:has(.issue-card__head) {
+    gap: 0;
+  }
+
+  .issue-card:has(.issue-card__head) {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: var(--space-4) 0;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    align-items: start;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Hide the navy top accent rule when the boxed card chrome is gone */
+  .issue-card:has(.issue-card__head)::before {
+    display: none;
+  }
+
+  .issue-card:has(.issue-card__head):hover {
+    box-shadow: none;
+    transform: none;
+    border-bottom-color: var(--color-border);
+  }
+
+  .issue-card:has(.issue-card__head):last-child {
+    border-bottom: none;
+  }
+
+  /* Numbered-chip wrapper sits in the icon column, spans both rows */
+  .issue-card:has(.issue-card__head) .issue-card__head {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    margin: 0;
+    padding: 0;
+    border: none;
+    margin-top: 2px;
+  }
+
+  /* Slightly smaller chip for compact-row scale */
+  .issue-card:has(.issue-card__head) .issue-card__index {
+    min-width: 32px;
+    height: 22px;
+    padding: 0 6px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+  }
+
+  .issue-card:has(.issue-card__head) .issue-card__title {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.3;
+  }
+
+  .issue-card:has(.issue-card__head) .issue-card__desc {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: var(--leading-relaxed);
   }
 }
 
