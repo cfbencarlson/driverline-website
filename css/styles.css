@@ -3132,13 +3132,48 @@ p {
     line-height: var(--leading-relaxed);
   }
 
-  /* === Solution problem-list — further mild tightening === */
+  /* === Solution problem-list — compact mobile rows ===
+     Scoped to mobile only. Strip the boxed-card chrome and convert to a
+     flat list pattern matching .audience-card / .step / compact .card.
+     .problem-list is used exclusively on the Home Solution section
+     (Contact FAQ migrated to .faq-list earlier), so this rule cannot
+     affect any other page. */
+
+  /* Collapse the .grid--2 gap so the 2 problem-list columns flow as one
+     continuous mobile list with dividers between rows. */
+  .grid--2:has(> .problem-list) {
+    gap: 0;
+  }
+
   .problem-list {
-    gap: var(--space-2);
+    gap: 0;
   }
 
   .problem-list__item {
-    padding: var(--space-3) var(--space-4);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: var(--space-4) 0;
+    gap: var(--space-3);
+    box-shadow: none;
+  }
+
+  .problem-list__item:hover {
+    box-shadow: none;
+    border-bottom-color: var(--color-border);
+  }
+
+  /* Only the very last item (last item of the last .problem-list) drops
+     its border so the section ends cleanly. */
+  .problem-list:last-child .problem-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .problem-list__icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
   }
 
   /* =============================================================
