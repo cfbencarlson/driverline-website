@@ -3173,6 +3173,73 @@ p {
   .problem-list__item {
     padding: var(--space-3) var(--space-4);
   }
+
+  /* =============================================================
+     Mobile typography + header pass
+     Reduce the desktop-shrunk feel by tightening hero/section
+     descriptions, compressing the sticky header, and reining in
+     h2 sizes. Body text remains at 16px (iOS readable baseline).
+     ============================================================= */
+
+  /* --- Header: compact mobile bar (64px instead of 72px) --- */
+  .header__inner {
+    height: 64px;
+  }
+
+  .logo__img {
+    max-height: 28px;
+  }
+
+  /* Tighter Request Coverage button in the mobile header.
+     Sits next to the 44px menu button — this button is
+     persistent advertisement, not the primary tap target,
+     so a smaller size is acceptable. */
+  .header__actions .btn--primary {
+    font-size: 0.8125rem;
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  /* Mobile nav drawer anchors to bottom of the new shorter header */
+  .mobile-nav {
+    top: 64px;
+  }
+
+  /* --- Hero description: was 18px / 1.75 (luxurious desktop ratio) ---
+     16px / 1.55 reads cleanly on mobile and saves ~50px on the hero. */
+  .hero__description {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: var(--space-6);
+  }
+
+  /* --- Section header h2: 30px → 26px on mobile --- */
+  .section-header__title {
+    font-size: 1.625rem;
+    line-height: 1.25;
+  }
+
+  /* --- Section header description: 18/1.625 → 16/1.55 on mobile --- */
+  .section-header__description {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  /* --- Subpage hero description line-height tighten ---
+     Font-size is already overridden to 16px earlier in this media
+     block; line-height stays at the base 1.625. Drop to 1.55 for
+     consistency with the new section description treatment. */
+  .subpage-hero p,
+  .subpage-hero .about-hero__description,
+  .subpage-hero .contact-hero__description {
+    line-height: 1.55;
+  }
+
+  /* Subpage hero top padding now anchors to the new 64px header */
+  .subpage-hero {
+    padding: 56px 0;
+    padding-top: calc(64px + 40px);
+  }
 }
 
 /* ============================================
