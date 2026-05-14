@@ -108,7 +108,7 @@
         drivers: Math.round(drivers),
         vehicles: Math.round(vehicles)
       });
-      requestCoverageBtn.href = 'contact.html#request-coverage?' + params.toString();
+      requestCoverageBtn.href = 'contact.html?' + params.toString() + '#request-coverage';
     }
 
     // Analytics event

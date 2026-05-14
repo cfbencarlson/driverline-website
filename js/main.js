@@ -173,6 +173,16 @@
         required: true,
         message: 'Please select the number of locations',
       },
+      driversNeeded: {
+        required: true,
+        min: 1,
+        message: 'Please enter the number of drivers needed (at least 1)',
+      },
+      dailyMileage: {
+        required: true,
+        min: 1,
+        message: 'Please enter the estimated daily mileage (at least 1 mile)',
+      },
     };
 
     function validateField(field) {
@@ -202,6 +212,15 @@
       if (isValid && validator.pattern && !validator.pattern.test(value)) {
         isValid = false;
         errorMessage = validator.message;
+      }
+
+      // Numeric minimum check
+      if (isValid && typeof validator.min === 'number') {
+        const numericValue = parseFloat(value);
+        if (Number.isNaN(numericValue) || numericValue < validator.min) {
+          isValid = false;
+          errorMessage = validator.message;
+        }
       }
 
       // Update UI
@@ -410,11 +429,15 @@
     // Only run on contact page with the form
     if (!contactForm) return;
 
-    // Parse query params from hash (format: #request-coverage?param=value)
-    const hash = window.location.hash;
-    if (!hash || !hash.includes('?')) return;
-
-    const queryString = hash.split('?')[1];
+    // Prefer real query string (contact.html?param=value#request-coverage).
+    // Fall back to legacy in-hash query (contact.html#request-coverage?param=value).
+    let queryString = window.location.search.replace(/^\?/, '');
+    if (!queryString) {
+      const hash = window.location.hash;
+      if (hash && hash.includes('?')) {
+        queryString = hash.split('?')[1] || '';
+      }
+    }
     if (!queryString) return;
 
     const params = new URLSearchParams(queryString);
@@ -437,6 +460,28 @@
     if (vehicles) {
       const vehiclesField = document.getElementById('calculatorVehicles');
       if (vehiclesField) vehiclesField.value = vehicles;
+    }
+
+    // Ensure the form section is in view. Native fragment auto-scroll can fail
+    // when combined with html { scroll-behavior: smooth }, so scroll explicitly
+    // whenever we arrived here with calculator handoff params. Temporarily
+    // override scroll-behavior so the jump is instant rather than animated.
+    if (monthlyTotal || drivers || vehicles) {
+      const target = document.getElementById('request-coverage');
+      if (target) {
+        const scrollToForm = () => {
+          const headerHeight = header ? header.offsetHeight : 0;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+          const prevBehavior = document.documentElement.style.scrollBehavior;
+          document.documentElement.style.scrollBehavior = 'auto';
+          window.scrollTo(0, top);
+          document.documentElement.style.scrollBehavior = prevBehavior;
+        };
+        // Scroll now, then again after load so any late layout shift (images,
+        // fonts) doesn't leave the form out of view.
+        scrollToForm();
+        window.addEventListener('load', scrollToForm, { once: true });
+      }
     }
   }
 
