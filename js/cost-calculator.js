@@ -24,11 +24,36 @@
   if (!form) return;
 
   /**
-   * Get numeric value from input
+   * Get a numeric value from an input, respecting its HTML min/max attributes.
+   * If the field is blank, NaN, or otherwise invalid (e.g. mid-typing), fall
+   * back to the input's default `value` attribute, then to the `min`, then to 0.
+   * This prevents the calculator from displaying $0 / NaN / wildly negative
+   * totals while the user is editing or has cleared a field.
    */
   function getInputValue(id) {
     const input = document.getElementById(id);
-    return input ? parseFloat(input.value) || 0 : 0;
+    if (!input) return 0;
+
+    const attrNumber = (name) => {
+      const raw = input.getAttribute(name);
+      if (raw === null || raw === '') return null;
+      const n = parseFloat(raw);
+      return Number.isFinite(n) ? n : null;
+    };
+
+    const min = attrNumber('min');
+    const max = attrNumber('max');
+    const fallback = attrNumber('value');
+
+    let value = parseFloat(input.value);
+    if (!Number.isFinite(value)) {
+      value = fallback !== null ? fallback : (min !== null ? min : 0);
+    }
+
+    if (min !== null && value < min) value = min;
+    if (max !== null && value > max) value = max;
+
+    return value;
   }
 
   /**

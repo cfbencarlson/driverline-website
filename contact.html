@@ -205,6 +205,7 @@
                     placeholder="John"
                     required
                     autocomplete="given-name"
+                    aria-describedby="firstName-error"
                   >
                   <span class="form-error" id="firstName-error" role="alert" aria-live="polite"></span>
                 </div>
@@ -219,6 +220,7 @@
                     placeholder="Smith"
                     required
                     autocomplete="family-name"
+                    aria-describedby="lastName-error"
                   >
                   <span class="form-error" id="lastName-error" role="alert" aria-live="polite"></span>
                 </div>
@@ -234,6 +236,7 @@
                   placeholder="ABC Auto Parts"
                   required
                   autocomplete="organization"
+                  aria-describedby="company-error"
                 >
                 <span class="form-error" id="company-error" role="alert" aria-live="polite"></span>
               </div>
@@ -249,6 +252,7 @@
                     placeholder="john@company.com"
                     required
                     autocomplete="email"
+                    aria-describedby="email-error"
                   >
                   <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
                 </div>
@@ -263,6 +267,7 @@
                     placeholder="(315) 505-2365"
                     required
                     autocomplete="tel"
+                    aria-describedby="phone-error"
                   >
                   <span class="form-error" id="phone-error" role="alert" aria-live="polite"></span>
                 </div>
@@ -277,6 +282,7 @@
                   name="businessType"
                   class="form-input"
                   required
+                  aria-describedby="businessType-error"
                 >
                   <option value="">Select your business type</option>
                   <option value="auto-parts-single">Auto Parts Store - Single Location</option>
@@ -295,6 +301,7 @@
                   name="locations"
                   class="form-input"
                   required
+                  aria-describedby="locations-error"
                 >
                   <option value="">Select number of locations</option>
                   <option value="1">1 location</option>
@@ -317,6 +324,7 @@
                     placeholder="e.g. 4"
                     required
                     min="1"
+                    aria-describedby="driversNeeded-error"
                   >
                   <span class="form-error" id="driversNeeded-error" role="alert" aria-live="polite"></span>
                 </div>
@@ -331,6 +339,7 @@
                     placeholder="e.g. 120"
                     required
                     min="1"
+                    aria-describedby="dailyMileage-error"
                   >
                   <span class="form-error" id="dailyMileage-error" role="alert" aria-live="polite"></span>
                 </div>

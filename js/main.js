@@ -258,6 +258,7 @@
         if (errorElement && errorElement.textContent) {
           field.classList.remove('form-input--error');
           errorElement.textContent = '';
+          field.setAttribute('aria-invalid', 'false');
         }
       });
     });
