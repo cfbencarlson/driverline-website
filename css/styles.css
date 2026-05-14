@@ -3836,6 +3836,17 @@ p {
 }
 
 /* Tooltip */
+.form-label-row {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
 .tooltip-trigger {
   display: inline-flex;
   align-items: center;

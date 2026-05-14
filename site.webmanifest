@@ -1,7 +1,7 @@
 {
   "name": "DriverLine",
   "short_name": "DriverLine",
-  "description": "Dedicated auto parts delivery drivers — fully managed, insured, zero headaches.",
+  "description": "Dedicated delivery driver coverage for auto parts stores, dealerships, and related automotive businesses.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#ffffff",
