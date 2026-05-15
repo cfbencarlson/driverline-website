@@ -1,209 +1,67 @@
 # DriverLine Website
 
-A professional, conversion-focused website for DriverLine - an outsourced delivery driver solutions company serving automotive parts stores and dealerships.
+Public marketing site for **DriverLine** — dedicated managed delivery driver coverage for auto parts stores, dealerships, and related automotive aftermarket businesses.
 
-## Quick Start
+- **Live site:** https://www.yourdriverline.com
+- **Hosting:** GitHub Pages (custom domain set via `CNAME`)
+- **Stack:** Static HTML / CSS / vanilla JS — no build step
 
-### Local Development
+This repo is the public marketing site only. It is separate from the DriverLine Operations Dashboard.
 
-1. **Open directly in browser:**
-   Simply open `index.html` in your web browser.
+## Local development
 
-2. **Using a local server (recommended):**
+Serve the folder over HTTP so relative paths and the manifest resolve correctly:
 
-   Using Python:
-   ```bash
-   cd driverline-website
-   python -m http.server 8000
-   ```
-   Then open http://localhost:8000
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
 
-   Using Node.js (with npx):
-   ```bash
-   cd driverline-website
-   npx serve .
-   ```
+Any other static server (`npx serve .`, VS Code Live Server, etc.) works equivalently.
 
-   Using VS Code Live Server:
-   - Install the "Live Server" extension
-   - Right-click on `index.html` and select "Open with Live Server"
-
-## Project Structure
+## Project layout
 
 ```
 driverline-website/
-├── index.html          # Home page
-├── about.html          # About page
-├── contact.html        # Contact page with form
-├── css/
-│   └── styles.css      # Main stylesheet with design system
+├── index.html             # Home
+├── about.html             # About
+├── resources.html         # Cost estimator + resources
+├── contact.html           # Lead form (Web3Forms)
+├── privacy.html           # Privacy policy & SMS terms
+├── terms.html             # Terms & conditions
+├── robots.txt
+├── sitemap.xml
+├── site.webmanifest
+├── CNAME                  # GitHub Pages custom domain
+├── css/styles.css
 ├── js/
-│   └── main.js         # JavaScript for interactions and form validation
-├── images/             # Image assets (add your images here)
-└── README.md           # This file
+│   ├── main.js            # Nav, form validation, smooth scroll, calculator handoff
+│   └── cost-calculator.js # Resources page cost estimator
+└── images/
 ```
 
-## Pages
+## Contact form
 
-### Home (index.html)
-- Hero section with primary CTA
-- Problems we solve
-- Our solution
-- How it works (4 steps)
-- Reliability & compliance trust section
-- Who we serve
-- Final CTA band
+The contact form posts to **Web3Forms** (`https://api.web3forms.com/submit`). Configuration lives in hidden inputs inside `contact.html`:
 
-### About (about.html)
-- Company overview
-- Mission statement
-- Our approach/values
-- Services overview
-- Insurance & risk section
+- `access_key` — Web3Forms project key
+- `subject`, `from_name`, `botcheck` — Web3Forms metadata / honeypot
+- `calculatorMonthlyTotal`, `calculatorDrivers`, `calculatorVehicles` — values handed off from the resources cost estimator via the query string
 
-### Contact (contact.html)
-- Contact form with validation
-- Contact information
-- FAQ section
+Client-side validation lives in `js/main.js` (`initContactForm`).
 
-## Features
+## Cost estimator
 
-- **Mobile-first responsive design** - Works on all screen sizes
-- **Accessible** - Proper ARIA labels, keyboard navigation, focus states
-- **SEO-ready** - Semantic HTML, meta tags, proper heading hierarchy
-- **Form validation** - Client-side validation with helpful error messages
-- **Smooth interactions** - Scroll animations, mobile menu, header effects
-- **Analytics-ready** - Placeholder hooks for Google Analytics/GTM
+`resources.html` + `js/cost-calculator.js` compute a monthly in-house delivery cost estimate from 15 inputs and render 7 result spans. The "Request Coverage" CTA on the estimator links to `contact.html?…#request-coverage`, and `js/main.js` (`initCalculatorParams`) hydrates the form's hidden calculator fields from those query params.
 
-## Customization
+## Deployment
 
-### Colors
+Pushing to `main` triggers the GitHub Pages build for `cfbencarlson/driverline-website`. The custom domain (`CNAME`) routes the site at https://www.yourdriverline.com. Updates typically appear within ~1–2 minutes of the build, then propagate after the Fastly + browser cache (max-age ~600s) clears. Hard refresh or load in Incognito for immediate verification.
 
-Edit CSS custom properties in `css/styles.css`:
+No build, no preview environment, no separate staging. The deployed site is whatever is on `main`.
 
-```css
-:root {
-  --color-primary: #1a2b4a;        /* Dark blue - main brand color */
-  --color-accent: #2563eb;          /* Blue - buttons, links */
-  --color-text-primary: #1f2937;    /* Dark gray - main text */
-  --color-bg-primary: #ffffff;      /* White - main background */
-  /* ... */
-}
-```
+## Conventions
 
-### Typography
-
-The site uses Inter font from Google Fonts. To change:
-
-1. Update the Google Fonts link in each HTML file's `<head>`
-2. Update the `--font-sans` variable in `css/styles.css`
-
-### Contact Form
-
-The form currently simulates submission. To connect to a real backend:
-
-1. Open `js/main.js`
-2. Find the `initContactForm` function
-3. Replace the simulated delay with actual API call:
-
-```javascript
-const response = await fetch('/api/contact', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data),
-});
-
-if (!response.ok) throw new Error('Submission failed');
-```
-
-### Analytics
-
-Add your tracking code to the `<script>` tag in each HTML file's `<head>`:
-
-```html
-<!-- Google Tag Manager / Analytics -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  // Add your GTM or GA4 code here
-</script>
-```
-
-## Deployment Options
-
-### Static Hosting (Recommended)
-
-This is a static site and can be hosted anywhere:
-
-- **Netlify**: Drag and drop the folder, or connect to Git
-- **Vercel**: Import from Git or drag and drop
-- **GitHub Pages**: Push to a repo and enable Pages
-- **AWS S3 + CloudFront**: Upload files to S3 bucket
-- **Cloudflare Pages**: Connect to Git repository
-
-### Basic Deployment Steps
-
-1. **Netlify (easiest):**
-   - Go to https://app.netlify.com/drop
-   - Drag the `driverline-website` folder
-   - Your site is live!
-
-2. **GitHub Pages:**
-   ```bash
-   # Initialize git repo
-   git init
-   git add .
-   git commit -m "Initial commit"
-
-   # Push to GitHub
-   git remote add origin your-repo-url
-   git push -u origin main
-
-   # Enable Pages in repo Settings > Pages
-   ```
-
-3. **Custom domain:**
-   - Add your domain to your hosting provider
-   - Update DNS records as instructed
-   - Update meta tags and canonical URLs
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile Safari (iOS 14+)
-- Chrome for Android (latest)
-
-## Performance
-
-The site is optimized for fast loading:
-
-- Minimal external dependencies (only Google Fonts)
-- CSS and JS are lean and focused
-- No heavy frameworks or libraries
-- Images should be optimized before adding
-
-To further optimize:
-
-1. Compress images (use WebP format)
-2. Minify CSS and JS for production
-3. Enable gzip compression on your server
-4. Use a CDN for static assets
-
-## Adding Images
-
-Place images in the `images/` folder and reference them in HTML:
-
-```html
-<img src="images/your-image.jpg" alt="Description of image" loading="lazy">
-```
-
-Recommended image formats:
-- **Photos**: WebP with JPEG fallback
-- **Icons/logos**: SVG (already inline in the code)
-- **Optimize**: Use tools like ImageOptim, Squoosh, or TinyPNG
-
-## License
-
-This website was built for DriverLine. All rights reserved.
+- Keep changes tightly scoped. Stage exact files; don't use `git add .` / `-A`.
+- Don't break: the contact form (field IDs, Web3Forms hidden inputs, success/error states), the cost estimator (15 input IDs, 7 result spans, `#request-coverage-btn`, calculator handoff URL shape), or the mobile nav (64px header, `.mobile-nav { top: 64px }`).
+- Do not touch the Operations Dashboard repo from here.

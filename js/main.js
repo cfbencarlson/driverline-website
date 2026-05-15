@@ -103,8 +103,9 @@
 
     mobileMenuBtn.addEventListener('click', toggleMenu);
 
-    // Close menu on link click
-    const mobileNavLinks = mobileNav.querySelectorAll('.mobile-nav__link');
+    // Close menu on any link click inside the mobile nav (including the CTA
+    // button) so the drawer doesn't sit on top of the destination page/form.
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
     mobileNavLinks.forEach((link) => {
       link.addEventListener('click', closeMenu);
     });
@@ -407,6 +408,12 @@
 
     phoneInput.addEventListener('input', (e) => {
       let value = e.target.value.replace(/\D/g, '');
+
+      if (value.length === 11 && value.startsWith('1')) {
+        value = value.slice(1);
+      } else if (value.length > 10) {
+        return;
+      }
 
       if (value.length > 0) {
         if (value.length <= 3) {
