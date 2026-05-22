@@ -4360,6 +4360,42 @@ p {
   color: var(--color-accent-hover);
 }
 
+/* Primary CTA buttons inside legal-content (e.g. PDF download on the Driver
+   Onboarding SMS Consent page) need the inverse text color and no underline,
+   since .legal-content a otherwise paints the link text the same accent blue
+   as the button background. */
+.legal-content a.btn--primary {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+
+.legal-content a.btn--primary:hover {
+  color: var(--color-text-inverse);
+}
+
+/* Ordered variant of .legal-content__list — used for the numbered offline
+   consent workflow. Without this override, the shared li::before dot would
+   appear next to every step regardless of <ol> vs <ul>. */
+ol.legal-content__list {
+  counter-reset: legal-step;
+  list-style: none;
+}
+
+ol.legal-content__list li::before {
+  content: counter(legal-step) ".";
+  counter-increment: legal-step;
+  background: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  top: 0;
+  left: calc(-1 * var(--space-6));
+  font-weight: 600;
+  color: var(--color-accent);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
 .legal-content__contact {
   background-color: var(--color-bg-secondary);
   padding: var(--space-6);
