@@ -64,6 +64,7 @@
       isOpen = !isOpen;
 
       mobileMenuBtn.setAttribute('aria-expanded', isOpen.toString());
+      mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
       mobileNav.classList.toggle('mobile-nav--open', isOpen);
 
       // Update button icon
@@ -88,6 +89,7 @@
       if (isOpen) {
         isOpen = false;
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Open menu');
         mobileNav.classList.remove('mobile-nav--open');
 
         const icon = mobileMenuBtn.querySelector('.mobile-menu-btn__icon');
@@ -318,6 +320,12 @@
 
         // Scroll to success message
         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Move keyboard focus to the success container so screen-reader users
+        // hear the confirmation and keyboard users don't stay on the now-hidden
+        // submit button. The container is tabindex="-1" so it can receive
+        // programmatic focus without being reachable via Tab.
+        formSuccess.focus();
       } catch (error) {
         console.error('Form submission error:', error);
 
@@ -463,6 +471,15 @@
     if (drivers) {
       const driversField = document.getElementById('calculatorDrivers');
       if (driversField) driversField.value = drivers;
+
+      // Also prefill the visible required "Estimated Number of Drivers Needed"
+      // field so calculator users don't have to re-enter the same number. Only
+      // set it when currently empty so we never clobber a value the user has
+      // already typed (e.g. they came back from the calculator to adjust).
+      const driversNeededField = document.getElementById('driversNeeded');
+      if (driversNeededField && !driversNeededField.value) {
+        driversNeededField.value = drivers;
+      }
     }
 
     if (vehicles) {

@@ -3192,13 +3192,16 @@ p {
     max-height: 28px;
   }
 
-  /* Tighter Request Coverage button in the mobile header.
-     Sits next to the 44px menu button — this button is
-     persistent advertisement, not the primary tap target,
-     so a smaller size is acceptable. */
+  /* Compact Request Coverage button in the mobile header.
+     Sits next to the 44px menu button. Font-size stays tight to keep
+     the header from crowding at 320px viewport width, but min-height
+     is 44px to meet the WCAG 2.5.5 target size guideline. The base
+     .btn rule already uses inline-flex + align-items: center so the
+     label vertically centers regardless of extra height. */
   .header__actions .btn--primary {
     font-size: 0.8125rem;
     padding: 8px 14px;
+    min-height: 44px;
     border-radius: var(--radius-md);
   }
 
