@@ -1177,6 +1177,57 @@ p {
   transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
+/* Anchor card: automotive origin story. Spans the full grid row and uses the
+   brand navy so the industry grid reads as "built here, extended everywhere"
+   rather than six interchangeable tiles. */
+.audience-card--anchor {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  text-align: left;
+  background-color: var(--color-primary);
+}
+
+.audience-card--anchor .audience-card__title {
+  color: var(--color-text-inverse);
+}
+
+.audience-card--anchor .audience-card__description {
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 62ch;
+  margin-bottom: 0;
+}
+
+.audience-card__anchor-body {
+  flex: 1 1 36ch;
+  min-width: 0;
+}
+
+.audience-card__anchor-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-full);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .audience-card--anchor {
+    align-items: flex-start;
+  }
+
+  .audience-card__anchor-proof {
+    white-space: normal;
+  }
+}
+
 .audience-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
@@ -2929,6 +2980,29 @@ p {
     margin: 0;
     font-size: 0.875rem;
     line-height: var(--leading-relaxed);
+  }
+
+  /* Anchor card keeps its navy block treatment on mobile — it is the
+     positioning statement, not one of the compact vertical rows. */
+  .audience-card--anchor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    background-color: var(--color-primary);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border-bottom: none;
+    margin-bottom: var(--space-3);
+  }
+
+  .audience-card--anchor .audience-card__title,
+  .audience-card--anchor .audience-card__description {
+    grid-column: auto;
+  }
+
+  .audience-card--anchor .audience-card__anchor-body {
+    flex: 0 0 auto;
   }
 
   /* --- Light capability cards (.card no modifier) ---
