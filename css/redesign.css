@@ -676,6 +676,179 @@ textarea:focus-visible {
 }
 
 /* ------------------------------------------------------------
+   15. POLISH PASS — pixel-level refinement only. No new
+   structure, no new content, no new decoration languages.
+   ------------------------------------------------------------ */
+
+/* 15a. Utility-page heroes (thank-you, privacy, terms, SMS use
+   .about-hero): the ink background arrived without light text. */
+.about-hero__title {
+  color: var(--color-text-inverse);
+}
+
+/* 15b. Hero kicker: the floating dash read as template chrome.
+   A single waypoint dot ties it to the route motif instead. */
+.hero__eyebrow {
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.hero__eyebrow::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  margin-top: 0.42em;
+}
+
+@media (max-width: 640px) {
+  .hero__eyebrow {
+    font-size: 0.875rem;
+  }
+}
+
+/* 15c. About-page section markers: restore the index number the
+   markup already carries and drop the tracked all-caps label. */
+.section-index {
+  font-size: 0.8125rem;
+  gap: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.section-index__num {
+  display: inline;
+  color: var(--color-accent);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.section-index__label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.section--dark .section-index__num {
+  color: var(--sky);
+}
+
+.section--dark .section-index__label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 15d. Solution checklist: the green accent sat outside the
+   navy/blue system; rows join the ledger language. */
+.problem-list__item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.problem-list__item:has(.problem-list__icon--check) {
+  border-left-color: var(--color-border);
+}
+
+.problem-list__item:hover {
+  box-shadow: none;
+  background-color: #f6f9fe;
+}
+
+.problem-list__icon--check {
+  color: var(--color-accent);
+}
+
+/* 15e. Icon chips: one treatment on light desktop sections —
+   hairline plate, accent glyph, square-ish radius. Mobile keeps
+   its approved solid chips. */
+@media (min-width: 641px) {
+  .card__icon,
+  .issue-card__icon {
+    width: 44px;
+    height: 44px;
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent);
+  }
+
+  .card--dark .card__icon {
+    background-color: rgba(37, 99, 235, 0.14);
+    border-color: var(--ink-line);
+    color: var(--sky);
+  }
+
+  .audience-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* 15f. Estimator teaser tile: ghost plate instead of a solid
+   decorative block. */
+.estimator-teaser__icon {
+  background: transparent;
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-sm);
+  color: var(--sky);
+}
+
+/* 15g. Cost-factor chips: twelve floating pills become one calm
+   ledger. Explicit 3-up so the fused grid never shows holes. */
+@media (min-width: 641px) {
+  .cost-factors {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .cost-factor {
+    border: none;
+    border-radius: 0;
+  }
+
+  .cost-factor:hover {
+    box-shadow: none;
+    background: #f6f9fe;
+  }
+}
+
+/* 15h. Closing CTA headlines carry the display voice. */
+.cta-band__title {
+  font-stretch: 114%;
+  font-weight: 720;
+  letter-spacing: -0.018em;
+}
+
+/* 15i. Footer: the logo's white plate becomes intentional; column
+   titles recede; link hover lands on sky, not pure white. */
+.footer__logo-img {
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.footer__column-title {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: rgba(185, 209, 245, 0.65);
+}
+
+.footer__link:hover {
+  color: var(--sky);
+}
+
+/* 15j. Buttons acknowledge the press. */
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* ------------------------------------------------------------
    14. MOTION DISCIPLINE — one entrance moment belongs to the
    hero; everything else answers the user. Respect reduced
    motion fully.
