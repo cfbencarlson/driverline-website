@@ -1,0 +1,664 @@
+/* ============================================================
+   DriverLine — "Route Ledger" visual experiment
+   Loads after styles.css and redefines the design system.
+   Content, markup contracts, and JS hooks are unchanged.
+   ------------------------------------------------------------
+   Concept: the structural honesty of operational artifacts —
+   route sheets, coverage boards, ledger lines. Hairline-ruled
+   sections, shared-border ledger cells instead of floating
+   cards, expanded-grotesque display type with the character of
+   fleet livery lettering, one quiet route-path motif in the
+   hero. Restraint everywhere else.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. TOKENS — the palette and geometry of the new system.
+   The original sheet is variable-driven, so these redefinitions
+   propagate through every component and media query coherently.
+   ------------------------------------------------------------ */
+:root {
+  --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --color-primary: #16294b;
+  --color-primary-dark: #0d1b2e;
+  --color-primary-light: #24395f;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-light: #4f82f0;
+
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f4f6fa;
+  --color-bg-dark: #0d1b2e;
+
+  --color-text-primary: #15233c;
+  --color-text-secondary: #51607a;
+  --color-text-muted: #66738c;
+  --color-text-light: #8e9ab0;
+  --color-text-inverse: #ffffff;
+
+  --color-border: #d4dce8;
+  --color-error: #dc2626;
+  --color-success: #15803d;
+
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+
+  --ink-line: rgba(255, 255, 255, 0.14);
+  --sky: #b9d1f5;
+}
+
+/* ------------------------------------------------------------
+   2. TYPE — Archivo with its width axis doing the display work.
+   ------------------------------------------------------------ */
+body {
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-stretch: 112%;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+h1 {
+  font-stretch: 122%;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------
+   3. SECTION RHYTHM — ledger lines instead of boxed stripes.
+   Left-aligned editorial headers replace the centered stack.
+   ------------------------------------------------------------ */
+main .section {
+  border-top: 1px solid var(--color-border);
+}
+
+main .section--dark,
+main .cta-band {
+  border-top: none;
+}
+
+.section--gray {
+  background-color: var(--color-bg-secondary);
+}
+
+.section-header {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.section-header__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-bottom: var(--space-3);
+  border-left: none;
+  padding-left: 0;
+  background: none;
+}
+
+.section-header__eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--color-accent);
+  flex: 0 0 auto;
+}
+
+.section-header__title {
+  max-width: 24ch;
+}
+
+.section-header__description {
+  margin-left: 0;
+  max-width: 62ch;
+}
+
+.section--dark .section-header__eyebrow {
+  color: var(--sky);
+}
+
+.section--dark .section-header__eyebrow::before {
+  background: var(--sky);
+}
+
+/* ------------------------------------------------------------
+   4. HEADER / NAV — quiet bar with a signal line.
+   (Mechanics untouched: sticky, --scrolled, drawer transform.)
+   ------------------------------------------------------------ */
+.header {
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+.header::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 60%, var(--color-primary) 100%);
+}
+
+.header--scrolled {
+  box-shadow: 0 10px 30px -18px rgba(13, 27, 46, 0.35);
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+.nav__link {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.nav__link:hover {
+  color: var(--color-primary);
+}
+
+.nav__link--active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Mobile drawer: ink-navy route sheet */
+.mobile-nav {
+  background-color: var(--color-primary-dark);
+  border-top: 1px solid var(--ink-line);
+}
+
+.mobile-nav .mobile-nav__link {
+  color: #e8eefb;
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid var(--ink-line);
+  padding: 18px 0;
+}
+
+.mobile-nav .mobile-nav__link--active {
+  color: var(--sky);
+}
+
+/* ------------------------------------------------------------
+   5. BUTTONS — rectangular, decisive, visible focus.
+   ------------------------------------------------------------ */
+.btn {
+  border-radius: var(--radius-md);
+  letter-spacing: 0.01em;
+  font-weight: 600;
+}
+
+.btn--outline,
+.btn--outline-light {
+  border-width: 1px;
+}
+
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+   6. HERO (home) — the one bold moment. Deep ink, a faint route
+   path with waypoints, expanded display type, coverage board.
+   ------------------------------------------------------------ */
+.hero {
+  background-color: var(--color-primary-dark);
+}
+
+.hero__background {
+  background-image:
+    radial-gradient(ellipse 60% 50% at 78% 18%, rgba(37, 99, 235, 0.16), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 640' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M-40 540 C 220 420, 360 560, 560 430 S 940 220, 1240 120' fill='none' stroke='%23b9d1f5' stroke-opacity='0.13' stroke-width='1.5' stroke-dasharray='1 7' stroke-linecap='round'/%3E%3Ccircle cx='560' cy='430' r='4' fill='%23b9d1f5' fill-opacity='0.35'/%3E%3Ccircle cx='905' cy='255' r='4' fill='%232563eb' fill-opacity='0.55'/%3E%3Ccircle cx='1150' cy='148' r='4' fill='%23b9d1f5' fill-opacity='0.3'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--sky);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.9375rem;
+  border-left: none;
+  padding-left: 0;
+}
+
+.hero__eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--sky);
+  flex: 0 0 auto;
+}
+
+.hero__title {
+  font-stretch: 122%;
+  font-weight: 760;
+  letter-spacing: -0.022em;
+  line-height: 0.98;
+  font-size: clamp(2.7rem, 7.2vw, 4.8rem);
+}
+
+.hero__description {
+  color: #c2cfe4;
+  max-width: 56ch;
+}
+
+.hero__proof {
+  border-top: 1px solid var(--ink-line);
+  padding-top: var(--space-5);
+  margin-top: var(--space-7);
+}
+
+.hero__proof-item {
+  color: #d6e0f2;
+}
+
+.hero__proof-check {
+  color: var(--sky);
+}
+
+/* Coverage snapshot: a bordered operations board, not a glass card */
+.hero-snapshot {
+  background: rgba(22, 41, 75, 0.55);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.hero-snapshot__head {
+  border-bottom: 1px solid var(--ink-line);
+}
+
+.hero-snapshot__eyebrow {
+  color: var(--sky);
+  letter-spacing: 0.04em;
+}
+
+.hero-snapshot__row {
+  border-bottom: 1px dashed rgba(185, 209, 245, 0.18);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.hero-snapshot__row:last-child {
+  border-bottom: none;
+}
+
+.hero-snapshot__dot {
+  background: var(--sky);
+}
+
+.hero-snapshot__label {
+  color: #dbe5f5;
+}
+
+/* ------------------------------------------------------------
+   7. LEDGER CELLS — desktop card language. Shared hairline
+   borders, flat fields, hover = tint not lift. Mobile keeps its
+   approved compact-row layouts (token-restyled automatically).
+   ------------------------------------------------------------ */
+@media (min-width: 641px) {
+  .issue-grid {
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .issue-card {
+    background: var(--color-bg-primary);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    transition: background-color var(--transition-fast);
+  }
+
+  .issue-card:hover {
+    background: #eef3fb;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .card:not(.card--dark) {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: none;
+    background: var(--color-bg-primary);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .card:not(.card--dark):hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--color-accent);
+    background: #f8faff;
+  }
+
+  .audience-grid {
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .audience-card {
+    background: var(--color-bg-primary);
+    border-radius: 0;
+    box-shadow: none;
+    text-align: left;
+    transition: background-color var(--transition-fast);
+  }
+
+  .audience-card:hover {
+    transform: none;
+    box-shadow: none;
+    background: #eef3fb;
+  }
+
+  .audience-card__icon {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Industries anchor: full navy band with the route motif echoed */
+.audience-card--anchor {
+  background-color: var(--color-primary) !important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 220' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M-20 190 C 200 120, 420 200, 640 110 S 880 40, 940 30' fill='none' stroke='%23b9d1f5' stroke-opacity='0.12' stroke-width='1.5' stroke-dasharray='1 7' stroke-linecap='round'/%3E%3Ccircle cx='640' cy='110' r='3.5' fill='%23b9d1f5' fill-opacity='0.4'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: right center;
+}
+
+.audience-card--anchor:hover {
+  background-color: var(--color-primary) !important;
+}
+
+.audience-card__anchor-proof {
+  border-color: rgba(185, 209, 245, 0.35);
+  color: var(--sky);
+  border-radius: var(--radius-full);
+}
+
+/* Solution checklist: ruled rows */
+@media (min-width: 641px) {
+  .problem-list__item {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-4);
+  }
+
+  .problem-list__item:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   8. STEPS — a genuine sequence gets its connector line.
+   ------------------------------------------------------------ */
+.step__number {
+  background: var(--color-primary-dark);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .steps {
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 6%;
+    right: 6%;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .step {
+    position: relative;
+    z-index: 1;
+    background: inherit;
+  }
+
+  .step__number {
+    box-shadow: 0 0 0 8px var(--color-bg-secondary);
+  }
+}
+
+/* ------------------------------------------------------------
+   9. DARK TRUST BAND + ESTIMATOR TEASER + CTA
+   ------------------------------------------------------------ */
+.section--dark {
+  background-color: var(--color-primary-dark);
+}
+
+@media (min-width: 641px) {
+  .section--dark .grid--3 {
+    gap: 1px;
+    background: var(--ink-line);
+    border: 1px solid var(--ink-line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .card--dark {
+    background: var(--color-primary-dark);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transition: background-color var(--transition-fast);
+  }
+
+  .card--dark:hover {
+    transform: none;
+    background: #142540;
+  }
+}
+
+.card--dark .card__icon {
+  color: var(--sky);
+}
+
+.estimator-teaser {
+  background: var(--color-primary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-primary-light);
+}
+
+.cta-band {
+  background-color: var(--color-primary-dark);
+  background-image:
+    radial-gradient(ellipse 50% 60% at 85% 30%, rgba(37, 99, 235, 0.18), transparent 70%);
+}
+
+/* ------------------------------------------------------------
+   10. CALCULATOR — an operational worksheet with an estimate
+   board. Structure preserved; presentation sharpened.
+   ------------------------------------------------------------ */
+.calculator {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.calculator__section-title {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+.calculator__section-num {
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-weight: 700;
+}
+
+.calculator__results {
+  background: var(--color-primary-dark);
+  border-radius: 0;
+}
+
+.calculator__results .result-row,
+.calculator__results [class*="result"] {
+  font-variant-numeric: tabular-nums;
+}
+
+#result-total {
+  font-family: var(--font-display);
+  font-stretch: 118%;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+/* ------------------------------------------------------------
+   11. FORMS — field language shared by contact + calculator.
+   Error/focus hooks preserved exactly.
+   ------------------------------------------------------------ */
+.form-input,
+.form-textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.form-input--error,
+.form-textarea--error {
+  border-color: var(--color-error);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.form-success {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+/* ------------------------------------------------------------
+   12. SUBPAGE HEROES — same ink language as home.
+   ------------------------------------------------------------ */
+.about-hero,
+.subpage-hero {
+  background-color: var(--color-primary-dark);
+  background-image:
+    radial-gradient(ellipse 55% 55% at 82% 20%, rgba(37, 99, 235, 0.14), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 420' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M-30 370 C 260 280, 460 380, 700 270 S 1040 120, 1240 70' fill='none' stroke='%23b9d1f5' stroke-opacity='0.11' stroke-width='1.5' stroke-dasharray='1 7' stroke-linecap='round'/%3E%3Ccircle cx='700' cy='270' r='3.5' fill='%23b9d1f5' fill-opacity='0.35'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+}
+
+.about-hero__title,
+.contact-hero__title {
+  font-stretch: 120%;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.hero-tag {
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-full);
+  background: rgba(22, 41, 75, 0.5);
+}
+
+.hero-tag__text {
+  color: var(--sky);
+  letter-spacing: 0.03em;
+}
+
+.subpage-hero__trust {
+  border-top: 1px solid var(--ink-line);
+  padding-top: var(--space-5);
+}
+
+.subpage-hero__trust-check {
+  color: var(--sky);
+}
+
+/* ------------------------------------------------------------
+   13. FOOTER — ink navy, ruled columns.
+   ------------------------------------------------------------ */
+.footer {
+  background-color: var(--color-primary-dark);
+  border-top: 3px solid var(--color-accent);
+}
+
+.footer__column-title {
+  color: var(--sky);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+}
+
+.footer__link {
+  color: #b9c6dd;
+}
+
+.footer__link:hover {
+  color: #fff;
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--ink-line);
+}
+
+/* ------------------------------------------------------------
+   14. MOTION DISCIPLINE — one entrance moment belongs to the
+   hero; everything else answers the user. Respect reduced
+   motion fully.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
