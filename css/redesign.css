@@ -848,6 +848,15 @@ textarea:focus-visible {
   transform: translateY(1px);
 }
 
+/* 15k. Deliberate heading wrap: keep "You Handle Business." together
+   on desktop so it never orphans a single word; wraps freely on
+   narrow screens. */
+@media (min-width: 641px) {
+  .nowrap-desktop {
+    white-space: nowrap;
+  }
+}
+
 /* ------------------------------------------------------------
    14. MOTION DISCIPLINE — one entrance moment belongs to the
    hero; everything else answers the user. Respect reduced
