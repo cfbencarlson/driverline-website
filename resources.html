@@ -40,6 +40,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/redesign.css">
+  <link rel="stylesheet" href="css/line.css">
 
   <title>In-House Delivery Cost Estimator - DriverLine Resources</title>
 
@@ -48,7 +49,7 @@
     window.dataLayer = window.dataLayer || [];
   </script>
 </head>
-<body>
+<body class="page-resources">
   <!-- Skip Link for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -96,31 +97,24 @@
   <!-- Main Content -->
   <main id="main-content">
     <!-- Resources Hero -->
-    <section class="subpage-hero">
+    <section class="ln-page-hero">
       <div class="container">
-        <div class="subpage-hero__content">
-          <span class="hero-tag">
-            <span class="hero-tag__dot" aria-hidden="true"></span>
-            <span class="hero-tag__text">DriverLine · Operations Resources</span>
-          </span>
-          <h1 class="about-hero__title">Cost &amp; Operations Resources</h1>
-          <p class="about-hero__description">
-            Plug in your numbers, see what in-house delivery really costs, and decide whether managed coverage makes more sense for your operation.
-          </p>
-        </div>
+        <span class="ln-page-hero__eyebrow">DriverLine · Operations Resources</span>
+        <h1 class="ln-page-hero__title">Cost &amp; Operations Resources</h1>
+        <p class="ln-page-hero__lede">Plug in your numbers, see what in-house delivery really costs, and decide whether managed coverage makes more sense for your operation.</p>
       </div>
     </section>
 
     <!-- Cost Estimator Section -->
-    <section class="section" id="cost-estimator" aria-labelledby="estimator-title">
+    <section class="ln-sec ln-sec--tool" id="cost-estimator" aria-labelledby="estimator-title">
       <div class="container">
-        <div class="section-header">
-          <span class="section-header__eyebrow">Calculator</span>
-          <h2 class="section-header__title" id="estimator-title">In-House Delivery Cost Estimator</h2>
-          <p class="section-header__description">
-            Many operations underestimate the true cost of in-house delivery. This estimator accounts for the expenses that are often overlooked.
-          </p>
-        </div>
+        <header class="ln-head ln-head--split">
+          <div class="ln-head__main">
+            <p class="ln-kicker ln-kicker--plain">Calculator</p>
+            <h2 class="ln-title" id="estimator-title">In-House Delivery Cost Estimator</h2>
+          </div>
+          <p class="ln-intro">Many operations underestimate the true cost of in-house delivery. This estimator accounts for the expenses that are often overlooked.</p>
+        </header>
 
         <aside class="estimator-note" aria-label="How to use this estimator">
           <span class="estimator-note__label">How to read this</span>
@@ -308,15 +302,15 @@
     </section>
 
     <!-- What Counts Section -->
-    <section class="section section--gray" aria-labelledby="what-counts-title">
-      <div class="container container--narrow">
-        <div class="section-header">
-          <span class="section-header__eyebrow">Cost Coverage</span>
-          <h2 class="section-header__title" id="what-counts-title">What Counts as Delivery Cost?</h2>
-          <p class="section-header__description">
-            In-house delivery involves more than most operations realize. Here's what often gets overlooked.
-          </p>
-        </div>
+    <section class="ln-sec ln-sec--factors" aria-labelledby="what-counts-title">
+      <div class="container">
+        <header class="ln-head ln-head--split">
+          <div class="ln-head__main">
+            <p class="ln-kicker ln-kicker--plain">Cost Coverage</p>
+            <h2 class="ln-title" id="what-counts-title">What Counts as Delivery Cost?</h2>
+          </div>
+          <p class="ln-intro">In-house delivery involves more than most operations realize. Here's what often gets overlooked.</p>
+        </header>
 
         <div class="cost-factors">
           <div class="cost-factor">
