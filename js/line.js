@@ -70,6 +70,7 @@
       var len = t.cy - y0;
 
       hero.style.setProperty('--ln-leg', legX + 'px');
+      hero.style.setProperty('--ln-term-y', t.cy + 'px');
       hero.style.setProperty('--ln-text-x', box(hero.querySelector('.ln-hero__text'), hero).x + 'px');
       track.setAttribute('d', d);
       line.setAttribute('d', d);
@@ -120,50 +121,72 @@
     }
   }
 
-  /* ---------------- CHALLENGE -> SOLUTION ---------------- */
+  /* ---------------- CHALLENGE -> SOLUTION ----------------
+     Wide: the resolved challenge line turns down and fades out;
+     the solution line fades in from above and turns into its row.
+     The seam between them is implied, not drawn.
+     Narrow: one spine, straight down the gutter, across the seam. */
   var flow = document.querySelector('[data-ln-flow]');
 
   if (flow) {
-    var link = flow.querySelector('.ln-flow__path');
+    var exit = flow.querySelector('.ln-flow__path--exit');
+    var entry = flow.querySelector('.ln-flow__path--entry');
+    var gOut = flow.querySelector('#ln-fade-out');
+    var gIn = flow.querySelector('#ln-fade-in');
     var cItems = Array.prototype.slice.call(flow.querySelectorAll('[data-ln-challenge] .ln-pt'));
     var sItems = Array.prototype.slice.call(flow.querySelectorAll('[data-ln-solution] .ln-pt'));
     var sHead = flow.querySelector('.ln-sec--solution .ln-head');
     var sStrip = flow.querySelector('[data-ln-solution]');
-    var linkLen = 0;
-    var linkDone = reduce;
+    var exitLen = 0;
+    var entryLen = 0;
+    var exitDone = reduce;
+    var entryDone = reduce;
     var resolved = false;
     var managed = false;
     var stripSeen = false;
 
+    var R = 24;
+    var RUN = 88;
+
     var buildLink = function () {
       var c = box(cItems[cItems.length - 1].querySelector('.ln-mark'), flow);
-      var d;
       if (wide.matches) {
-        // U-turn down the right margin, from the challenge line's end to the solution line's end
         var s = box(sItems[3].querySelector('.ln-mark'), flow);
         var x = c.right;
-        var R = 32;
-        d = 'M' + x + ',' + c.y +
-            ' A' + R + ',' + R + ' 0 0 1 ' + (x + R) + ',' + (c.y + R) +
-            ' V' + (s.y - R) +
-            ' A' + R + ',' + R + ' 0 0 1 ' + s.right + ',' + s.y;
-        linkLen = (s.y - c.y - 2 * R) + Math.PI * R;
+        // the exit leaves through the challenge section's bottom edge
+        var cSec = box(flow.querySelector('.ln-sec--challenge'), flow);
+        var exitEnd = Math.max(c.y + R + RUN, cSec.bottom - 2);
+        var entryStart = s.y - R - RUN;
+        exit.setAttribute('d', 'M' + x + ',' + c.y + ' A' + R + ',' + R + ' 0 0 1 ' + (x + R) + ',' + (c.y + R) + ' V' + exitEnd);
+        entry.setAttribute('d', 'M' + (s.right + R) + ',' + entryStart + ' V' + (s.y - R) + ' A' + R + ',' + R + ' 0 0 1 ' + s.right + ',' + s.y);
+        gOut.setAttribute('y1', c.y + R * 0.5); gOut.setAttribute('y2', exitEnd);
+        gIn.setAttribute('y1', entryStart); gIn.setAttribute('y2', s.y - R * 0.5);
+        exit.style.stroke = 'url(#ln-fade-out)';
+        entry.style.stroke = 'url(#ln-fade-in)';
+        exitLen = (Math.PI * R) / 2 + (exitEnd - c.y - R);
+        entryLen = RUN + (Math.PI * R) / 2;
       } else {
-        // straight down the spine, across the seam
         var first = box(sItems[0].querySelector('.ln-mark'), flow);
-        d = 'M' + c.x + ',' + c.bottom + ' V' + first.y;
-        linkLen = first.y - c.bottom;
+        exit.setAttribute('d', 'M' + c.x + ',' + c.bottom + ' V' + first.y);
+        exit.style.stroke = '';
+        entry.setAttribute('d', '');
+        exitLen = first.y - c.bottom;
+        entryLen = 0;
       }
-      link.setAttribute('d', d);
-      if (linkDone) clearDash(link);
-      else setDash(link, linkLen, linkLen);
+      if (exitDone) clearDash(exit); else setDash(exit, exitLen, exitLen);
+      if (entryDone) clearDash(entry); else setDash(entry, entryLen, entryLen);
     };
 
-    var manage = function () {
-      if (managed || !linkDone || !stripSeen) return;
-      managed = true;
+    var drawPath = function (path, len, ms, done) {
+      tween(ms, easeInOut, function (p) { path.style.strokeDashoffset = len * (1 - p); }, function () {
+        clearDash(path);
+        if (done) done();
+      });
+    };
+
+    var lightSolution = function () {
       if (wide.matches) {
-        // the line continues right-to-left from where the connector lands
+        // the line carries on right-to-left from where the entry lands
         for (var k = 0; k < 4; k++) {
           (function (j, delay) {
             window.setTimeout(function () {
@@ -172,18 +195,27 @@
             }, delay);
           })(3 - k, k * 170);
         }
-      } else {
+      } else if ('IntersectionObserver' in window) {
         // narrow: each stop comes on as it scrolls into view
-        if ('IntersectionObserver' in window) {
-          var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-              if (e.isIntersecting) { e.target.classList.add('is-on'); io.unobserve(e.target); }
-            });
-          }, { rootMargin: '0px 0px -18% 0px' });
-          sItems.forEach(function (el) { io.observe(el); });
-        } else {
-          sItems.forEach(function (el) { el.classList.add('is-on'); });
-        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('is-on'); io.unobserve(e.target); }
+          });
+        }, { rootMargin: '0px 0px -18% 0px' });
+        sItems.forEach(function (el) { io.observe(el); });
+      } else {
+        sItems.forEach(function (el) { el.classList.add('is-on'); });
+      }
+    };
+
+    var manage = function () {
+      if (managed || !exitDone || !stripSeen) return;
+      managed = true;
+      if (entryLen > 0) {
+        drawPath(entry, entryLen, 320, function () { entryDone = true; lightSolution(); });
+      } else {
+        entryDone = true;
+        lightSolution();
       }
     };
 
@@ -192,13 +224,7 @@
       resolved = true;
       flow.classList.add('is-resolved');
       window.setTimeout(function () {
-        tween(380, easeInOut, function (p) {
-          link.style.strokeDashoffset = linkLen * (1 - p);
-        }, function () {
-          linkDone = true;
-          clearDash(link);
-          manage();
-        });
+        drawPath(exit, exitLen, 340, function () { exitDone = true; manage(); });
       }, 420);
     };
 
@@ -208,8 +234,9 @@
       buildLink();
       if (reduce || !('IntersectionObserver' in window)) {
         // static story: challenge stays broken, solution stays covered
-        linkDone = true;
-        clearDash(link);
+        exitDone = entryDone = true;
+        clearDash(exit);
+        clearDash(entry);
         return;
       }
       flow.classList.add('is-armed');
