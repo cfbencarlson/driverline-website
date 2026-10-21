@@ -40,6 +40,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/redesign.css">
+  <link rel="stylesheet" href="css/line.css">
 
   <title>DriverLine | Dedicated Delivery Drivers &amp; Managed Route Coverage</title>
 
@@ -47,6 +48,7 @@
   <script>
     // Analytics initialization placeholder
     window.dataLayer = window.dataLayer || [];
+    document.documentElement.classList.add('ln-js');
   </script>
 </head>
 <body>
@@ -96,242 +98,160 @@
 
   <!-- Main Content -->
   <main id="main-content">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero__background" aria-hidden="true"></div>
+    <!-- Hero: the route -->
+    <section class="ln-hero" data-ln-hero>
+      <svg class="ln-hero__route" aria-hidden="true" focusable="false">
+        <path class="ln-hero__track" d=""/>
+        <path class="ln-hero__line" d=""/>
+      </svg>
+      <div class="ln-hero__lane" aria-hidden="true"></div>
       <div class="container">
-        <div class="hero__layout">
-          <div class="hero__content animate-slide-up">
-            <span class="hero__eyebrow">Dedicated Delivery Drivers for Route-Based Businesses</span>
-            <h1 class="hero__title">Reliable Drivers. Covered Routes.</h1>
-            <p class="hero__description">
+        <div class="ln-hero__grid">
+          <div class="ln-hero__text">
+            <span class="ln-hero__eyebrow">Dedicated Delivery Drivers for Route-Based Businesses</span>
+            <h1 class="ln-hero__title"><span class="ln-w">Reliable</span> <span class="ln-w">Drivers.</span> <span class="ln-w">Covered</span> <span class="ln-w">Routes.</span></h1>
+            <p class="ln-hero__desc">
               DriverLine provides dedicated, managed delivery drivers for businesses that depend on daily routes. We handle recruiting, vetting, day-to-day driver management, and backup coverage, so you can stop managing drivers and focus on running your business.
             </p>
-            <div class="hero__actions">
-              <a href="contact.html#request-coverage" class="btn btn--primary btn--lg">Request Coverage</a>
-              <a href="#how-it-works" class="btn btn--outline-light btn--lg">How It Works</a>
-            </div>
-
-            <div class="hero__proof">
-              <div class="hero__proof-item">
-                <span class="hero__proof-check" aria-hidden="true">&#10003;</span>
-                <span>Vetted driver coverage</span>
-              </div>
-              <div class="hero__proof-item">
-                <span class="hero__proof-check" aria-hidden="true">&#10003;</span>
-                <span>Built-in backup for callouts</span>
-              </div>
-              <div class="hero__proof-item">
-                <span class="hero__proof-check" aria-hidden="true">&#10003;</span>
-                <span>Recruiting &amp; retention handled</span>
-              </div>
-            </div>
           </div>
 
-          <aside class="hero-snapshot" aria-label="Coverage snapshot">
-            <div class="hero-snapshot__head">
-              <span class="hero-snapshot__eyebrow">Coverage Snapshot</span>
-              <span class="hero-snapshot__status" aria-hidden="true">
-                <span class="hero-snapshot__status-dot"></span>
-                Coverage Ready
-              </span>
-            </div>
-            <ul class="hero-snapshot__list">
-              <li class="hero-snapshot__row">
-                <span class="hero-snapshot__dot" aria-hidden="true"></span>
-                <span class="hero-snapshot__label">Vetted driver coverage</span>
-              </li>
-              <li class="hero-snapshot__row">
-                <span class="hero-snapshot__dot" aria-hidden="true"></span>
-                <span class="hero-snapshot__label">Backup coverage available</span>
-              </li>
-              <li class="hero-snapshot__row">
-                <span class="hero-snapshot__dot" aria-hidden="true"></span>
-                <span class="hero-snapshot__label">Operational oversight included</span>
-              </li>
-              <li class="hero-snapshot__row">
-                <span class="hero-snapshot__dot" aria-hidden="true"></span>
-                <span class="hero-snapshot__label">Dedicated drivers on your routes</span>
-              </li>
+          <div class="ln-hero__actions">
+            <a href="contact.html#request-coverage" class="btn btn--primary btn--lg ln-btn">Request Coverage</a>
+            <a href="#how-it-works" class="btn btn--outline-light btn--lg ln-btn ln-btn--ghost">How It Works</a>
+          </div>
+
+          <ul class="ln-proof">
+            <li><span class="ln-proof__check" aria-hidden="true">&#10003;</span>Vetted driver coverage</li>
+            <li><span class="ln-proof__check" aria-hidden="true">&#10003;</span>Built-in backup for callouts</li>
+            <li><span class="ln-proof__check" aria-hidden="true">&#10003;</span>Recruiting &amp; retention handled</li>
+          </ul>
+
+          <aside class="ln-snap" aria-label="Coverage snapshot">
+            <p class="ln-snap__title">Coverage Snapshot</p>
+            <ul class="ln-snap__stops">
+              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Vetted driver coverage</span></li>
+              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Backup coverage available</span></li>
+              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Operational oversight included</span></li>
+              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Dedicated drivers on your routes</span></li>
             </ul>
           </aside>
-        </div>
-      </div>
-    </section>
 
-    <!-- Problems We Solve -->
-    <section class="section section--gray" aria-labelledby="problems-title">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-header__eyebrow">The Challenge</span>
-          <h2 class="section-header__title" id="problems-title">Operational Pressures You Face Daily</h2>
-          <p class="section-header__description">
-            Managing delivery operations in-house creates real problems that affect your bottom line and your team.
-          </p>
-        </div>
-
-        <div class="issue-grid">
-          <article class="issue-card">
-            <span class="issue-card__icon" aria-hidden="true">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-              </svg>
-            </span>
-            <h3 class="issue-card__title">Risk &amp; Compliance Exposure</h3>
-            <p class="issue-card__desc">Accidents, injuries, and driver classification issues can create real financial and operational exposure without proper documentation and coverage.</p>
-          </article>
-
-          <article class="issue-card">
-            <span class="issue-card__icon" aria-hidden="true">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </span>
-            <h3 class="issue-card__title">Rising Labor &amp; Vehicle Costs</h3>
-            <p class="issue-card__desc">Wages, benefits, fuel, insurance, depreciation, and maintenance keep the cost of running your own fleet climbing year over year.</p>
-          </article>
-
-          <article class="issue-card">
-            <span class="issue-card__icon" aria-hidden="true">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-              </svg>
-            </span>
-            <h3 class="issue-card__title">Driver Availability &amp; Turnover</h3>
-            <p class="issue-card__desc">Finding reliable drivers is hard. Keeping them is harder. High turnover means constant recruiting, training, and gaps in route coverage.</p>
-          </article>
-
-          <article class="issue-card">
-            <span class="issue-card__icon" aria-hidden="true">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-              </svg>
-            </span>
-            <h3 class="issue-card__title">Coverage Gaps</h3>
-            <p class="issue-card__desc">Callouts, vacations, and no-shows force your team to scramble, delaying deliveries and leaving customers waiting.</p>
-          </article>
-
-          <article class="issue-card">
-            <span class="issue-card__icon" aria-hidden="true">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              </svg>
-            </span>
-            <h3 class="issue-card__title">Administrative Burden</h3>
-            <p class="issue-card__desc">Hiring paperwork, background checks, compliance documentation, scheduling, and payroll take time your team doesn't have.</p>
-          </article>
-
-          <article class="issue-card">
-            <span class="issue-card__icon" aria-hidden="true">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-            </span>
-            <h3 class="issue-card__title">Delivery Speed Demands</h3>
-            <p class="issue-card__desc">Customers expect same-day delivery. Without consistent route coverage, meeting those expectations becomes harder every day.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Solution -->
-    <section class="section" aria-labelledby="solution-title">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-header__eyebrow">The Solution</span>
-          <h2 class="section-header__title" id="solution-title">We Handle Drivers. <span class="nowrap-desktop">You Handle Business.</span></h2>
-          <p class="section-header__description">
-            DriverLine shifts much of the driver hiring, management, and coverage burden off your team &mdash; helping reduce employment and delivery-related exposure.
-          </p>
-        </div>
-
-        <div class="grid grid--2">
-          <div class="problem-list">
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>Vetted Driver Coverage</h4>
-                <p>Drivers are background-checked, MVR-verified, and required to carry appropriate coverage before route assignment.</p>
-              </div>
-            </div>
-
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>All Hiring & Screening Handled</h4>
-                <p>Recruiting, vetting, onboarding, and compliance documentation managed by DriverLine.</p>
-              </div>
-            </div>
-
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>Independent Contractor Model</h4>
-                <p>Drivers provide their own vehicles and fuel — reducing fleet ownership, maintenance, depreciation, and fuel burden.</p>
-              </div>
-            </div>
-
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>Operational Integration</h4>
-                <p>Our drivers integrate directly into your existing routes, dispatch systems, and operating processes — whether you use tablets, delivery apps, or internal software.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="problem-list">
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>Built-In Backup Systems</h4>
-                <p>Structured backup coverage for callouts and service disruptions. Fewer coverage gaps to manage.</p>
-              </div>
-            </div>
-
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>Consistent Service</h4>
-                <p>Professional drivers who represent your brand properly. More consistent coverage day to day.</p>
-              </div>
-            </div>
-
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>Predictable Costs</h4>
-                <p>Clear, predictable delivery cost structure. Fewer unexpected costs from vehicle issues or turnover.</p>
-              </div>
-            </div>
-
-            <div class="problem-list__item">
-              <svg class="problem-list__icon problem-list__icon--check" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div class="problem-list__content">
-                <h4>Flexible Scaling</h4>
-                <p>Add or reduce coverage by location as your business needs change.</p>
-              </div>
-            </div>
+          <div class="ln-term">
+            <span class="ln-term__node" aria-hidden="true"></span>
+            <span class="ln-term__label"><span class="ln-term__dot" aria-hidden="true"></span>Coverage Ready</span>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Challenge to Solution: one route, fragmented then managed -->
+    <div class="ln-flow" data-ln-flow>
+      <svg class="ln-flow__link" aria-hidden="true" focusable="false"><path class="ln-flow__path" d=""/></svg>
+
+      <section class="ln-sec ln-sec--challenge" aria-labelledby="problems-title">
+        <div class="container">
+          <header class="ln-head ln-head--split">
+            <div class="ln-head__main">
+              <p class="ln-kicker">
+                <svg class="ln-glyph" viewBox="0 0 34 10" aria-hidden="true" focusable="false"><path d="M0 4h9M14 7h9" /><circle cx="29" cy="5" r="3.25"/></svg>
+                The Challenge
+              </p>
+              <h2 class="ln-title" id="problems-title">Operational Pressures You Face Daily</h2>
+            </div>
+            <p class="ln-intro">Managing delivery operations in-house creates real problems that affect your bottom line and your team.</p>
+          </header>
+
+          <ul class="ln-strip ln-strip--broken" data-ln-challenge>
+            <li class="ln-pt" style="--i:0; --dy:-9px; --dx:4px">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Risk &amp; Compliance Exposure</h3>
+              <p class="ln-pt__desc">Accidents, injuries, and driver classification issues can create real financial and operational exposure without proper documentation and coverage.</p>
+            </li>
+            <li class="ln-pt" style="--i:1; --dy:10px; --dx:-5px">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Rising Labor &amp; Vehicle Costs</h3>
+              <p class="ln-pt__desc">Wages, benefits, fuel, insurance, depreciation, and maintenance keep the cost of running your own fleet climbing year over year.</p>
+            </li>
+            <li class="ln-pt" style="--i:2; --dy:-7px; --dx:4px">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Driver Availability &amp; Turnover</h3>
+              <p class="ln-pt__desc">Finding reliable drivers is hard. Keeping them is harder. High turnover means constant recruiting, training, and gaps in route coverage.</p>
+            </li>
+            <li class="ln-pt" style="--i:3; --dy:7px; --dx:-4px">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Coverage Gaps</h3>
+              <p class="ln-pt__desc">Callouts, vacations, and no-shows force your team to scramble, delaying deliveries and leaving customers waiting.</p>
+            </li>
+            <li class="ln-pt" style="--i:4; --dy:-5px; --dx:3px">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Administrative Burden</h3>
+              <p class="ln-pt__desc">Hiring paperwork, background checks, compliance documentation, scheduling, and payroll take time your team doesn't have.</p>
+            </li>
+            <li class="ln-pt" style="--i:5; --dy:6px; --dx:-3px">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Delivery Speed Demands</h3>
+              <p class="ln-pt__desc">Customers expect same-day delivery. Without consistent route coverage, meeting those expectations becomes harder every day.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="ln-sec ln-sec--solution" aria-labelledby="solution-title">
+        <div class="container">
+          <header class="ln-head ln-head--stack">
+            <p class="ln-kicker">
+              <svg class="ln-glyph" viewBox="0 0 34 10" aria-hidden="true" focusable="false"><path d="M0 5h29" /><circle cx="29" cy="5" r="3.25"/></svg>
+              The Solution
+            </p>
+            <h2 class="ln-title ln-title--xl" id="solution-title"><span class="ln-w">We Handle Drivers.</span> <span class="ln-w">You Handle Business.</span></h2>
+            <p class="ln-intro">DriverLine shifts much of the driver hiring, management, and coverage burden off your team &mdash; helping reduce employment and delivery-related exposure.</p>
+          </header>
+
+          <ul class="ln-strip ln-strip--solid" data-ln-solution>
+            <li class="ln-pt" style="--i:0">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Vetted Driver Coverage</h3>
+              <p class="ln-pt__desc">Drivers are background-checked, MVR-verified, and required to carry appropriate coverage before route assignment.</p>
+            </li>
+            <li class="ln-pt" style="--i:1">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">All Hiring &amp; Screening Handled</h3>
+              <p class="ln-pt__desc">Recruiting, vetting, onboarding, and compliance documentation managed by DriverLine.</p>
+            </li>
+            <li class="ln-pt" style="--i:2">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Independent Contractor Model</h3>
+              <p class="ln-pt__desc">Drivers provide their own vehicles and fuel &mdash; reducing fleet ownership, maintenance, depreciation, and fuel burden.</p>
+            </li>
+            <li class="ln-pt" style="--i:3">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Operational Integration</h3>
+              <p class="ln-pt__desc">Our drivers integrate directly into your existing routes, dispatch systems, and operating processes &mdash; whether you use tablets, delivery apps, or internal software.</p>
+            </li>
+            <li class="ln-pt" style="--i:4">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Built-In Backup Systems</h3>
+              <p class="ln-pt__desc">Structured backup coverage for callouts and service disruptions. Fewer coverage gaps to manage.</p>
+            </li>
+            <li class="ln-pt" style="--i:5">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Consistent Service</h3>
+              <p class="ln-pt__desc">Professional drivers who represent your brand properly. More consistent coverage day to day.</p>
+            </li>
+            <li class="ln-pt" style="--i:6">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Predictable Costs</h3>
+              <p class="ln-pt__desc">Clear, predictable delivery cost structure. Fewer unexpected costs from vehicle issues or turnover.</p>
+            </li>
+            <li class="ln-pt" style="--i:7">
+              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
+              <h3 class="ln-pt__title">Flexible Scaling</h3>
+              <p class="ln-pt__desc">Add or reduce coverage by location as your business needs change.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
 
     <!-- How It Works -->
     <section class="section section--gray" id="how-it-works" aria-labelledby="how-it-works-title">
@@ -644,5 +564,6 @@
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>
+  <script src="js/line.js" defer></script>
 </body>
 </html>
