@@ -1398,7 +1398,10 @@ main .cta-band { border-top: none; }
 .ln-term__node::after {
   content: '';
   position: absolute;
-  inset: -1px;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
   border-radius: 50%;
   border: 1.5px solid var(--ln-route-dark);
   opacity: 0;
@@ -1415,7 +1418,10 @@ main .cta-band { border-top: none; }
 .ln-hero__lane::before {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: linear-gradient(90deg, rgba(79, 134, 238, 0.085), rgba(79, 134, 238, 0) 42%);
   -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(var(--ln-term-y, 100%) + 28px), transparent calc(var(--ln-term-y, 100%) + 200px));
           mask-image: linear-gradient(180deg, #000 0, #000 calc(var(--ln-term-y, 100%) + 28px), transparent calc(var(--ln-term-y, 100%) + 200px));
@@ -1463,7 +1469,7 @@ main .cta-band { border-top: none; }
 .ln-glyph--broken .ln-g__node { fill: var(--ln-ground); stroke: var(--ln-broken-node); stroke-width: 1.75; }
 
 /* covered: continuous, filled, lit */
-.ln-glyph--covered .ln-g__line { stroke: var(--ln-route-dark); stroke-dasharray: 1; }
+.ln-glyph--covered .ln-g__line { stroke: var(--ln-route-dark); stroke-dasharray: 40; }
 .ln-glyph--covered .ln-g__node { fill: var(--ln-route-dark); stroke: none; }
 .ln-glyph--covered .ln-g__halo { fill: rgba(79, 134, 238, 0.24); stroke: none; }
 
@@ -1479,7 +1485,7 @@ main .cta-band { border-top: none; }
 .ln-glyph--steady .ln-g__ring { fill: none; stroke: var(--ln-route); stroke-width: 1.25; opacity: 0.4; }
 
 /* network: one source, the same line carried to many operations */
-.ln-glyph--network .ln-g__branch { stroke: var(--ln-route); stroke-width: 1.5; stroke-dasharray: 1; }
+.ln-glyph--network .ln-g__branch { stroke: var(--ln-route); stroke-width: 1.5; stroke-dasharray: 40; }
 .ln-glyph--network .ln-g__node { fill: var(--ln-route); stroke: none; }
 .ln-glyph--network .ln-g__leaf { fill: var(--ln-route); stroke: var(--ln-route); stroke-width: 1.5; }
 
@@ -1495,7 +1501,7 @@ main .cta-band { border-top: none; }
   .ln-glyph--covered .ln-g__line { transition: stroke-dashoffset 520ms var(--ln-ease) 120ms; }
   .ln-glyph--covered .ln-g__node { transition: fill 260ms var(--ln-ease) 560ms; }
   .ln-glyph--covered .ln-g__halo { transition: opacity 520ms var(--ln-ease) 620ms, transform 520ms var(--ln-ease) 620ms; }
-  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__line { stroke-dashoffset: 1; }
+  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__line { stroke-dashoffset: 40; }
   .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__node { fill: var(--ln-ink); }
   .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__halo { opacity: 0; transform: scale(0.5); }
 
@@ -1511,7 +1517,7 @@ main .cta-band { border-top: none; }
   .ln-glyph--network .ln-g__branch:nth-of-type(2) { transition-delay: 90ms; }
   .ln-glyph--network .ln-g__branch:nth-of-type(3) { transition-delay: 180ms; }
   .ln-glyph--network .ln-g__leaf { transition: fill 260ms var(--ln-ease) 520ms; }
-  .ln-js .ln-glyph--network:not(.is-seen) .ln-g__branch { stroke-dashoffset: 1; }
+  .ln-js .ln-glyph--network:not(.is-seen) .ln-g__branch { stroke-dashoffset: 40; }
   .ln-js .ln-glyph--network:not(.is-seen) .ln-g__leaf { fill: #fff; }
 }
 
@@ -1524,7 +1530,7 @@ main .cta-band { border-top: none; }
 .ln-flow.is-armed .ln-strip--solid .ln-pt:not(.is-on) .ln-mark__seg { box-shadow: none; }
 
 /* where the route enters the managed section, it lights the surface */
-.ln-sec--solution { isolation: isolate; overflow: hidden; }
+.ln-sec--solution { isolation: isolate; }
 
 .ln-sec--solution::before {
   content: '';
@@ -1665,6 +1671,8 @@ html:not(.ln-js) .ln-sec--solution::before { opacity: 1; }
 @media (max-width: 479px) {
   .ln-tool { padding: 26px 18px 20px; }
   .ln-sheet { padding: 18px 16px 16px; }
+  .ln-sheet__head { flex-wrap: wrap; align-items: flex-start; gap: 10px; }
+  .ln-sheet__head .ln-sheet__title { flex: 1 1 100%; }
   .ln-sheet__total--monthly { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
 

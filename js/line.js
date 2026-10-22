@@ -113,14 +113,14 @@
     var startHero = function () {
       if (startHero.done) return;
       startHero.done = true;
-      // narrow: the snapshot sits below the fold, so the route waits to be seen
-      var stopsList = hero.querySelector('.ln-snap__stops');
-      if (!reduce && !heroWide.matches && stopsList && 'IntersectionObserver' in window) {
+      // narrow: the snapshot sits below the fold, so the route waits until
+      // its last row (Coverage Ready) is on screen and the whole sequence is seen
+      if (!reduce && !heroWide.matches && term && 'IntersectionObserver' in window) {
         buildHero();
         var heroIo = new IntersectionObserver(function (entries) {
           if (entries[0].isIntersecting) { heroIo.disconnect(); runHero(); }
-        }, { rootMargin: '0px 0px -22% 0px' });
-        heroIo.observe(stopsList);
+        }, { threshold: 0.9 });
+        heroIo.observe(term);
         return;
       }
       runHero();
