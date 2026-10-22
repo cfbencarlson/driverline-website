@@ -487,12 +487,12 @@
       if (vehiclesField) vehiclesField.value = vehicles;
     }
 
-    // Ensure the form section is in view. Native fragment auto-scroll can fail
-    // when combined with html { scroll-behavior: smooth }, so scroll explicitly
-    // whenever we arrived here with calculator handoff params. Temporarily
-    // override scroll-behavior so the jump is instant rather than animated.
+    // Bring calculator users to the form itself, not the top of the section:
+    // on narrow screens the contact details stack above it. Native fragment
+    // auto-scroll can fail with html { scroll-behavior: smooth }, so scroll
+    // explicitly, with an instant jump rather than an animated one.
     if (monthlyTotal || drivers || vehicles) {
-      const target = document.getElementById('request-coverage');
+      const target = contactForm.closest('.contact-form-wrapper') || document.getElementById('request-coverage');
       if (target) {
         const scrollToForm = () => {
           const headerHeight = header ? header.offsetHeight : 0;
