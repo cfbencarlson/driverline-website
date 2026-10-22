@@ -458,20 +458,9 @@
   color: var(--ln-text-2);
 }
 
-.ln-glyph {
-  flex: 0 0 auto;
-  width: 34px;
-  height: 10px;
-  overflow: visible;
-  fill: none;
-  stroke-width: 2;
-}
+.ln-glyph { flex: 0 0 auto; }
 
-.ln-sec--challenge .ln-glyph path { stroke: var(--ln-broken); }
-.ln-sec--challenge .ln-glyph circle { stroke: var(--ln-broken-node); fill: var(--ln-ground); }
 .ln-sec--solution .ln-kicker { color: var(--ln-sky); }
-.ln-sec--solution .ln-glyph path { stroke: var(--ln-route-dark); }
-.ln-sec--solution .ln-glyph circle { stroke: var(--ln-route-dark); fill: var(--ln-route-dark); }
 
 .ln-title {
   margin: 0;
@@ -1452,72 +1441,110 @@ main .cta-band { border-top: none; }
   .ln-hero { --ln-h1: min(15vw, 3.75rem); }
 }
 
-/* ---------- section markers: each states its section's condition ---------- */
+/* ---------- section markers: one route grammar, a different state per section ----------
+   Every marker is the same route read left to right: an origin (r2),
+   the line (1.75), and a stop (r3 + 1.5 ring). Sections differ only in
+   how far the route gets and what state the stop reaches.
+     unserved  — neutral line that falls short; open stop
+     covered   — line reaches; stop filled; light only where coverage completes on dark
+     progress  — intermediate stops, toning toward blue
+     held      — stop filled and ringed: steady, not new
+     extended  — one trunk branching to several served stops
+   Arrival is once, on first view; the final state is the static state. */
 .ln-glyph {
   width: 44px;
   height: 14px;
-  stroke-width: 2;
-  stroke-linecap: butt;
+  overflow: visible;
 }
 
 .ln-glyph * { transform-box: fill-box; transform-origin: center; }
 
-/* interrupted: the second segment has dropped off the line */
-.ln-glyph--broken .ln-g__seg { stroke: var(--ln-broken); }
-.ln-glyph--broken .ln-g__seg { stroke-width: 1.75; }
-.ln-glyph--broken .ln-g__seg--drop { transform: translateY(3.5px); }
-.ln-glyph--broken .ln-g__node { fill: var(--ln-ground); stroke: var(--ln-broken-node); stroke-width: 1.75; }
+.ln-g__line {
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: butt;
+  stroke-dasharray: var(--len);
+}
 
-/* covered: continuous, filled, lit */
-.ln-glyph--covered .ln-g__line { stroke: var(--ln-route-dark); stroke-dasharray: 40; }
-.ln-glyph--covered .ln-g__node { fill: var(--ln-route-dark); stroke: none; }
-.ln-glyph--covered .ln-g__halo { fill: rgba(79, 134, 238, 0.24); stroke: none; }
+.ln-g__origin { stroke: none; }
+.ln-g__stop { stroke-width: 1.5; }
+.ln-g__leaf { stroke-width: 1; }
 
-/* progression: the section's own stair, toning up toward blue */
-.ln-glyph--stair .ln-g__tread { stroke-width: 2.25; }
-.ln-glyph--stair .ln-g__tread:nth-child(1) { stroke: #AEBEDA; }
-.ln-glyph--stair .ln-g__tread:nth-child(2) { stroke: #7F9DDB; }
-.ln-glyph--stair .ln-g__tread:nth-child(3) { stroke: var(--ln-route); }
+/* unserved (Challenge): quiet, unlit */
+.ln-glyph--broken .ln-g__line { stroke: var(--ln-broken); }
+.ln-glyph--broken .ln-g__origin { fill: var(--ln-broken); }
+.ln-glyph--broken .ln-g__stop { fill: var(--ln-ground); stroke: var(--ln-broken-node); }
 
-/* steady: continuous line, active ring held around the stop */
+/* covered (Solution): the same route, completed and lit */
+.ln-glyph--covered .ln-g__line { stroke: var(--ln-route-dark); }
+.ln-glyph--covered .ln-g__origin { fill: var(--ln-route-dark); }
+.ln-glyph--covered .ln-g__stop { fill: var(--ln-route-dark); stroke: var(--ln-route-dark); }
+.ln-glyph--covered .ln-g__halo { fill: rgba(79, 134, 238, 0.2); stroke: none; }
+
+/* progress (How It Works): stops along the way, earning blue */
+.ln-glyph--stair .ln-g__line { stroke: url(#ln-g-ramp); }
+.ln-glyph--stair .ln-g__origin { fill: #A9BEE6; }
+.ln-glyph--stair .ln-g__stop--1 { fill: #94AEE4; stroke: #94AEE4; stroke-width: 1.25; }
+.ln-glyph--stair .ln-g__stop--2 { fill: #6890E4; stroke: #6890E4; stroke-width: 1.25; }
+.ln-glyph--stair .ln-g__stop--3 { fill: var(--ln-route); stroke: var(--ln-route); }
+
+/* held (Operations): covered and steady */
 .ln-glyph--steady .ln-g__line { stroke: var(--ln-route); }
-.ln-glyph--steady .ln-g__node { fill: var(--ln-route); stroke: none; }
-.ln-glyph--steady .ln-g__ring { fill: none; stroke: var(--ln-route); stroke-width: 1.25; opacity: 0.4; }
+.ln-glyph--steady .ln-g__origin { fill: var(--ln-route); }
+.ln-glyph--steady .ln-g__stop { fill: var(--ln-route); stroke: var(--ln-route); }
+.ln-glyph--steady .ln-g__ring { fill: none; stroke: var(--ln-route); stroke-width: 1; opacity: 0.45; }
 
-/* network: one source, the same line carried to many operations */
-.ln-glyph--network .ln-g__branch { stroke: var(--ln-route); stroke-width: 1.5; stroke-dasharray: 40; }
-.ln-glyph--network .ln-g__node { fill: var(--ln-route); stroke: none; }
-.ln-glyph--network .ln-g__leaf { fill: var(--ln-route); stroke: var(--ln-route); stroke-width: 1.5; }
+/* extended (Industries): one trunk, several served stops */
+.ln-glyph--network .ln-g__line { stroke: var(--ln-route); stroke-linejoin: round; }
+.ln-glyph--network .ln-g__origin { fill: var(--ln-route); }
+.ln-glyph--network .ln-g__stop,
+.ln-glyph--network .ln-g__leaf { fill: var(--ln-route); stroke: var(--ln-route); }
 
 .ln-sec--process .ln-kicker,
 .ln-sec--ops .ln-kicker,
 .ln-sec--industries .ln-kicker { color: var(--ln-text-2); }
 
-/* arrival: each marker settles into its state once, when it is first seen */
+/* arrival: each marker performs its own state change once */
 @media (prefers-reduced-motion: no-preference) {
-  .ln-glyph--broken .ln-g__seg--drop { transition: transform 620ms var(--ln-ease) 220ms; }
-  .ln-js .ln-glyph--broken:not(.is-seen) .ln-g__seg--drop { transform: none; }
+  .ln-g__line { transition: stroke-dashoffset 420ms var(--ln-ease); }
+  .ln-g__stop, .ln-g__leaf { transition: fill 200ms var(--ln-ease); }
 
-  .ln-glyph--covered .ln-g__line { transition: stroke-dashoffset 520ms var(--ln-ease) 120ms; }
-  .ln-glyph--covered .ln-g__node { transition: fill 260ms var(--ln-ease) 560ms; }
-  .ln-glyph--covered .ln-g__halo { transition: opacity 520ms var(--ln-ease) 620ms, transform 520ms var(--ln-ease) 620ms; }
-  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__line { stroke-dashoffset: 40; }
-  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__node { fill: var(--ln-ink); }
-  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__halo { opacity: 0; transform: scale(0.5); }
+  /* unserved: the route sets out, slows, and stops short; the stop stays open */
+  .ln-glyph--broken .ln-g__line { transition: stroke-dashoffset 520ms cubic-bezier(0.3, 0.7, 0.3, 1) 120ms; }
+  .ln-js .ln-glyph--broken:not(.is-seen) .ln-g__line { stroke-dashoffset: var(--len); }
 
-  .ln-glyph--stair .ln-g__tread { transition: opacity 320ms var(--ln-ease), transform 420ms var(--ln-ease); }
-  .ln-glyph--stair .ln-g__tread:nth-child(2) { transition-delay: 140ms; }
-  .ln-glyph--stair .ln-g__tread:nth-child(3) { transition-delay: 280ms; }
-  .ln-js .ln-glyph--stair:not(.is-seen) .ln-g__tread { opacity: 0; transform: translateY(3px); }
+  /* covered: the route reaches the open stop, fills it, and the light arrives */
+  .ln-glyph--covered .ln-g__line { transition-delay: 80ms; }
+  .ln-glyph--covered .ln-g__stop { transition-delay: 480ms; }
+  .ln-glyph--covered .ln-g__halo { transition: opacity 420ms var(--ln-ease) 560ms, transform 420ms var(--ln-ease) 560ms; }
+  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__line { stroke-dashoffset: var(--len); }
+  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__stop { fill: var(--ln-ink); }
+  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__halo { opacity: 0; transform: scale(0.6); }
 
-  .ln-glyph--steady .ln-g__ring { transition: opacity 600ms var(--ln-ease) 200ms, transform 600ms var(--ln-ease) 200ms; }
-  .ln-js .ln-glyph--steady:not(.is-seen) .ln-g__ring { opacity: 0; transform: scale(0.55); }
+  /* progress: steady advance, each stop served as the route reaches it */
+  .ln-glyph--stair .ln-g__line { transition: stroke-dashoffset 640ms linear 80ms; }
+  .ln-glyph--stair .ln-g__stop--1 { transition-delay: 290ms; }
+  .ln-glyph--stair .ln-g__stop--2 { transition-delay: 540ms; }
+  .ln-glyph--stair .ln-g__stop--3 { transition-delay: 720ms; }
+  .ln-js .ln-glyph--stair:not(.is-seen) .ln-g__line { stroke-dashoffset: var(--len); }
+  .ln-js .ln-glyph--stair:not(.is-seen) .ln-g__stop { fill: #fff; }
 
-  .ln-glyph--network .ln-g__branch { transition: stroke-dashoffset 560ms var(--ln-ease); }
-  .ln-glyph--network .ln-g__branch:nth-of-type(2) { transition-delay: 90ms; }
-  .ln-glyph--network .ln-g__branch:nth-of-type(3) { transition-delay: 180ms; }
-  .ln-glyph--network .ln-g__leaf { transition: fill 260ms var(--ln-ease) 520ms; }
-  .ln-js .ln-glyph--network:not(.is-seen) .ln-g__branch { stroke-dashoffset: 40; }
+  /* held: the route establishes, the stop fills, the ring settles in */
+  .ln-glyph--steady .ln-g__line { transition-delay: 60ms; }
+  .ln-glyph--steady .ln-g__stop { transition-delay: 460ms; }
+  .ln-glyph--steady .ln-g__ring { transition: opacity 520ms var(--ln-ease) 520ms, transform 520ms var(--ln-ease) 520ms; }
+  .ln-js .ln-glyph--steady:not(.is-seen) .ln-g__line { stroke-dashoffset: var(--len); }
+  .ln-js .ln-glyph--steady:not(.is-seen) .ln-g__stop { fill: var(--ln-ground); }
+  .ln-js .ln-glyph--steady:not(.is-seen) .ln-g__ring { opacity: 0; transform: scale(1.5); }
+
+  /* extended: the trunk reaches the branch point, then the route splits and serves each stop */
+  .ln-glyph--network .ln-g__trunk { transition: stroke-dashoffset 240ms var(--ln-ease-in, ease-in) 60ms; }
+  .ln-glyph--network .ln-g__branch { transition: stroke-dashoffset 340ms var(--ln-ease) 300ms; }
+  .ln-glyph--network .ln-g__branch--main { transition-delay: 300ms; }
+  .ln-glyph--network .ln-g__leaf { transition-delay: 560ms; }
+  .ln-glyph--network .ln-g__stop { transition-delay: 620ms; }
+  .ln-js .ln-glyph--network:not(.is-seen) .ln-g__line { stroke-dashoffset: var(--len); }
+  .ln-js .ln-glyph--network:not(.is-seen) .ln-g__stop,
   .ln-js .ln-glyph--network:not(.is-seen) .ln-g__leaf { fill: #fff; }
 }
 
