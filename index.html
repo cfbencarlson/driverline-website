@@ -101,7 +101,9 @@
     <!-- Hero: the route -->
     <section class="ln-hero" data-ln-hero>
       <svg class="ln-hero__route" aria-hidden="true" focusable="false">
+        <defs><filter id="ln-soft" filterUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%"><feGaussianBlur stdDeviation="3"/></filter></defs>
         <path class="ln-hero__track" d=""/>
+        <path class="ln-hero__glow" d=""/>
         <path class="ln-hero__line" d=""/>
       </svg>
       <div class="ln-hero__lane" aria-hidden="true"></div>
@@ -160,7 +162,7 @@
           <header class="ln-head ln-head--split">
             <div class="ln-head__main">
               <p class="ln-kicker">
-                <svg class="ln-glyph" viewBox="0 0 34 10" aria-hidden="true" focusable="false"><path d="M0 4h9M14 7h9" /><circle cx="29" cy="5" r="3.25"/></svg>
+                <svg class="ln-glyph ln-glyph--broken" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><path class="ln-g__seg" d="M1 5.5h11M1 2.5v6M12 2.5v6"/><path class="ln-g__seg ln-g__seg--drop" d="M17 5.5h11M17 2.5v6M28 2.5v6"/><circle class="ln-g__node" cx="38.5" cy="5.5" r="3.5"/></svg>
                 The Challenge
               </p>
               <h2 class="ln-title" id="problems-title">Operational Pressures You Face Daily</h2>
@@ -207,7 +209,7 @@
         <div class="container">
           <header class="ln-head ln-head--stack">
             <p class="ln-kicker">
-              <svg class="ln-glyph" viewBox="0 0 34 10" aria-hidden="true" focusable="false"><path d="M0 5h29" /><circle cx="29" cy="5" r="3.25"/></svg>
+              <svg class="ln-glyph ln-glyph--covered" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><circle class="ln-g__halo" cx="38" cy="7" r="6.5"/><path class="ln-g__line" pathLength="1" d="M1 7h33"/><circle class="ln-g__node" cx="38" cy="7" r="3.75"/></svg>
               The Solution
             </p>
             <h2 class="ln-title ln-title--xl" id="solution-title"><span class="ln-w">We Handle Drivers.</span> <span class="ln-w">You Handle Business.</span></h2>
@@ -265,7 +267,10 @@
       <div class="container">
         <div class="ln-process">
         <header class="ln-head ln-head--process">
-          <p class="ln-kicker ln-kicker--plain">Process</p>
+          <p class="ln-kicker">
+            <svg class="ln-glyph ln-glyph--stair" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><path class="ln-g__tread" d="M1 12h10"/><path class="ln-g__tread" d="M15 8h10"/><path class="ln-g__tread" d="M29 4h14"/></svg>
+            Process
+          </p>
           <h2 class="ln-title" id="how-it-works-title">How It Works</h2>
           <p class="ln-intro">Getting started with DriverLine is straightforward. Here's what to expect.</p>
         </header>
@@ -301,17 +306,21 @@
             <p class="ln-tool__desc">See the true cost of wages, vehicles, fuel, and administrative overhead.</p>
             <a href="resources.html#cost-estimator" class="btn btn--primary btn--lg ln-btn">Use the Cost Estimator</a>
           </div>
-          <div class="ln-sheet">
-            <p class="ln-sheet__title">In-House Delivery Cost Estimate</p>
+          <div class="ln-sheet" data-ln-seen>
+            <div class="ln-sheet__head">
+              <p class="ln-sheet__title">In-House Delivery Cost Estimate</p>
+              <span class="ln-sheet__tag">Example</span>
+            </div>
             <ul class="ln-sheet__rows">
-              <li class="ln-sheet__row"><span>Monthly Wages</span><span class="ln-sheet__val" aria-hidden="true">&mdash;</span></li>
-              <li class="ln-sheet__row"><span>Employer Burden</span><span class="ln-sheet__val" aria-hidden="true">&mdash;</span></li>
-              <li class="ln-sheet__row"><span>Fuel Cost</span><span class="ln-sheet__val" aria-hidden="true">&mdash;</span></li>
-              <li class="ln-sheet__row"><span>Vehicle Fixed Costs</span><span class="ln-sheet__val" aria-hidden="true">&mdash;</span></li>
-              <li class="ln-sheet__row"><span>Admin Cost</span><span class="ln-sheet__val" aria-hidden="true">&mdash;</span></li>
+              <li class="ln-sheet__row" style="--share:0.598"><span class="ln-sheet__label">Monthly Wages</span><span class="ln-sheet__val">$3,131</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
+              <li class="ln-sheet__row" style="--share:0.120"><span class="ln-sheet__label">Employer Burden</span><span class="ln-sheet__val">$626</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
+              <li class="ln-sheet__row" style="--share:0.058"><span class="ln-sheet__label">Fuel Cost</span><span class="ln-sheet__val">$304</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
+              <li class="ln-sheet__row" style="--share:0.162"><span class="ln-sheet__label">Vehicle Fixed Costs</span><span class="ln-sheet__val">$850</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
+              <li class="ln-sheet__row" style="--share:0.062"><span class="ln-sheet__label">Admin Cost</span><span class="ln-sheet__val">$326</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
             </ul>
-            <p class="ln-sheet__total ln-sheet__total--daily"><span>Daily Operating Cost</span><span class="ln-sheet__val" aria-hidden="true">&mdash;</span></p>
-            <p class="ln-sheet__total ln-sheet__total--monthly"><span>Monthly Operating Cost</span><span class="ln-sheet__val" aria-hidden="true">&mdash;</span></p>
+            <p class="ln-sheet__total ln-sheet__total--daily"><span>Daily Operating Cost</span><span class="ln-sheet__val">$249</span></p>
+            <p class="ln-sheet__total ln-sheet__total--monthly"><span>Monthly Operating Cost</span><span class="ln-sheet__val">$5,237</span></p>
+            <p class="ln-sheet__note">Example using the estimator&rsquo;s default inputs: 1 driver, 1 vehicle. Not a DriverLine quote.</p>
           </div>
         </div>
       </div>
@@ -321,7 +330,10 @@
     <section class="ln-sec ln-sec--ops" aria-labelledby="trust-title">
       <div class="container">
         <header class="ln-head ln-head--stack">
-          <p class="ln-kicker ln-kicker--plain">Reliability &amp; Compliance</p>
+          <p class="ln-kicker">
+            <svg class="ln-glyph ln-glyph--steady" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><path class="ln-g__line" d="M1 7h31"/><circle class="ln-g__ring" cx="38" cy="7" r="5.75"/><circle class="ln-g__node" cx="38" cy="7" r="3"/></svg>
+            Reliability &amp; Compliance
+          </p>
           <h2 class="ln-title" id="trust-title">Built for Real Operations</h2>
           <p class="ln-intro">Delivery problems become business problems fast. DriverLine is built around route coverage, backup planning, documentation, and day-to-day driver oversight.</p>
         </header>
@@ -370,7 +382,10 @@
       <div class="container">
         <header class="ln-head ln-head--split">
           <div class="ln-head__main">
-            <p class="ln-kicker ln-kicker--plain">Industries</p>
+            <p class="ln-kicker">
+            <svg class="ln-glyph ln-glyph--network" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><path class="ln-g__branch" pathLength="1" d="M4 7C13 7 17 2 27 2"/><path class="ln-g__branch" pathLength="1" d="M4 7H37"/><path class="ln-g__branch" pathLength="1" d="M4 7C13 7 17 12 27 12"/><circle class="ln-g__node" cx="4" cy="7" r="3.25"/><circle class="ln-g__leaf" cx="29.5" cy="2" r="2"/><circle class="ln-g__leaf" cx="39.5" cy="7" r="2.5"/><circle class="ln-g__leaf" cx="29.5" cy="12" r="2"/></svg>
+            Industries
+          </p>
             <h2 class="ln-title" id="audience-title">Built for Businesses That Deliver Every Day</h2>
           </div>
           <p class="ln-intro">Dedicated daily routes, scheduled coverage, hotshot and local delivery, shuttle and transfer runs, multi-location operations &mdash; built around how your business already delivers.</p>
