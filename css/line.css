@@ -1377,6 +1377,352 @@ main .cta-band { border-top: none; }
 .footer__legal-note { color: var(--ln-dark-3); }
 
 /* ============================================================
+   PART FOUR — LIGHT IS EARNED BY COVERAGE
+   The route is the only light source. Unresolved things stay
+   unlit graphite; once something is covered (a stop reached, a
+   segment reconnected, a cost accounted for) it carries
+   DriverLine blue, and that light reaches a few pixels into the
+   surface around it. Type and editorial surfaces stay flat.
+   ============================================================ */
+
+/* ---------- hero: the route carries light ---------- */
+.ln-hero__glow {
+  fill: none;
+  stroke: rgba(79, 134, 238, 0.55);
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: url(#ln-soft);
+}
+
+.ln-stop__node::after,
+.ln-term__node::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ln-route-dark);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ln-term__node::after { border-color: var(--ln-ready); }
+
+/* covered stops hold a soft halo of their own light */
+.ln-stop__node { box-shadow: 0 0 0 4px var(--ln-ink), 0 0 12px 1px rgba(79, 134, 238, 0.42); }
+.ln-term__node { box-shadow: inset 0 0 0 2px var(--ln-ready), 0 0 0 4px var(--ln-ink), 0 0 14px 1px rgba(52, 168, 114, 0.38); }
+
+/* the lane the route serves is lit from the route once coverage is ready */
+.ln-hero__lane::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, rgba(79, 134, 238, 0.085), rgba(79, 134, 238, 0) 42%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(var(--ln-term-y, 100%) + 28px), transparent calc(var(--ln-term-y, 100%) + 200px));
+          mask-image: linear-gradient(180deg, #000 0, #000 calc(var(--ln-term-y, 100%) + 28px), transparent calc(var(--ln-term-y, 100%) + 200px));
+  opacity: 0;
+  transition: opacity 900ms var(--ln-ease);
+}
+
+.ln-hero.is-complete .ln-hero__lane::before { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ln-stop.is-reached .ln-stop__node::after { animation: ln-ping 760ms var(--ln-ease) both; }
+  .ln-term.is-reached .ln-term__node::after { animation: ln-ping 900ms var(--ln-ease) 80ms both; }
+}
+
+@keyframes ln-ping {
+  0% { opacity: 0.75; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.7); }
+}
+
+/* narrow: the snapshot is the proof; the checklist above it only repeated it */
+@media (max-width: 1023px) {
+  .ln-hero .ln-proof { display: none; }
+  .ln-snap { margin-top: 48px; }
+}
+
+/* phones: the headline takes the width it has (each word still holds its own line) */
+@media (max-width: 640px) {
+  .ln-hero { --ln-h1: min(15vw, 3.75rem); }
+}
+
+/* ---------- section markers: each states its section's condition ---------- */
+.ln-glyph {
+  width: 44px;
+  height: 14px;
+  stroke-width: 2;
+  stroke-linecap: butt;
+}
+
+.ln-glyph * { transform-box: fill-box; transform-origin: center; }
+
+/* interrupted: the second segment has dropped off the line */
+.ln-glyph--broken .ln-g__seg { stroke: var(--ln-broken); }
+.ln-glyph--broken .ln-g__seg { stroke-width: 1.75; }
+.ln-glyph--broken .ln-g__seg--drop { transform: translateY(3.5px); }
+.ln-glyph--broken .ln-g__node { fill: var(--ln-ground); stroke: var(--ln-broken-node); stroke-width: 1.75; }
+
+/* covered: continuous, filled, lit */
+.ln-glyph--covered .ln-g__line { stroke: var(--ln-route-dark); stroke-dasharray: 40; }
+.ln-glyph--covered .ln-g__node { fill: var(--ln-route-dark); stroke: none; }
+.ln-glyph--covered .ln-g__halo { fill: rgba(79, 134, 238, 0.24); stroke: none; }
+
+/* progression: the section's own stair, toning up toward blue */
+.ln-glyph--stair .ln-g__tread { stroke-width: 2.25; }
+.ln-glyph--stair .ln-g__tread:nth-child(1) { stroke: #AEBEDA; }
+.ln-glyph--stair .ln-g__tread:nth-child(2) { stroke: #7F9DDB; }
+.ln-glyph--stair .ln-g__tread:nth-child(3) { stroke: var(--ln-route); }
+
+/* steady: continuous line, active ring held around the stop */
+.ln-glyph--steady .ln-g__line { stroke: var(--ln-route); }
+.ln-glyph--steady .ln-g__node { fill: var(--ln-route); stroke: none; }
+.ln-glyph--steady .ln-g__ring { fill: none; stroke: var(--ln-route); stroke-width: 1.25; opacity: 0.4; }
+
+/* network: one source, the same line carried to many operations */
+.ln-glyph--network .ln-g__branch { stroke: var(--ln-route); stroke-width: 1.5; stroke-dasharray: 40; }
+.ln-glyph--network .ln-g__node { fill: var(--ln-route); stroke: none; }
+.ln-glyph--network .ln-g__leaf { fill: var(--ln-route); stroke: var(--ln-route); stroke-width: 1.5; }
+
+.ln-sec--process .ln-kicker,
+.ln-sec--ops .ln-kicker,
+.ln-sec--industries .ln-kicker { color: var(--ln-text-2); }
+
+/* arrival: each marker settles into its state once, when it is first seen */
+@media (prefers-reduced-motion: no-preference) {
+  .ln-glyph--broken .ln-g__seg--drop { transition: transform 620ms var(--ln-ease) 220ms; }
+  .ln-js .ln-glyph--broken:not(.is-seen) .ln-g__seg--drop { transform: none; }
+
+  .ln-glyph--covered .ln-g__line { transition: stroke-dashoffset 520ms var(--ln-ease) 120ms; }
+  .ln-glyph--covered .ln-g__node { transition: fill 260ms var(--ln-ease) 560ms; }
+  .ln-glyph--covered .ln-g__halo { transition: opacity 520ms var(--ln-ease) 620ms, transform 520ms var(--ln-ease) 620ms; }
+  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__line { stroke-dashoffset: 40; }
+  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__node { fill: var(--ln-ink); }
+  .ln-js .ln-glyph--covered:not(.is-seen) .ln-g__halo { opacity: 0; transform: scale(0.5); }
+
+  .ln-glyph--stair .ln-g__tread { transition: opacity 320ms var(--ln-ease), transform 420ms var(--ln-ease); }
+  .ln-glyph--stair .ln-g__tread:nth-child(2) { transition-delay: 140ms; }
+  .ln-glyph--stair .ln-g__tread:nth-child(3) { transition-delay: 280ms; }
+  .ln-js .ln-glyph--stair:not(.is-seen) .ln-g__tread { opacity: 0; transform: translateY(3px); }
+
+  .ln-glyph--steady .ln-g__ring { transition: opacity 600ms var(--ln-ease) 200ms, transform 600ms var(--ln-ease) 200ms; }
+  .ln-js .ln-glyph--steady:not(.is-seen) .ln-g__ring { opacity: 0; transform: scale(0.55); }
+
+  .ln-glyph--network .ln-g__branch { transition: stroke-dashoffset 560ms var(--ln-ease); }
+  .ln-glyph--network .ln-g__branch:nth-of-type(2) { transition-delay: 90ms; }
+  .ln-glyph--network .ln-g__branch:nth-of-type(3) { transition-delay: 180ms; }
+  .ln-glyph--network .ln-g__leaf { transition: fill 260ms var(--ln-ease) 520ms; }
+  .ln-js .ln-glyph--network:not(.is-seen) .ln-g__branch { stroke-dashoffset: 40; }
+  .ln-js .ln-glyph--network:not(.is-seen) .ln-g__leaf { fill: #fff; }
+}
+
+/* ---------- challenge -> solution: light arrives with coverage ---------- */
+.ln-flow.is-resolved .ln-strip--broken .ln-mark__seg { box-shadow: 0 0 5px rgba(58, 111, 227, 0.32); }
+
+.ln-strip--solid .ln-mark__seg { box-shadow: 0 0 7px rgba(79, 134, 238, 0.5); }
+.ln-strip--solid .ln-mark::before { box-shadow: 0 0 0 4px var(--ln-ink), 0 0 12px 1px rgba(79, 134, 238, 0.42); }
+
+.ln-flow.is-armed .ln-strip--solid .ln-pt:not(.is-on) .ln-mark__seg { box-shadow: none; }
+
+/* where the route enters the managed section, it lights the surface */
+.ln-sec--solution { isolation: isolate; }
+
+.ln-sec--solution::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: min(760px, 70%);
+  height: min(520px, 80%);
+  background: radial-gradient(ellipse 70% 60% at 92% 0%, rgba(79, 134, 238, 0.15), rgba(79, 134, 238, 0) 70%);
+  opacity: 0;
+  transition: opacity 1200ms var(--ln-ease) 300ms;
+  pointer-events: none;
+}
+
+.ln-flow.is-resolved .ln-sec--solution::before,
+html:not(.ln-js) .ln-sec--solution::before { opacity: 1; }
+
+@media (max-width: 1079px) {
+  .ln-sec--solution::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+    background: radial-gradient(ellipse 60% 46% at 0% 0%, rgba(79, 134, 238, 0.16), rgba(79, 134, 238, 0) 70%);
+  }
+}
+
+/* ---------- tablet: the heading holds its ground while the route runs ----------
+   One continuous spine in the right column, through the seam; each
+   section's heading stays beside the stops it introduces. */
+@media (min-width: 768px) and (max-width: 1079px) {
+  .ln-sec--challenge .container,
+  .ln-sec--solution .container {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+    column-gap: 44px;
+    align-items: start;
+  }
+
+  .ln-sec--challenge .ln-head,
+  .ln-sec--solution .ln-head {
+    position: sticky;
+    top: calc(var(--ln-header-h) + 28px);
+    margin-bottom: 0;
+  }
+
+  .ln-sec--solution .ln-head { padding-left: 0; }
+  .ln-sec--challenge .ln-title { font-size: 2.15rem; }
+  .ln-sec--solution .ln-title--xl { font-size: 2.35rem; }
+  .ln-head--stack .ln-intro { margin-top: 18px; }
+  .ln-strip { max-width: none; padding-top: 6px; }
+}
+
+/* ---------- estimator: a small instrument, not a table ---------- */
+.ln-sheet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(185, 209, 245, 0.2);
+}
+
+.ln-sheet__head .ln-sheet__title { margin: 0; padding: 0; border: 0; }
+
+.ln-sheet__tag {
+  flex: 0 0 auto;
+  padding: 3px 9px;
+  border: 1px solid rgba(185, 209, 245, 0.3);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ln-sky);
+}
+
+.ln-sheet__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  row-gap: 8px;
+  padding: 11px 0 10px;
+  border-bottom: 0;
+}
+
+.ln-sheet__label { transition: color var(--ln-fast) var(--ln-ease); }
+
+.ln-sheet__row .ln-sheet__val,
+.ln-sheet__total .ln-sheet__val {
+  min-width: 0;
+  color: #E8EEF9;
+  font-weight: 600;
+}
+
+/* each cost's share of the monthly total, on the same line weight as the route */
+.ln-sheet__meter {
+  grid-column: 1 / -1;
+  position: relative;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(185, 209, 245, 0.1);
+}
+
+.ln-sheet__meter::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: calc(var(--share) * 100%);
+  border-radius: 2px;
+  background: var(--ln-route-dark);
+  box-shadow: 0 0 6px rgba(79, 134, 238, 0.55);
+  transform-origin: left center;
+  transition: background-color var(--ln-fast) var(--ln-ease);
+}
+
+.ln-sheet__total--daily { margin-top: 6px; border-top: 1px solid rgba(185, 209, 245, 0.2); }
+
+.ln-sheet__total--monthly { align-items: flex-end; }
+
+.ln-sheet__total--monthly .ln-sheet__val {
+  font-size: clamp(2rem, 2.7vw, 2.5rem);
+  font-weight: 720;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.ln-sheet__note {
+  margin: 12px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ln-dark-2);
+}
+
+.ln-sheet__val { white-space: nowrap; }
+
+@media (max-width: 479px) {
+  .ln-tool { padding: 26px 18px 20px; }
+  .ln-sheet { padding: 18px 16px 16px; }
+  .ln-sheet__head { flex-wrap: wrap; align-items: flex-start; gap: 10px; }
+  .ln-sheet__head .ln-sheet__title { flex: 1 1 100%; }
+  .ln-sheet__total--monthly { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+
+@media (hover: hover) {
+  .ln-sheet__row:hover .ln-sheet__label { color: #fff; }
+  .ln-sheet__row:hover .ln-sheet__meter::before { background: #7FA8F4; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ln-sheet__meter::before { transition: transform 760ms var(--ln-ease), background-color var(--ln-fast) var(--ln-ease); }
+  .ln-sheet__row:nth-child(2) .ln-sheet__meter::before { transition-delay: 90ms; }
+  .ln-sheet__row:nth-child(3) .ln-sheet__meter::before { transition-delay: 180ms; }
+  .ln-sheet__row:nth-child(4) .ln-sheet__meter::before { transition-delay: 270ms; }
+  .ln-sheet__row:nth-child(5) .ln-sheet__meter::before { transition-delay: 360ms; }
+  .ln-js .ln-sheet:not(.is-seen) .ln-sheet__meter::before { transform: scaleX(0); }
+}
+
+/* ---------- contact: the form first on phones, a direct line kept in reach ---------- */
+.ln-page-hero__reach {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 18px 0 0;
+  font-size: 0.9375rem;
+  color: var(--ln-dark-2);
+}
+
+.ln-page-hero__reach a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(185, 209, 245, 0.45);
+  text-underline-offset: 3px;
+}
+
+.ln-page-hero__reach a:hover { text-decoration-color: #fff; }
+
+@media (min-width: 1024px) { .ln-page-hero__reach { display: none; } }
+
+/* ---------- signals respond to touch ---------- */
+@media (hover: hover) {
+  .btn--primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px -10px rgba(58, 111, 227, 0.7);
+  }
+}
+
+.btn--primary:active:not(:disabled) { transform: translateY(1px); box-shadow: none; }
+
+/* ============================================================
    PART THREE — THE REST OF THE SITE. Same tokens, type, rules,
    surfaces and interactions as Home; each page keeps its own job.
    The route line stays on Home.
@@ -2104,7 +2450,8 @@ main .cta-band { border-top: none; }
     align-items: start;
   }
 
-  .page-contact .contact-info { position: sticky; top: 112px; }
+  .page-contact .contact-info { position: sticky; top: 112px; grid-column: 1; grid-row: 1; }
+  .page-contact .contact-form-wrapper { grid-column: 2; grid-row: 1; }
 }
 
 .page-contact .contact-info__title,

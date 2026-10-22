@@ -51,6 +51,8 @@
   if (hero) {
     var track = hero.querySelector('.ln-hero__track');
     var line = hero.querySelector('.ln-hero__line');
+    var glow = hero.querySelector('.ln-hero__glow');
+    var lit = glow ? [line, glow] : [line];
     var stops = Array.prototype.slice.call(hero.querySelectorAll('.ln-stop'));
     var nodes = stops.map(function (s) { return s.querySelector('.ln-stop__node'); });
     var title = hero.querySelector('.ln-snap__title');
@@ -58,6 +60,7 @@
     var termNode = hero.querySelector('.ln-term__node');
     var heroGeo = null;
     var heroDone = false;
+    var heroRunning = false;
 
     var heroWide = window.matchMedia('(min-width: 1024px)');
 
@@ -73,12 +76,15 @@
       hero.style.setProperty('--ln-term-y', t.cy + 'px');
       hero.style.setProperty('--ln-text-x', box(hero.querySelector('.ln-hero__text'), hero).x + 'px');
       track.setAttribute('d', d);
-      line.setAttribute('d', d);
+      lit.forEach(function (p) { p.setAttribute('d', d); });
       heroGeo = {
         len: len,
         marks: nodes.map(function (n) { return (box(n, hero).cy - y0) / len; })
       };
-      if (heroDone) clearDash(line);
+      lit.forEach(function (p) {
+        if (heroDone) clearDash(p);
+        else if (!heroRunning) setDash(p, len, len);
+      });
     };
 
     var finishHero = function () {
@@ -86,17 +92,18 @@
       stops.forEach(function (s) { s.classList.add('is-reached'); });
       term.classList.add('is-reached');
       hero.classList.add('is-complete');
-      clearDash(line);
+      lit.forEach(clearDash);
     };
 
     var runHero = function () {
       buildHero();
       if (reduce) { finishHero(); return; }
+      heroRunning = true;
       var L = heroGeo.len;
       var reached = [];
-      setDash(line, L, L);
+      lit.forEach(function (path) { setDash(path, L, L); });
       tween(1250, easeOut, function (p) {
-        line.style.strokeDashoffset = L * (1 - p);
+        lit.forEach(function (path) { path.style.strokeDashoffset = L * (1 - p); });
         heroGeo.marks.forEach(function (m, i) {
           if (p >= m && !reached[i]) { reached[i] = true; stops[i].classList.add('is-reached'); }
         });
@@ -106,6 +113,16 @@
     var startHero = function () {
       if (startHero.done) return;
       startHero.done = true;
+      // narrow: the snapshot sits below the fold, so the route waits until
+      // its last row (Coverage Ready) is on screen and the whole sequence is seen
+      if (!reduce && !heroWide.matches && term && 'IntersectionObserver' in window) {
+        buildHero();
+        var heroIo = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { heroIo.disconnect(); runHero(); }
+        }, { threshold: 0.9 });
+        heroIo.observe(term);
+        return;
+      }
       runHero();
     };
 
@@ -261,5 +278,23 @@
       new ResizeObserver(function () { if (startFlow.done) buildLink(); }).observe(flow);
     }
     wide.addEventListener('change', function () { if (startFlow.done) buildLink(); });
+  }
+
+  /* ---------- ONE-TIME ARRIVAL STATES ----------
+     Section markers and the estimator sheet settle into their state
+     once, when they first come into view. CSS owns what changes. */
+  var seen = Array.prototype.slice.call(document.querySelectorAll('[data-ln-seen]'));
+
+  if (seen.length) {
+    if (reduce || !('IntersectionObserver' in window)) {
+      seen.forEach(function (el) { el.classList.add('is-seen'); });
+    } else {
+      var seenIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-seen'); seenIo.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -12% 0px' });
+      seen.forEach(function (el) { seenIo.observe(el); });
+    }
   }
 })();
