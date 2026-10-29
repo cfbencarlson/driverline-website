@@ -112,11 +112,34 @@
       link.addEventListener('click', closeMenu);
     });
 
-    // Close menu on escape key
+    // Close menu on escape key; while open, keep Tab / Shift+Tab cycling
+    // between the menu button and the menu's links so focus never lands on
+    // page content hidden behind the drawer
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (!isOpen) return;
+
+      if (e.key === 'Escape') {
         closeMenu();
         mobileMenuBtn.focus();
+        return;
+      }
+
+      if (e.key !== 'Tab') return;
+
+      const cycle = [mobileMenuBtn].concat(Array.from(mobileNavLinks));
+      const first = cycle[0];
+      const last = cycle[cycle.length - 1];
+      const current = cycle.indexOf(document.activeElement);
+
+      if (current === -1) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     });
 

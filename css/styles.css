@@ -563,13 +563,18 @@ p {
   background-color: var(--color-bg-primary);
   padding: var(--space-6);
   transform: translateX(100%);
-  transition: transform var(--transition-slow);
+  /* hidden while closed so its links leave the Tab order and the
+     accessibility tree; the delay lets the slide-out finish first */
+  visibility: hidden;
+  transition: transform var(--transition-slow), visibility 0s linear 300ms;
   z-index: var(--z-fixed);
   overflow-y: auto;
 }
 
 .mobile-nav--open {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform var(--transition-slow), visibility 0s;
 }
 
 @media (min-width: 768px) {
