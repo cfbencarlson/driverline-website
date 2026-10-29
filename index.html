@@ -7,6 +7,7 @@
   <meta name="keywords" content="dedicated delivery drivers, managed delivery drivers, route delivery service, last-mile delivery, outsourced delivery drivers, dedicated route coverage, auto parts delivery, local delivery operations">
   <meta name="author" content="DriverLine">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050E22">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.yourdriverline.com/">
@@ -38,9 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/redesign.css">
-  <link rel="stylesheet" href="css/line.css">
+  <link rel="stylesheet" href="css/studio.css">
 
   <title>DriverLine | Dedicated Delivery Drivers &amp; Managed Route Coverage</title>
 
@@ -48,7 +47,7 @@
   <script>
     // Analytics initialization placeholder
     window.dataLayer = window.dataLayer || [];
-    document.documentElement.classList.add('ln-js');
+    document.documentElement.classList.add('js');
   </script>
 </head>
 <body>
@@ -56,318 +55,559 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Header -->
-  <header class="header" id="header">
-    <div class="container">
-      <div class="header__inner">
-        <!-- Logo -->
-        <a href="index.html" class="logo" aria-label="DriverLine Home">
-          <img src="images/driverline-logo.png" alt="DriverLine logo" class="logo__img">
-        </a>
+  <header class="hd" id="header">
+    <div class="hd__bar">
+      <a href="index.html" class="hd__logo" aria-label="DriverLine Home">
+        <img class="hd__logo-dark" src="images/driverline-logo-reverse.png" alt="DriverLine logo" width="500" height="196">
+        <img class="hd__logo-light" src="images/driverline-logo-cutout.png" alt="" width="500" height="196" aria-hidden="true">
+      </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="nav" aria-label="Main navigation">
-          <a href="index.html" class="nav__link nav__link--active">Home</a>
-          <a href="about.html" class="nav__link">About</a>
-          <a href="resources.html" class="nav__link">Resources</a>
-          <a href="contact.html" class="nav__link">Contact</a>
-        </nav>
+      <nav class="hd__nav" aria-label="Main navigation">
+        <a href="index.html" class="hd__link" aria-current="page">Home</a>
+        <a href="about.html" class="hd__link">About</a>
+        <a href="resources.html" class="hd__link">Resources</a>
+        <a href="contact.html" class="hd__link">Contact</a>
+      </nav>
 
-        <!-- Header Actions -->
-        <div class="header__actions">
-          <a href="contact.html#request-coverage" class="btn btn--primary">Request Coverage</a>
-          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-            <svg class="mobile-menu-btn__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
-        </div>
+      <div class="hd__actions">
+        <a href="contact.html#request-coverage" class="bt bt--primary bt--sm hd__cta">Request Coverage</a>
+        <button class="hd__menu" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hd__menu-bar" aria-hidden="true"></span>
+          <span class="hd__menu-bar" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
 
     <!-- Mobile Navigation -->
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="index.html" class="mobile-nav__link mobile-nav__link--active">Home</a>
-      <a href="about.html" class="mobile-nav__link">About</a>
-      <a href="resources.html" class="mobile-nav__link">Resources</a>
-      <a href="contact.html" class="mobile-nav__link">Contact</a>
-      <div class="mobile-nav__cta">
-        <a href="contact.html#request-coverage" class="btn btn--primary btn--full">Request Coverage</a>
+    <nav class="mnav" id="mobile-nav" aria-label="Mobile navigation">
+      <div class="mnav__links">
+        <a href="index.html" class="mnav__link" aria-current="page" style="--i:0">Home</a>
+        <a href="about.html" class="mnav__link" style="--i:1">About</a>
+        <a href="resources.html" class="mnav__link" style="--i:2">Resources</a>
+        <a href="contact.html" class="mnav__link" style="--i:3">Contact</a>
+      </div>
+      <div class="mnav__foot" style="--i:4">
+        <a href="contact.html#request-coverage" class="bt bt--primary bt--lg bt--block">Request Coverage</a>
       </div>
     </nav>
   </header>
 
-  <!-- Main Content -->
   <main id="main-content">
-    <!-- Hero: the route -->
-    <section class="ln-hero" data-ln-hero>
-      <svg class="ln-hero__route" aria-hidden="true" focusable="false">
-        <defs><filter id="ln-soft" filterUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%"><feGaussianBlur stdDeviation="3"/></filter></defs>
-        <path class="ln-hero__track" d=""/>
-        <path class="ln-hero__glow" d=""/>
-        <path class="ln-hero__line" d=""/>
-      </svg>
-      <div class="ln-hero__lane" aria-hidden="true"></div>
-      <div class="container">
-        <div class="ln-hero__grid">
-          <div class="ln-hero__text">
-            <span class="ln-hero__eyebrow">Dedicated Delivery Drivers for Route-Based Businesses</span>
-            <h1 class="ln-hero__title"><span class="ln-w">Reliable</span> <span class="ln-w">Drivers.</span> <span class="ln-w">Covered</span> <span class="ln-w">Routes.</span></h1>
-            <p class="ln-hero__desc">
-              DriverLine provides dedicated, managed delivery drivers for businesses that depend on daily routes. We handle recruiting, vetting, day-to-day driver management, and backup coverage, so you can stop managing drivers and focus on running your business.
-            </p>
-          </div>
 
-          <div class="ln-hero__actions">
-            <a href="contact.html#request-coverage" class="btn btn--primary btn--lg ln-btn">Request Coverage</a>
-            <a href="#how-it-works" class="btn btn--outline-light btn--lg ln-btn ln-btn--ghost">How It Works</a>
-          </div>
-
-          <ul class="ln-proof">
-            <li><span class="ln-proof__check" aria-hidden="true">&#10003;</span>Vetted driver coverage</li>
-            <li><span class="ln-proof__check" aria-hidden="true">&#10003;</span>Built-in backup for callouts</li>
-            <li><span class="ln-proof__check" aria-hidden="true">&#10003;</span>Recruiting &amp; retention handled</li>
-          </ul>
-
-          <aside class="ln-snap" aria-label="Coverage snapshot">
-            <p class="ln-snap__title">Coverage Snapshot</p>
-            <ul class="ln-snap__stops">
-              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Vetted driver coverage</span></li>
-              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Backup coverage available</span></li>
-              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Operational oversight included</span></li>
-              <li class="ln-stop"><span class="ln-stop__node" aria-hidden="true"></span><span class="ln-stop__label">Dedicated drivers on your routes</span></li>
-            </ul>
-            <p class="ln-term">
-              <span class="ln-term__node" aria-hidden="true"></span>
-              <span class="ln-term__label">Coverage Ready</span>
-            </p>
-          </aside>
-
-        </div>
+    <!-- ============ Hero: routes from your location, resolving to covered ============ -->
+    <section data-surface="dark" class="hero" data-hero aria-labelledby="hero-title">
+      <div class="hero__map" aria-hidden="true">
+        <svg class="hm" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <filter id="hm-blur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="6"/></filter>
+            <radialGradient id="hm-pool" cx="1160" cy="520" r="620" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#2F6BFF" stop-opacity="0.22"/>
+              <stop offset="0.55" stop-color="#2F6BFF" stop-opacity="0.05"/>
+              <stop offset="1" stop-color="#2F6BFF" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect class="hm-pool" width="1600" height="1000" fill="url(#hm-pool)"/>
+          <g class="hm-streets">
+          <path d="M40 0V325"/>
+          <path d="M40 325V687"/>
+          <path d="M40 687V884"/>
+          <path d="M40 884V1000"/>
+          <path d="M130 0V419"/>
+          <path d="M130 419V598"/>
+          <path d="M130 598V980"/>
+          <path d="M250 0V195"/>
+          <path d="M250 195V401"/>
+          <path d="M250 511V701"/>
+          <path d="M250 701V975"/>
+          <path d="M250 975V1000"/>
+          <path d="M340 0V185"/>
+          <path d="M340 185V368"/>
+          <path d="M340 368V676"/>
+          <path d="M340 786V1000"/>
+          <path d="M430 0V452"/>
+          <path d="M430 512V958"/>
+          <path d="M430 958V1000"/>
+          <path d="M540 0V350"/>
+          <path d="M540 350V790"/>
+          <path d="M540 790V1000"/>
+          <path d="M700 0V476"/>
+          <path d="M700 476V890"/>
+          <path d="M780 0V320"/>
+          <path d="M780 430V889"/>
+          <path d="M780 999V1000"/>
+          <path d="M860 0V287"/>
+          <path d="M860 287V804"/>
+          <path d="M860 804V1000"/>
+          <path d="M1040 0V428"/>
+          <path d="M1040 538V873"/>
+          <path d="M1040 983V1000"/>
+          <path d="M1240 0V220"/>
+          <path d="M1240 330V574"/>
+          <path d="M1240 634V871"/>
+          <path d="M1240 981V1000"/>
+          <path d="M1390 0V502"/>
+          <path d="M1390 502V947"/>
+          <path d="M1530 0V334"/>
+          <path d="M1530 394V858"/>
+          <path d="M1530 968V1000"/>
+          <path d="M0 60H195"/>
+          <path d="M195 60H493"/>
+          <path d="M603 60H1119"/>
+          <path d="M1119 60H1310"/>
+          <path d="M1370 60H1600"/>
+          <path d="M0 160H305"/>
+          <path d="M415 160H917"/>
+          <path d="M977 160H1148"/>
+          <path d="M1258 160H1599"/>
+          <path d="M1599 160H1600"/>
+          <path d="M0 260H412"/>
+          <path d="M412 260H683"/>
+          <path d="M743 260H969"/>
+          <path d="M969 260H1332"/>
+          <path d="M1442 260H1600"/>
+          <path d="M0 360H245"/>
+          <path d="M355 360H720"/>
+          <path d="M780 360H1010"/>
+          <path d="M1120 360H1561"/>
+          <path d="M0 470H372"/>
+          <path d="M432 470H941"/>
+          <path d="M1051 470H1329"/>
+          <path d="M1329 470H1531"/>
+          <path d="M1531 470H1600"/>
+          <path d="M0 590H497"/>
+          <path d="M497 590H663"/>
+          <path d="M773 590H1234"/>
+          <path d="M1234 590H1528"/>
+          <path d="M1588 590H1600"/>
+          <path d="M0 700H374"/>
+          <path d="M434 700H906"/>
+          <path d="M966 700H1190"/>
+          <path d="M1190 700H1583"/>
+          <path d="M0 820H363"/>
+          <path d="M473 820H834"/>
+          <path d="M834 820H1240"/>
+          <path d="M1350 820H1541"/>
+          <path d="M1541 820H1600"/>
+          <path d="M0 930H385"/>
+          <path d="M385 930H601"/>
+          <path d="M661 930H1128"/>
+          <path d="M1128 930H1340"/>
+          <path d="M1340 930H1600"/>
+          </g><g class="hm-streets hm-streets--major">
+          <path d="M200 0V1000"/>
+          <path d="M620 0V1000"/>
+          <path d="M940 0V1000"/>
+          <path d="M1160 0V1000"/>
+          <path d="M1320 0V1000"/>
+          <path d="M1460 0V1000"/>
+          <path d="M0 110H1600"/>
+          <path d="M0 220H1600"/>
+          <path d="M0 310H1600"/>
+          <path d="M0 420H1600"/>
+          <path d="M0 520H1600"/>
+          <path d="M0 760H1600"/>
+          <path d="M0 880H1600"/>
+          <path d="M520 1000L1160 520L1600 190"/>
+          <path d="M0 640C300 600 520 700 700 820S1050 1000 1200 1000"/>
+          <path d="M1600 600C1500 560 1420 470 1400 360S1440 120 1520 0"/>
+          </g>
+          <g class="hm-routes">
+          <g class="hm-route" data-route="0">
+          <path class="hm-hit" d="M1160 520L1160.0 332.0Q1160 310 1182.0 310.0L1298.0 310.0Q1320 310 1320.0 288.0L1320.0 132.0Q1320 110 1342.0 110.0L1600 110"/><path class="hm-track" d="M1160 520L1160.0 332.0Q1160 310 1182.0 310.0L1298.0 310.0Q1320 310 1320.0 288.0L1320.0 132.0Q1320 110 1342.0 110.0L1600 110"/>
+          <path class="hm-glow" d="M1160 520L1160.0 332.0Q1160 310 1182.0 310.0L1298.0 310.0Q1320 310 1320.0 288.0L1320.0 132.0Q1320 110 1342.0 110.0L1600 110"/>
+          <path class="hm-line" d="M1160 520L1160.0 332.0Q1160 310 1182.0 310.0L1298.0 310.0Q1320 310 1320.0 288.0L1320.0 132.0Q1320 110 1342.0 110.0L1600 110"/>
+          <g class="hm-stop" transform="translate(1160 420)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(1320 210)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(1470 110)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <circle class="hm-head" r="5" cx="1160" cy="520"/>
+          </g>
+          <g class="hm-route" data-route="1">
+          <path class="hm-hit" d="M1160 520L1438.0 520.0Q1460 520 1460.0 498.0L1460.0 332.0Q1460 310 1482.0 310.0L1600 310"/><path class="hm-track" d="M1160 520L1438.0 520.0Q1460 520 1460.0 498.0L1460.0 332.0Q1460 310 1482.0 310.0L1600 310"/>
+          <path class="hm-glow" d="M1160 520L1438.0 520.0Q1460 520 1460.0 498.0L1460.0 332.0Q1460 310 1482.0 310.0L1600 310"/>
+          <path class="hm-line" d="M1160 520L1438.0 520.0Q1460 520 1460.0 498.0L1460.0 332.0Q1460 310 1482.0 310.0L1600 310"/>
+          <g class="hm-stop" transform="translate(1310 520)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(1460 420)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <circle class="hm-head" r="5" cx="1160" cy="520"/>
+          </g>
+          <g class="hm-route" data-route="2">
+          <path class="hm-hit" d="M1160 520L1160.0 738.0Q1160 760 1182.0 760.0L1298.0 760.0Q1320 760 1320.0 782.0L1320.0 858.0Q1320 880 1342.0 880.0L1600 880"/><path class="hm-track" d="M1160 520L1160.0 738.0Q1160 760 1182.0 760.0L1298.0 760.0Q1320 760 1320.0 782.0L1320.0 858.0Q1320 880 1342.0 880.0L1600 880"/>
+          <path class="hm-glow" d="M1160 520L1160.0 738.0Q1160 760 1182.0 760.0L1298.0 760.0Q1320 760 1320.0 782.0L1320.0 858.0Q1320 880 1342.0 880.0L1600 880"/>
+          <path class="hm-line" d="M1160 520L1160.0 738.0Q1160 760 1182.0 760.0L1298.0 760.0Q1320 760 1320.0 782.0L1320.0 858.0Q1320 880 1342.0 880.0L1600 880"/>
+          <g class="hm-stop" transform="translate(1160 650)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(1240 760)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(1460 880)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <circle class="hm-head" r="5" cx="1160" cy="520"/>
+          </g>
+          <g class="hm-route" data-route="3">
+          <path class="hm-hit" d="M1160 520L962.0 520.0Q940 520 940.0 498.0L940.0 442.0Q940 420 918.0 420.0L642.0 420.0Q620 420 620.0 398.0L620.0 242.0Q620 220 598.0 220.0L300 220"/><path class="hm-track" d="M1160 520L962.0 520.0Q940 520 940.0 498.0L940.0 442.0Q940 420 918.0 420.0L642.0 420.0Q620 420 620.0 398.0L620.0 242.0Q620 220 598.0 220.0L300 220"/>
+          <path class="hm-glow" d="M1160 520L962.0 520.0Q940 520 940.0 498.0L940.0 442.0Q940 420 918.0 420.0L642.0 420.0Q620 420 620.0 398.0L620.0 242.0Q620 220 598.0 220.0L300 220"/>
+          <path class="hm-line" d="M1160 520L962.0 520.0Q940 520 940.0 498.0L940.0 442.0Q940 420 918.0 420.0L642.0 420.0Q620 420 620.0 398.0L620.0 242.0Q620 220 598.0 220.0L300 220"/>
+          <g class="hm-stop" transform="translate(1040 520)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(780 420)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(620 320)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(440 220)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <circle class="hm-head" r="5" cx="1160" cy="520"/>
+          </g>
+          <g class="hm-route" data-route="4">
+          <path class="hm-hit" d="M1160 520L935.6 744.4Q920 760 898.0 760.0L802.0 760.0Q780 760 780.0 782.0L780.0 878.0Q780 900 758.0 900.0L460 900"/><path class="hm-track" d="M1160 520L935.6 744.4Q920 760 898.0 760.0L802.0 760.0Q780 760 780.0 782.0L780.0 878.0Q780 900 758.0 900.0L460 900"/>
+          <path class="hm-glow" d="M1160 520L935.6 744.4Q920 760 898.0 760.0L802.0 760.0Q780 760 780.0 782.0L780.0 878.0Q780 900 758.0 900.0L460 900"/>
+          <path class="hm-line" d="M1160 520L935.6 744.4Q920 760 898.0 760.0L802.0 760.0Q780 760 780.0 782.0L780.0 878.0Q780 900 758.0 900.0L460 900"/>
+          <g class="hm-stop" transform="translate(1040 640)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(780 830)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <g class="hm-stop" transform="translate(600 900)"><circle class="hm-stop__halo" r="12"/><circle class="hm-stop__dot" r="4.5"/></g>
+          <circle class="hm-head" r="5" cx="1160" cy="520"/>
+          </g>
+          </g>
+          <g class="hm-depot" transform="translate(1160 520)"><circle class="hm-depot__ring" r="34"/><rect class="hm-depot__base" x="-15" y="-15" width="30" height="30" rx="7"/><rect class="hm-depot__core" x="-6" y="-6" width="12" height="12" rx="2.5"/></g>
+        </svg>
+        <p class="hm-tag hm-tag--depot">Your location</p>
       </div>
+
+      <div class="hero__inner wrap">
+        <div class="hero__copy">
+          <p class="hero__kicker">Dedicated Delivery Drivers for Route-Based Businesses</p>
+          <h1 class="hero__title" id="hero-title"><span class="hero__line"><span>Reliable Drivers.</span></span> <span class="hero__line"><span>Covered Routes.</span></span></h1>
+          <p class="hero__desc">DriverLine provides dedicated, managed delivery drivers for businesses that depend on daily routes. We handle recruiting, vetting, day-to-day driver management, and backup coverage, so you can stop managing drivers and focus on running your business.</p>
+          <div class="hero__actions">
+            <a href="contact.html#request-coverage" class="bt bt--primary bt--lg">Request Coverage</a>
+            <a href="#how-it-works" class="bt bt--quiet bt--lg">How It Works</a>
+          </div>
+        </div>
+
+        <p class="hero__status" aria-hidden="true"><span class="hero__status-dot"></span><span class="hero__status-text">Coverage Ready</span></p>
+      </div>
+
+      <ul class="hero__proof wrap" aria-label="What's included">
+        <li><span class="tick" aria-hidden="true"></span>Vetted driver coverage</li>
+        <li><span class="tick" aria-hidden="true"></span>Built-in backup for callouts</li>
+        <li><span class="tick" aria-hidden="true"></span>Recruiting &amp; retention handled</li>
+      </ul>
     </section>
 
-    <!-- Challenge to Solution: one route, fragmented then managed -->
-    <div class="ln-flow" data-ln-flow>
-      <svg class="ln-flow__link" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="ln-fade-out" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ln-fade__on"/><stop offset="1" class="ln-fade__off"/></linearGradient>
-          <linearGradient id="ln-fade-in" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ln-fade__off"/><stop offset="1" class="ln-fade__on"/></linearGradient>
-        </defs>
-        <path class="ln-flow__path ln-flow__path--exit" d=""/>
-        <path class="ln-flow__path ln-flow__path--entry" d=""/>
-      </svg>
-
-      <section class="ln-sec ln-sec--challenge" aria-labelledby="problems-title">
-        <div class="container">
-          <header class="ln-head ln-head--split">
-            <div class="ln-head__main">
-              <p class="ln-kicker">
-                <svg class="ln-glyph ln-glyph--broken" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><circle class="ln-g__origin" cx="2.5" cy="7" r="2"/><path class="ln-g__line" style="--len:19.5" d="M4.5 7H24"/><circle class="ln-g__stop" cx="38.5" cy="7" r="3"/></svg>
-                The Challenge
-              </p>
-              <h2 class="ln-title" id="problems-title">Operational Pressures You Face Daily</h2>
+    <!-- ============ The shift: one route, uncovered in-house, covered with DriverLine ============ -->
+    <div data-surface="light" class="shift" data-shift>
+      <div class="shift__inner wrap">
+        <div class="shift__rail" aria-hidden="true">
+          <div class="board" data-board>
+            <div class="board__head">
+              <span class="board__state board__state--off">Managed in-house</span>
+              <span class="board__state board__state--on">Managed by DriverLine</span>
             </div>
-            <p class="ln-intro">Managing delivery operations in-house creates real problems that affect your bottom line and your team.</p>
-          </header>
-
-          <ul class="ln-strip ln-strip--broken" data-ln-challenge>
-            <li class="ln-pt" style="--i:0; --dy:-9px; --dx:4px">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Risk &amp; Compliance Exposure</h3>
-              <p class="ln-pt__desc">Accidents, injuries, and driver classification issues can create real financial and operational exposure without proper documentation and coverage.</p>
-            </li>
-            <li class="ln-pt" style="--i:1; --dy:10px; --dx:-5px">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Rising Labor &amp; Vehicle Costs</h3>
-              <p class="ln-pt__desc">Wages, benefits, fuel, insurance, depreciation, and maintenance keep the cost of running your own fleet climbing year over year.</p>
-            </li>
-            <li class="ln-pt" style="--i:2; --dy:-7px; --dx:4px">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Driver Availability &amp; Turnover</h3>
-              <p class="ln-pt__desc">Finding reliable drivers is hard. Keeping them is harder. High turnover means constant recruiting, training, and gaps in route coverage.</p>
-            </li>
-            <li class="ln-pt" style="--i:3; --dy:7px; --dx:-4px">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Coverage Gaps</h3>
-              <p class="ln-pt__desc">Callouts, vacations, and no-shows force your team to scramble, delaying deliveries and leaving customers waiting.</p>
-            </li>
-            <li class="ln-pt" style="--i:4; --dy:-5px; --dx:3px">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Administrative Burden</h3>
-              <p class="ln-pt__desc">Hiring paperwork, background checks, compliance documentation, scheduling, and payroll take time your team doesn't have.</p>
-            </li>
-            <li class="ln-pt" style="--i:5; --dy:6px; --dx:-3px">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Delivery Speed Demands</h3>
-              <p class="ln-pt__desc">Customers expect same-day delivery. Without consistent route coverage, meeting those expectations becomes harder every day.</p>
-            </li>
-          </ul>
+            <div class="board__route">
+<svg class="board__map board__map--v" viewBox="0 0 420 530" focusable="false">
+<path class="bm-track" d="M70 480L70 380"/><path class="bm-line" data-g="0" pathLength="1" d="M70 480L70 380"/>
+<path class="bm-track" d="M70 380L70.0 336.0Q70 310 96.0 310.0L210 310"/><path class="bm-line" data-g="1" pathLength="1" d="M70 380L70.0 336.0Q70 310 96.0 310.0L210 310"/>
+<path class="bm-track" d="M210 310L324.0 310.0Q350 310 350.0 284.0L350 240"/><path class="bm-line" data-g="2" pathLength="1" d="M210 310L324.0 310.0Q350 310 350.0 284.0L350 240"/>
+<path class="bm-track" d="M350 240L350.0 206.0Q350 180 324.0 180.0L210 180"/><path class="bm-line" data-g="3" pathLength="1" d="M350 240L350.0 206.0Q350 180 324.0 180.0L210 180"/>
+<path class="bm-track" d="M210 180L96.0 180.0Q70 180 70.0 154.0L70 110"/><path class="bm-line" data-g="4" pathLength="1" d="M210 180L96.0 180.0Q70 180 70.0 154.0L70 110"/>
+<path class="bm-track" d="M70 110L70.0 76.0Q70 50 96.0 50.0L350 50"/><path class="bm-line" data-g="5" pathLength="1" d="M70 110L70.0 76.0Q70 50 96.0 50.0L350 50"/>
+<rect class="bm-origin" x="59" y="469" width="22" height="22" rx="6"/>
+<g class="bm-stop" data-g="0" transform="translate(70 380)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
+<g class="bm-stop" data-g="1" transform="translate(210 310)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
+<g class="bm-stop" data-g="2" transform="translate(350 240)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
+<g class="bm-stop" data-g="3" transform="translate(210 180)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
+<g class="bm-stop" data-g="4" transform="translate(70 110)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
+<g class="bm-stop bm-stop--end" data-g="5" transform="translate(350 50)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
+</svg>
+<svg class="board__map board__map--h" viewBox="0 0 360 28" preserveAspectRatio="none" focusable="false">
+<path class="bm-track" d="M10.0 14H66.7"/><path class="bm-line" data-g="0" pathLength="1" d="M10.0 14H66.7"/>
+<path class="bm-track" d="M66.7 14H123.3"/><path class="bm-line" data-g="1" pathLength="1" d="M66.7 14H123.3"/>
+<path class="bm-track" d="M123.3 14H180.0"/><path class="bm-line" data-g="2" pathLength="1" d="M123.3 14H180.0"/>
+<path class="bm-track" d="M180.0 14H236.7"/><path class="bm-line" data-g="3" pathLength="1" d="M180.0 14H236.7"/>
+<path class="bm-track" d="M236.7 14H293.3"/><path class="bm-line" data-g="4" pathLength="1" d="M236.7 14H293.3"/>
+<path class="bm-track" d="M293.3 14H350.0"/><path class="bm-line" data-g="5" pathLength="1" d="M293.3 14H350.0"/>
+</svg>
+<div class="board__dots" aria-hidden="true">
+<span class="board__dot board__dot--origin"></span>
+<span class="board__dot" data-g="0"></span>
+<span class="board__dot" data-g="1"></span>
+<span class="board__dot" data-g="2"></span>
+<span class="board__dot" data-g="3"></span>
+<span class="board__dot" data-g="4"></span>
+<span class="board__dot" data-g="5"></span>
+</div>
+</div>
+            <div class="board__foot">
+              <span class="board__result board__result--off">Coverage gaps</span>
+              <span class="board__result board__result--on"><span class="board__ok"></span>Coverage Ready</span>
+            </div>
+          </div>
         </div>
-      </section>
 
-      <section class="ln-sec ln-sec--solution" aria-labelledby="solution-title">
-        <div class="container">
-          <header class="ln-head ln-head--stack">
-            <p class="ln-kicker">
-              <svg class="ln-glyph ln-glyph--covered" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><circle class="ln-g__halo" cx="38.5" cy="7" r="5"/><circle class="ln-g__origin" cx="2.5" cy="7" r="2"/><path class="ln-g__line" style="--len:30.5" d="M4.5 7H35"/><circle class="ln-g__stop" cx="38.5" cy="7" r="3"/></svg>
-              The Solution
-            </p>
-            <h2 class="ln-title ln-title--xl" id="solution-title"><span class="ln-w">We Handle Drivers.</span> <span class="ln-w">You Handle Business.</span></h2>
-            <p class="ln-intro">DriverLine shifts much of the driver hiring, management, and coverage burden off your team &mdash; helping reduce employment and delivery-related exposure.</p>
-          </header>
+        <div class="shift__body">
+          <section class="pressures" aria-labelledby="problems-title" data-phase="challenge">
+            <p class="label">The Challenge</p>
+            <h2 class="h2" id="problems-title">Operational Pressures You Face Daily</h2>
+            <p class="lede">Managing delivery operations in-house creates real problems that affect your bottom line and your team.</p>
 
-          <ul class="ln-strip ln-strip--solid" data-ln-solution>
-            <li class="ln-pt" style="--i:0">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Vetted Driver Coverage</h3>
-              <p class="ln-pt__desc">Drivers are background-checked, MVR-verified, and required to carry appropriate coverage before route assignment.</p>
-            </li>
-            <li class="ln-pt" style="--i:1">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">All Hiring &amp; Screening Handled</h3>
-              <p class="ln-pt__desc">Recruiting, vetting, onboarding, and compliance documentation managed by DriverLine.</p>
-            </li>
-            <li class="ln-pt" style="--i:2">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Independent Contractor Model</h3>
-              <p class="ln-pt__desc">Drivers provide their own vehicles and fuel &mdash; reducing fleet ownership, maintenance, depreciation, and fuel burden.</p>
-            </li>
-            <li class="ln-pt" style="--i:3">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Operational Integration</h3>
-              <p class="ln-pt__desc">Our drivers integrate directly into your existing routes, dispatch systems, and operating processes &mdash; whether you use tablets, delivery apps, or internal software.</p>
-            </li>
-            <li class="ln-pt" style="--i:4">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Built-In Backup Systems</h3>
-              <p class="ln-pt__desc">Structured backup coverage for callouts and service disruptions. Fewer coverage gaps to manage.</p>
-            </li>
-            <li class="ln-pt" style="--i:5">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Consistent Service</h3>
-              <p class="ln-pt__desc">Professional drivers who represent your brand properly. More consistent coverage day to day.</p>
-            </li>
-            <li class="ln-pt" style="--i:6">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Predictable Costs</h3>
-              <p class="ln-pt__desc">Clear, predictable delivery cost structure. Fewer unexpected costs from vehicle issues or turnover.</p>
-            </li>
-            <li class="ln-pt" style="--i:7">
-              <span class="ln-mark" aria-hidden="true"><span class="ln-mark__seg"></span></span>
-              <h3 class="ln-pt__title">Flexible Scaling</h3>
-              <p class="ln-pt__desc">Add or reduce coverage by location as your business needs change.</p>
-            </li>
-          </ul>
+            <ul class="plist">
+              <li class="plist__item" data-step="0">
+                <h3 class="plist__title">Risk &amp; Compliance Exposure</h3>
+                <p>Accidents, injuries, and driver classification issues can create real financial and operational exposure without proper documentation and coverage.</p>
+              </li>
+              <li class="plist__item" data-step="1">
+                <h3 class="plist__title">Rising Labor &amp; Vehicle Costs</h3>
+                <p>Wages, benefits, fuel, insurance, depreciation, and maintenance keep the cost of running your own fleet climbing year over year.</p>
+              </li>
+              <li class="plist__item" data-step="2">
+                <h3 class="plist__title">Driver Availability &amp; Turnover</h3>
+                <p>Finding reliable drivers is hard. Keeping them is harder. High turnover means constant recruiting, training, and gaps in route coverage.</p>
+              </li>
+              <li class="plist__item" data-step="3">
+                <h3 class="plist__title">Coverage Gaps</h3>
+                <p>Callouts, vacations, and no-shows force your team to scramble, delaying deliveries and leaving customers waiting.</p>
+              </li>
+              <li class="plist__item" data-step="4">
+                <h3 class="plist__title">Administrative Burden</h3>
+                <p>Hiring paperwork, background checks, compliance documentation, scheduling, and payroll take time your team doesn't have.</p>
+              </li>
+              <li class="plist__item" data-step="5">
+                <h3 class="plist__title">Delivery Speed Demands</h3>
+                <p>Customers expect same-day delivery. Without consistent route coverage, meeting those expectations becomes harder every day.</p>
+              </li>
+            </ul>
+          </section>
+
+          <section class="solution" aria-labelledby="solution-title" data-phase="solution">
+            <p class="label label--on">The Solution</p>
+            <h2 class="statement" id="solution-title"><span>We Handle Drivers.</span> <span>You Handle Business.</span></h2>
+            <p class="lede lede--lg">DriverLine shifts much of the driver hiring, management, and coverage burden off your team &mdash; helping reduce employment and delivery-related exposure.</p>
+
+            <ul class="slist">
+              <li class="slist__item">
+                <h3 class="slist__title">Vetted Driver Coverage</h3>
+                <p>Drivers are background-checked, MVR-verified, and required to carry appropriate coverage before route assignment.</p>
+              </li>
+              <li class="slist__item">
+                <h3 class="slist__title">All Hiring &amp; Screening Handled</h3>
+                <p>Recruiting, vetting, onboarding, and compliance documentation managed by DriverLine.</p>
+              </li>
+              <li class="slist__item">
+                <h3 class="slist__title">Independent Contractor Model</h3>
+                <p>Drivers provide their own vehicles and fuel &mdash; reducing fleet ownership, maintenance, depreciation, and fuel burden.</p>
+              </li>
+              <li class="slist__item">
+                <h3 class="slist__title">Operational Integration</h3>
+                <p>Our drivers integrate directly into your existing routes, dispatch systems, and operating processes &mdash; whether you use tablets, delivery apps, or internal software.</p>
+              </li>
+              <li class="slist__item">
+                <h3 class="slist__title">Built-In Backup Systems</h3>
+                <p>Structured backup coverage for callouts and service disruptions. Fewer coverage gaps to manage.</p>
+              </li>
+              <li class="slist__item">
+                <h3 class="slist__title">Consistent Service</h3>
+                <p>Professional drivers who represent your brand properly. More consistent coverage day to day.</p>
+              </li>
+              <li class="slist__item">
+                <h3 class="slist__title">Predictable Costs</h3>
+                <p>Clear, predictable delivery cost structure. Fewer unexpected costs from vehicle issues or turnover.</p>
+              </li>
+              <li class="slist__item">
+                <h3 class="slist__title">Flexible Scaling</h3>
+                <p>Add or reduce coverage by location as your business needs change.</p>
+              </li>
+            </ul>
+          </section>
         </div>
-      </section>
+      </div>
     </div>
 
-    <!-- How It Works + the estimator: one light section that ends at the tool -->
-    <section class="ln-sec ln-sec--process" id="how-it-works" aria-labelledby="how-it-works-title">
-      <div class="container">
-        <div class="ln-process">
-        <header class="ln-head ln-head--process">
-          <p class="ln-kicker">
-            <svg class="ln-glyph ln-glyph--stair" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><defs><linearGradient id="ln-g-ramp" gradientUnits="userSpaceOnUse" x1="4.5" y1="0" x2="35" y2="0"><stop offset="0" stop-color="#A9BEE6"/><stop offset="1" stop-color="#3A6FE3"/></linearGradient></defs><circle class="ln-g__origin" cx="2.5" cy="7" r="2"/><path class="ln-g__line" style="--len:30.5" d="M4.5 7H35"/><circle class="ln-g__stop ln-g__stop--1" cx="14.5" cy="7" r="2.25"/><circle class="ln-g__stop ln-g__stop--2" cx="26.5" cy="7" r="2.25"/><circle class="ln-g__stop ln-g__stop--3" cx="38.5" cy="7" r="3"/></svg>
-            Process
-          </p>
-          <h2 class="ln-title" id="how-it-works-title">How It Works</h2>
-          <p class="ln-intro">Getting started with DriverLine is straightforward. Here's what to expect.</p>
+    <!-- ============ How it works: a real sequence, drawn as a route ============ -->
+    <section data-surface="light" class="process" id="how-it-works" aria-labelledby="how-it-works-title">
+      <div class="wrap">
+        <header class="process__head">
+          <h2 class="h2" id="how-it-works-title">How It Works</h2>
+          <p class="lede">Getting started with DriverLine is straightforward. Here's what to expect.</p>
         </header>
 
-        <ol class="ln-steps">
-          <li class="ln-step">
-            <span class="ln-step__no" aria-hidden="true">01</span>
-            <h3 class="ln-step__title">Request Coverage</h3>
-            <p class="ln-step__desc">Tell us about your locations, delivery volume, and coverage needs.</p>
+        <ol class="steps" data-steps>
+          <li class="steps__item">
+            <span class="steps__node" aria-hidden="true"></span>
+            <span class="steps__no" aria-hidden="true">01</span>
+            <h3 class="steps__title">Request Coverage</h3>
+            <p>Tell us about your locations, delivery volume, and coverage needs.</p>
           </li>
-          <li class="ln-step">
-            <span class="ln-step__no" aria-hidden="true">02</span>
-            <h3 class="ln-step__title">Route &amp; Coverage Review</h3>
-            <p class="ln-step__desc">We review your existing routes and operation, then build a coverage plan around your schedule, route needs, and backup requirements.</p>
+          <li class="steps__item">
+            <span class="steps__node" aria-hidden="true"></span>
+            <span class="steps__no" aria-hidden="true">02</span>
+            <h3 class="steps__title">Route &amp; Coverage Review</h3>
+            <p>We review your existing routes and operation, then build a coverage plan around your schedule, route needs, and backup requirements.</p>
           </li>
-          <li class="ln-step">
-            <span class="ln-step__no" aria-hidden="true">03</span>
-            <h3 class="ln-step__title">Driver Assignment</h3>
-            <p class="ln-step__desc">We source, vet, and assign qualified drivers to your routes with backup coverage in place.</p>
+          <li class="steps__item">
+            <span class="steps__node" aria-hidden="true"></span>
+            <span class="steps__no" aria-hidden="true">03</span>
+            <h3 class="steps__title">Driver Assignment</h3>
+            <p>We source, vet, and assign qualified drivers to your routes with backup coverage in place.</p>
           </li>
-          <li class="ln-step">
-            <span class="ln-step__no" aria-hidden="true">04</span>
-            <h3 class="ln-step__title">Ongoing Operations</h3>
-            <p class="ln-step__desc">DriverLine manages daily operations, handles issues, and supports more consistent service.</p>
+          <li class="steps__item">
+            <span class="steps__node" aria-hidden="true"></span>
+            <span class="steps__no" aria-hidden="true">04</span>
+            <h3 class="steps__title">Ongoing Operations</h3>
+            <p>DriverLine manages daily operations, handles issues, and supports more consistent service.</p>
           </li>
         </ol>
-        </div>
+      </div>
+    </section>
 
-        <!-- Cost estimator entry: a preview of the tool's own output sheet -->
-        <div class="ln-tool" aria-labelledby="estimator-teaser-title">
-          <div class="ln-tool__copy">
-            <h2 class="ln-tool__title" id="estimator-teaser-title">Estimate What <span class="ln-nb">In-House</span> Delivery Really Costs</h2>
-            <p class="ln-tool__desc">See the true cost of wages, vehicles, fuel, and administrative overhead.</p>
-            <a href="resources.html#cost-estimator" class="btn btn--primary btn--lg ln-btn">Use the Cost Estimator</a>
-          </div>
-          <div class="ln-sheet" data-ln-seen>
-            <div class="ln-sheet__head">
-              <p class="ln-sheet__title">Example In-House Operating Cost</p>
-              <span class="ln-sheet__tag">1 driver &middot; 1 vehicle</span>
+    <!-- ============ Estimator: the real tool, on the page ============ -->
+    <section data-surface="dark" class="est" id="cost-estimator-preview" aria-labelledby="estimator-title">
+      <div class="est__glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="est__head">
+          <h2 class="h2 h2--dark" id="estimator-title">Estimate What <span class="nb">In-House</span> Delivery Really Costs</h2>
+          <p class="lede lede--dark">See the true cost of wages, vehicles, fuel, and administrative overhead.</p>
+        </header>
+
+        <div class="est__grid">
+          <form class="est__form" id="cost-calculator-form" novalidate>
+            <fieldset class="est__primary">
+              <legend class="sr-only">Labor</legend>
+
+              <div class="ctl" data-ctl>
+                <div class="ctl__top">
+                  <label for="drivers" class="ctl__label">Number of Drivers</label>
+                  <output class="ctl__val" for="drivers" data-format="int">1</output>
+                </div>
+                <input type="range" id="drivers" name="drivers" class="ctl__range" value="1" min="1" max="50" step="1">
+              </div>
+
+              <div class="ctl" data-ctl>
+                <div class="ctl__top">
+                  <label for="hourlyWage" class="ctl__label">Hourly Wage ($)</label>
+                  <output class="ctl__val" for="hourlyWage" data-format="money2">$18.00</output>
+                </div>
+                <input type="range" id="hourlyWage" name="hourlyWage" class="ctl__range" value="18" min="7" max="50" step="0.50">
+              </div>
+
+              <div class="ctl" data-ctl>
+                <div class="ctl__top">
+                  <label for="hoursPerDay" class="ctl__label">Hours per Day</label>
+                  <output class="ctl__val" for="hoursPerDay" data-format="half">8</output>
+                </div>
+                <input type="range" id="hoursPerDay" name="hoursPerDay" class="ctl__range" value="8" min="1" max="12" step="0.5">
+              </div>
+
+              <div class="ctl ctl--days">
+                <div class="ctl__top">
+                  <span class="ctl__label" id="days-label">Days per Week</span>
+                </div>
+                <div class="days" role="group" aria-labelledby="days-label">
+                  <input type="number" id="daysPerWeek" name="daysPerWeek" class="days__input" value="5" min="1" max="7" step="1" aria-labelledby="days-label">
+                  <div class="days__picks" data-days hidden>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="1"><span>1</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="2"><span>2</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="3"><span>3</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="4"><span>4</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="5" checked><span>5</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="6"><span>6</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="7"><span>7</span></label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <details class="est__more">
+              <summary class="est__more-sum"><span>Adjust assumptions</span><span class="est__more-hint">Overtime, burden, vehicles, fuel, admin</span><span class="est__more-icon" aria-hidden="true"></span></summary>
+              <div class="est__more-body">
+                <fieldset class="nums">
+                  <legend class="nums__legend">Labor</legend>
+                  <div class="num"><label for="overtimeHours">Overtime Hours/Week</label><input type="number" id="overtimeHours" name="overtimeHours" value="0" min="0" max="40" step="1"></div>
+                  <div class="num"><label for="employerBurden">Employer Burden (%)</label><input type="number" id="employerBurden" name="employerBurden" value="20" min="7" max="40" step="1" aria-describedby="employerBurden-note"></div>
+                  <p class="nums__note" id="employerBurden-note">Employer burden includes payroll taxes (FICA), federal and state unemployment insurance, workers' comp, and other employment-related costs. Many operations fall in the 15–25% range depending on state and coverage levels. 20% is a reasonable planning assumption. Benefit-heavy packages will increase total burden.</p>
+                </fieldset>
+                <fieldset class="nums">
+                  <legend class="nums__legend">Vehicles</legend>
+                  <div class="num"><label for="vehicles">Number of Vehicles</label><input type="number" id="vehicles" name="vehicles" value="1" min="1" max="50" step="1"></div>
+                  <div class="num"><label for="milesPerDay">Miles per Day (per vehicle)</label><input type="number" id="milesPerDay" name="milesPerDay" value="80" min="10" max="500" step="10"></div>
+                  <div class="num"><label for="mpg">Average MPG</label><input type="number" id="mpg" name="mpg" value="20" min="8" max="40" step="1"></div>
+                  <div class="num"><label for="gasPrice">Gas Price ($/gallon)</label><input type="number" id="gasPrice" name="gasPrice" value="3.50" min="2" max="7" step="0.10"></div>
+                  <div class="num"><label for="insurancePerVehicle">Insurance ($/vehicle/month)</label><input type="number" id="insurancePerVehicle" name="insurancePerVehicle" value="250" min="50" max="1000" step="25"></div>
+                  <div class="num"><label for="maintenancePerVehicle">Maintenance ($/vehicle/month)</label><input type="number" id="maintenancePerVehicle" name="maintenancePerVehicle" value="150" min="50" max="500" step="25"></div>
+                  <div class="num"><label for="depreciationPerVehicle">Depreciation ($/vehicle/month)</label><input type="number" id="depreciationPerVehicle" name="depreciationPerVehicle" value="450" min="100" max="1500" step="50"></div>
+                </fieldset>
+                <fieldset class="nums">
+                  <legend class="nums__legend">Administration</legend>
+                  <div class="num"><label for="adminHoursPerWeek">Admin Hours per Week</label><input type="number" id="adminHoursPerWeek" name="adminHoursPerWeek" value="3" min="0" max="40" step="1"></div>
+                  <div class="num"><label for="adminHourlyRate">Admin Hourly Rate ($)</label><input type="number" id="adminHourlyRate" name="adminHourlyRate" value="25" min="10" max="75" step="1"></div>
+                </fieldset>
+              </div>
+            </details>
+          </form>
+
+          <div class="readout" aria-labelledby="readout-title">
+            <h3 class="readout__title" id="readout-title">In-House Delivery Cost Estimate</h3>
+            <div class="readout__totals" aria-live="polite">
+              <p class="readout__total">
+                <span class="readout__k">Monthly Operating Cost</span>
+                <span class="readout__big" id="result-total">$5,237</span>
+              </p>
+              <p class="readout__daily">
+                <span class="readout__k">Daily Operating Cost</span>
+                <span class="readout__mid" id="result-daily-total">$241</span>
+              </p>
             </div>
-            <ul class="ln-sheet__rows">
-              <li class="ln-sheet__row" style="--share:0.598"><span class="ln-sheet__label">Monthly Wages</span><span class="ln-sheet__val">$3,131</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
-              <li class="ln-sheet__row" style="--share:0.120"><span class="ln-sheet__label">Employer Burden</span><span class="ln-sheet__val">$626</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
-              <li class="ln-sheet__row" style="--share:0.058"><span class="ln-sheet__label">Fuel Cost</span><span class="ln-sheet__val">$304</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
-              <li class="ln-sheet__row" style="--share:0.162"><span class="ln-sheet__label">Vehicle Fixed Costs</span><span class="ln-sheet__val">$850</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
-              <li class="ln-sheet__row" style="--share:0.062"><span class="ln-sheet__label">Admin Cost</span><span class="ln-sheet__val">$326</span><span class="ln-sheet__meter" aria-hidden="true"></span></li>
+
+            <div class="mix" aria-hidden="true">
+              <span class="mix__seg mix__seg--0"></span><span class="mix__seg mix__seg--1"></span><span class="mix__seg mix__seg--2"></span><span class="mix__seg mix__seg--3"></span><span class="mix__seg mix__seg--4"></span>
+            </div>
+
+            <ul class="rows">
+              <li class="rows__row"><span class="rows__key rows__key--0">Monthly Wages</span><span class="rows__val" id="result-wages">$3,131</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--1">Employer Burden</span><span class="rows__val" id="result-burden">$626</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--2">Fuel Cost</span><span class="rows__val" id="result-fuel">$304</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--3">Vehicle Fixed Costs</span><span class="rows__val" id="result-vehicle-fixed">$850</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--4">Admin Cost</span><span class="rows__val" id="result-admin">$326</span></li>
             </ul>
-            <p class="ln-sheet__total ln-sheet__total--daily"><span>Daily Operating Cost</span><span class="ln-sheet__val">$241</span></p>
-            <p class="ln-sheet__total ln-sheet__total--monthly"><span>Monthly Operating Cost</span><span class="ln-sheet__val">$5,237</span></p>
-            <p class="ln-sheet__note">Based on the assumptions shown in our cost estimator. Actual costs vary.</p>
+
+            <div class="readout__act">
+              <a href="contact.html#request-coverage" class="bt bt--primary bt--lg" id="request-coverage-btn">Request Coverage</a>
+              <a href="resources.html#cost-estimator" class="bt bt--quiet-dark">Use the Cost Estimator</a>
+            </div>
+            <p class="readout__note">Based on the assumptions shown in our cost estimator. Actual costs vary. Reflects direct in-house operating cost. Risk, compliance, and driver oversight remain internal.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Reliability & Compliance: a specification sheet -->
-    <section class="ln-sec ln-sec--ops" aria-labelledby="trust-title">
-      <div class="container">
-        <header class="ln-head ln-head--stack">
-          <p class="ln-kicker">
-            <svg class="ln-glyph ln-glyph--steady" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><circle class="ln-g__origin" cx="2.5" cy="7" r="2"/><path class="ln-g__line" style="--len:30.5" d="M4.5 7H35"/><circle class="ln-g__ring" cx="38.5" cy="7" r="5.75"/><circle class="ln-g__stop" cx="38.5" cy="7" r="3"/></svg>
-            Reliability &amp; Compliance
-          </p>
-          <h2 class="ln-title" id="trust-title">Built for Real Operations</h2>
-          <p class="ln-intro">Delivery problems become business problems fast. DriverLine is built around route coverage, backup planning, documentation, and day-to-day driver oversight.</p>
+    <!-- ============ Reliability & compliance: a specification ============ -->
+    <section data-surface="light" class="ops" aria-labelledby="trust-title">
+      <div class="wrap ops__grid">
+        <header class="ops__head">
+          <p class="label">Reliability &amp; Compliance</p>
+          <h2 class="h2" id="trust-title">Built for Real Operations</h2>
+          <p class="lede">Delivery problems become business problems fast. DriverLine is built around route coverage, backup planning, documentation, and day-to-day driver oversight.</p>
         </header>
 
-        <div class="ln-spec">
-          <div class="ln-spec__group">
-            <p class="ln-spec__label">Compliance</p>
-            <dl class="ln-spec__rows">
-              <div class="ln-spec__row">
+        <div class="spec">
+          <div class="spec__group">
+            <h3 class="spec__label">Compliance</h3>
+            <dl class="spec__rows">
+              <div class="spec__row">
                 <dt>IC Compliance Management</dt>
                 <dd>Our compliance processes support proper independent contractor classification, documentation, and ongoing verification.</dd>
               </div>
-              <div class="ln-spec__row">
+              <div class="spec__row">
                 <dt>Background &amp; MVR Checks</dt>
                 <dd>Every driver undergoes background screening and motor vehicle record verification before any route assignment is made.</dd>
               </div>
-              <div class="ln-spec__row">
+              <div class="spec__row">
                 <dt>Required Insurance Coverage</dt>
                 <dd>Drivers are required to carry occupational hazard and commercial liability insurance. DriverLine also carries Hired and Non-Owned Auto coverage as part of its operational structure.</dd>
               </div>
             </dl>
           </div>
-          <div class="ln-spec__group">
-            <p class="ln-spec__label">Reliability</p>
-            <dl class="ln-spec__rows">
-              <div class="ln-spec__row">
+          <div class="spec__group">
+            <h3 class="spec__label">Reliability</h3>
+            <dl class="spec__rows">
+              <div class="spec__row">
                 <dt>Fleet Lead System</dt>
                 <dd>Designated fleet leads provide local oversight and serve as first-line backup for callouts and day-to-day service issues.</dd>
               </div>
-              <div class="ln-spec__row">
+              <div class="spec__row">
                 <dt>Contingency Coverage</dt>
                 <dd>Structured backup systems handle driver callouts and service disruptions so your team isn't left scrambling for route coverage.</dd>
               </div>
-              <div class="ln-spec__row">
+              <div class="spec__row">
                 <dt>Daily Operations Management</dt>
                 <dd>DriverLine manages day-to-day driver operations, issue resolution, and performance monitoring across your routes.</dd>
               </div>
@@ -377,124 +617,121 @@
       </div>
     </section>
 
-    <!-- Industries: the automotive origin, then the model extended -->
-    <section class="ln-sec ln-sec--industries" aria-labelledby="audience-title">
-      <div class="container">
-        <header class="ln-head ln-head--split">
-          <div class="ln-head__main">
-            <p class="ln-kicker">
-            <svg class="ln-glyph ln-glyph--network" viewBox="0 0 44 14" aria-hidden="true" focusable="false" data-ln-seen><circle class="ln-g__origin" cx="2.5" cy="7" r="2"/><path class="ln-g__line ln-g__trunk" style="--len:8.5" d="M4.5 7H13"/><path class="ln-g__line ln-g__branch" style="--len:17.5" d="M13 7L17.5 2.5H28.5"/><path class="ln-g__line ln-g__branch ln-g__branch--main" style="--len:22.5" d="M13 7H35.5"/><path class="ln-g__line ln-g__branch" style="--len:17.5" d="M13 7L17.5 11.5H28.5"/><circle class="ln-g__leaf" cx="30.5" cy="2.5" r="1.9"/><circle class="ln-g__stop" cx="38.5" cy="7" r="3"/><circle class="ln-g__leaf" cx="30.5" cy="11.5" r="1.9"/></svg>
-            Industries
-          </p>
-            <h2 class="ln-title" id="audience-title">Built for Businesses That Deliver Every Day</h2>
-          </div>
-          <p class="ln-intro">Whatever you deliver, dependable routes start with dependable drivers. DriverLine provides vetted drivers, active driver management, consistent route coverage, and backup when needed &mdash; built around the delivery operation you already run.</p>
+    <!-- ============ Industries: built in automotive, extended to every daily route ============ -->
+    <section data-surface="light" class="ind" aria-labelledby="audience-title">
+      <div class="wrap">
+        <header class="ind__head">
+          <h2 class="h2" id="audience-title">Built for Businesses That Deliver Every Day</h2>
+          <p class="lede">Whatever you deliver, dependable routes start with dependable drivers. DriverLine provides vetted drivers, active driver management, consistent route coverage, and backup when needed &mdash; built around the delivery operation you already run.</p>
         </header>
 
-        <div class="ln-ind">
-          <article class="ln-origin">
-            <h3 class="ln-origin__title">Built in Automotive Parts Delivery</h3>
-            <p class="ln-origin__desc">DriverLine started in an industry where a missed route costs sales at the counter: same-day auto parts delivery. Fifteen-plus years of automotive operations leadership shaped how we recruit, manage, and back up drivers. That operating discipline applies wherever the need is the same: reliable drivers and consistent route coverage.</p>
-            <ul class="ln-origin__list">
-              <li class="ln-origin__item">
+        <div class="ind__map" data-branch>
+          <svg class="ind__lines" aria-hidden="true" focusable="false"><g class="ind__paths"></g></svg>
+
+          <article class="origin" data-branch-origin>
+            <h3 class="origin__title">Built in Automotive Parts Delivery</h3>
+            <p class="origin__desc">DriverLine started in an industry where a missed route costs sales at the counter: same-day auto parts delivery. Fifteen-plus years of automotive operations leadership shaped how we recruit, manage, and back up drivers. That operating discipline applies wherever the need is the same: reliable drivers and consistent route coverage.</p>
+            <ul class="origin__list">
+              <li>
                 <h4>Automotive &amp; Parts Stores</h4>
                 <p>Independent parts stores and jobbers running same-day routes, where counter sales depend on a driver who shows up.</p>
               </li>
-              <li class="ln-origin__item">
+              <li>
                 <h4>Dealership Parts Departments</h4>
                 <p>Parts departments running wholesale and retail delivery routes that need consistent, vetted driver coverage.</p>
               </li>
             </ul>
-            <p class="ln-origin__proof"><span class="ln-origin__check" aria-hidden="true">&#10003;</span>Different deliveries. Same&nbsp;operating&nbsp;model.</p>
+            <span class="origin__port" data-branch-port aria-hidden="true"></span>
           </article>
 
-          <ul class="ln-ext">
-            <li class="ln-ext__item">
+          <ul class="ext">
+            <li class="ext__item" data-branch-leaf>
               <h3>Pharmacy &amp; Healthcare</h3>
               <p>Pharmacies and healthcare suppliers running scheduled local deliveries that need dependable, consistent drivers on recurring routes.</p>
             </li>
-            <li class="ln-ext__item">
+            <li class="ext__item" data-branch-leaf>
               <h3>Distribution &amp; Wholesale</h3>
               <p>Distributors and wholesalers moving product to customers on daily or scheduled routes, without tying up staff in driver management.</p>
             </li>
-            <li class="ln-ext__item">
+            <li class="ext__item" data-branch-leaf>
               <h3>Industrial &amp; Commercial Supply</h3>
               <p>Industrial and commercial suppliers keeping job sites and customers stocked on recurring routes, where a missed delivery holds up work.</p>
             </li>
-            <li class="ln-ext__item">
+            <li class="ext__item" data-branch-leaf>
               <h3>Retail &amp; Multi-Location Operations</h3>
               <p>Retailers and multi-location operators running local delivery routes that need consistent driver coverage across locations.</p>
             </li>
           </ul>
         </div>
+
+        <p class="ind__proof"><span class="tick tick--light" aria-hidden="true"></span>Different deliveries. Same&nbsp;operating&nbsp;model.</p>
       </div>
     </section>
 
-    <!-- CTA Band -->
-    <section class="cta-band" aria-labelledby="cta-title">
-      <div class="container">
-        <h2 class="cta-band__title" id="cta-title">Ready to Review Your Coverage Needs?</h2>
-        <p class="cta-band__description">
-          Tell us about your coverage needs. We'll assess your routes and show you how DriverLine can help.
-        </p>
-        <div class="cta-band__actions">
-          <a href="contact.html#request-coverage" class="btn btn--primary btn--lg">Request Coverage</a>
+    <!-- ============ Close: the route arrives ============ -->
+    <section data-surface="dark" class="close" aria-labelledby="cta-title">
+      <div class="close__line" aria-hidden="true"><span class="close__trace"></span><span class="close__node"></span></div>
+      <div class="wrap close__inner">
+        <h2 class="close__title" id="cta-title">Ready to Review Your Coverage Needs?</h2>
+        <p class="close__desc">Tell us about your coverage needs. We'll assess your routes and show you how DriverLine can help.</p>
+        <div class="close__act">
+          <a href="contact.html#request-coverage" class="bt bt--primary bt--xl">Request Coverage</a>
+          <a href="tel:+13155052365" class="bt bt--quiet bt--xl">(315) 505-2365</a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="index.html" class="footer__logo">
-            <img src="images/driverline-logo.png" alt="DriverLine logo" class="footer__logo-img">
+  <footer class="ft" data-surface="dark">
+    <div class="wrap">
+      <div class="ft__grid">
+        <div class="ft__brand">
+          <a href="index.html" class="ft__logo">
+            <img src="images/driverline-logo-reverse.png" alt="DriverLine logo" width="500" height="196">
           </a>
-          <p class="footer__description">
-            Dedicated delivery drivers and managed route coverage for businesses that deliver every day.
-          </p>
-          <p class="footer__address">Cicero, NY 13039-9703, US</p>
+          <p class="ft__desc">Dedicated delivery drivers and managed route coverage for businesses that deliver every day.</p>
+          <p class="ft__addr">Cicero, NY 13039-9703, US</p>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Navigation</h4>
-          <nav class="footer__links" aria-label="Footer navigation">
-            <a href="index.html" class="footer__link">Home</a>
-            <a href="about.html" class="footer__link">About</a>
-            <a href="resources.html" class="footer__link">Resources</a>
-            <a href="contact.html" class="footer__link">Contact</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Navigation</h2>
+          <nav class="ft__links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="resources.html">Resources</a>
+            <a href="contact.html">Contact</a>
           </nav>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Legal</h4>
-          <nav class="footer__links" aria-label="Legal links">
-            <a href="privacy.html" class="footer__link">Privacy Policy</a>
-            <a href="terms.html" class="footer__link">Terms &amp; Conditions</a>
-            <a href="driver-sms-consent.html" class="footer__link">Driver SMS Consent (Onboarding)</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Legal</h2>
+          <nav class="ft__links" aria-label="Legal links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="driver-sms-consent.html">Driver SMS Consent (Onboarding)</a>
           </nav>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Contact</h4>
-          <div class="footer__links">
-            <a href="tel:+13155052365" class="footer__link">(315) 505-2365</a>
-            <a href="mailto:info@yourdriverline.com" class="footer__link">info@yourdriverline.com</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Contact</h2>
+          <div class="ft__links">
+            <a href="tel:+13155052365">(315) 505-2365</a>
+            <a href="mailto:info@yourdriverline.com">info@yourdriverline.com</a>
           </div>
         </div>
       </div>
 
-      <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2026 ATOR Enterprises Inc. All rights reserved.</p>
-        <p class="footer__legal-note">DriverLine is a service operated by ATOR Enterprises Inc.</p>
+      <div class="ft__bottom">
+        <p>&copy; 2026 ATOR Enterprises Inc. All rights reserved.</p>
+        <p>DriverLine is a service operated by ATOR Enterprises Inc.</p>
       </div>
     </div>
   </footer>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>
-  <script src="js/line.js" defer></script>
+  <script src="js/cost-calculator.js"></script>
+  <script src="js/studio.js" defer></script>
 </body>
 </html>
