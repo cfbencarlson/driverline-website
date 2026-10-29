@@ -1,7 +1,7 @@
 {
   "name": "DriverLine",
   "short_name": "DriverLine",
-  "description": "Dedicated delivery driver coverage for auto parts stores, dealerships, and related automotive businesses.",
+  "description": "Dedicated delivery drivers and managed route coverage for businesses that deliver every day.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#ffffff",

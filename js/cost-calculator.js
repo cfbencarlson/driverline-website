@@ -114,8 +114,9 @@
     // Calculate total
     const totalMonthlyCost = monthlyWages + monthlyBurden + monthlyFuelCost + monthlyVehicleFixed + monthlyAdminCost;
 
-    // Calculate daily total (21 working days per month)
-    const totalDailyCost = Math.round(totalMonthlyCost / 21);
+    // Calculate daily total (per operating day: days per week x weeks per month)
+    const operatingDaysPerMonth = daysPerWeek * WEEKS_PER_MONTH;
+    const totalDailyCost = Math.round(totalMonthlyCost / operatingDaysPerMonth);
 
     // Update display
     if (resultWages) resultWages.textContent = formatCurrency(monthlyWages);

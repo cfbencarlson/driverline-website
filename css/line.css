@@ -2522,7 +2522,7 @@ html:not(.ln-js) .ln-sec--solution::before { opacity: 1; }
   font-weight: 600;
   letter-spacing: 0;
   text-transform: none;
-  color: var(--ln-text-3);
+  color: #64748B; /* AA at 13px; --ln-text-3 is too light on white */
 }
 
 .page-contact .contact-info__content p,
@@ -2552,7 +2552,7 @@ html:not(.ln-js) .ln-sec--solution::before { opacity: 1; }
 }
 
 .page-contact .contact-form-wrapper__title { padding-bottom: 0; }
-.page-contact .form-required-legend { margin: 10px 0 0; font-size: 0.8125rem; color: var(--ln-text-3); }
+.page-contact .form-required-legend { margin: 10px 0 0; font-size: 0.8125rem; color: #64748B; }
 
 .page-contact .form-group-label {
   margin: 30px 0 18px;
@@ -2586,7 +2586,7 @@ html:not(.ln-js) .ln-sec--solution::before { opacity: 1; }
   .page-contact .form-row--2 .form-group .form-label { align-self: end; }
 }
 
-.page-contact .form-help { font-size: 0.8125rem; color: var(--ln-text-3); }
+.page-contact .form-help { font-size: 0.8125rem; color: #64748B; }
 
 .page-contact #submit-btn { min-height: 52px; border-radius: 4px; margin-top: 8px; }
 
