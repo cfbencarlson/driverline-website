@@ -47,6 +47,8 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     document.documentElement.classList.add('js');
+    // if the Studio script never starts, fall back to the static presentation
+    setTimeout(function () { if (!window.studioReady) document.documentElement.classList.remove('js'); }, 4000);
   </script>
 </head>
 <body class="page-contact">
@@ -103,7 +105,7 @@
           <p class="ch__lede">Share a few details about your operation. We'll respond within one business day with how DriverLine can help.</p>
           <p class="reach"><span>Prefer to talk? <a href="tel:+13155052365">Call (315) 505-2365</a></span><a href="mailto:info@yourdriverline.com">info@yourdriverline.com</a></p>
         </div>
-        <div class="next" aria-labelledby="next-title">
+        <div class="next" role="group" aria-labelledby="next-title">
           <h2 class="next__title" id="next-title">What happens next</h2>
           <ol class="next__route">
             <li class="next__stop is-here"><span class="next__name">Request Coverage</span><span class="next__desc">Tell us about your locations, delivery volume, and coverage needs.</span></li>

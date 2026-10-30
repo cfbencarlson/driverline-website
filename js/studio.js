@@ -8,6 +8,8 @@
 (function () {
   'use strict';
 
+  window.studioReady = true;
+
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const header = document.getElementById('header');
 
@@ -315,10 +317,11 @@
       const pr = port.getBoundingClientRect();
       const x0 = pr.left + pr.width / 2 - box.left;
       const y0 = pr.top + pr.height / 2 - box.top;
+      const rects = leaves.map(function (leaf) { return leaf.getBoundingClientRect(); });
       svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
       group.textContent = '';
       leaves.forEach(function (leaf, i) {
-        const lr = leaf.getBoundingClientRect();
+        const lr = rects[i];
         const x1 = lr.left - box.left - 4;
         const y1 = lr.top - box.top + 31.5;
         const mx = x0 + (x1 - x0) * 0.5;
@@ -575,10 +578,10 @@
       const line = window.innerHeight * 0.62;
       const r = story.getBoundingClientRect();
       const p = reduce.matches ? 1 : Math.min(Math.max((line - r.top) / r.height, 0), 1);
+      // read every stop first, then write, so a scroll frame costs one layout
+      const lit = stops.map(function (k) { return reduce.matches || k.getBoundingClientRect().top + 11 < line; });
       story.style.setProperty('--sp', p.toFixed(4));
-      stops.forEach(function (k) {
-        k.classList.toggle('is-lit', reduce.matches || k.getBoundingClientRect().top + 11 < line);
-      });
+      stops.forEach(function (k, i) { k.classList.toggle('is-lit', lit[i]); });
     }
     const tick = onFrame(update);
     window.addEventListener('scroll', tick, { passive: true });

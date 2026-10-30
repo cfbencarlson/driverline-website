@@ -42,7 +42,9 @@
   <link rel="stylesheet" href="css/studio.css">
 
   <title>Privacy Policy & SMS Terms - DriverLine</title>
-  <script>document.documentElement.classList.add('js');</script>
+  <script>document.documentElement.classList.add('js');
+    // if the Studio script never starts, fall back to the static presentation
+    setTimeout(function () { if (!window.studioReady) document.documentElement.classList.remove('js'); }, 4000);</script>
 </head>
 <body class="page-legal">
   <!-- Skip Link for Accessibility -->

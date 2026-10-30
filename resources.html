@@ -47,6 +47,8 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     document.documentElement.classList.add('js');
+    // if the Studio script never starts, fall back to the static presentation
+    setTimeout(function () { if (!window.studioReady) document.documentElement.classList.remove('js'); }, 4000);
   </script>
 </head>
 <body class="page-resources">
@@ -182,7 +184,7 @@
             </fieldset>
 
             <fieldset class="grp" data-feeds>
-              <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Vehicle Costs</legend>
+              <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Vehicle Costs (Company-Owned)</legend>
               <p class="grp__feeds" aria-hidden="true"><span class="feed feed--2">Fuel Cost</span><span class="feed feed--3">Vehicle Fixed Costs</span></p>
               <div class="grp__fields">
               <div class="fld">
@@ -268,9 +270,9 @@
             </fieldset>
           </form>
 
-          <div class="sheet" id="calculator-results" aria-labelledby="results-title">
+          <div class="sheet" id="calculator-results" role="group" aria-labelledby="results-title">
             <div class="sheet__head">
-              <h3 class="sheet__title" id="results-title">In-House Delivery Cost Estimate</h3>
+              <h2 class="sheet__title" id="results-title">In-House Delivery Cost Estimate</h2>
               <span class="sheet__live" aria-hidden="true"><span class="sheet__live-dot"></span>Updates live</span>
             </div>
             <div class="sheet__totals readout__totals" aria-live="polite">

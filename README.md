@@ -33,10 +33,13 @@ driverline-website/
 ├── sitemap.xml
 ├── site.webmanifest
 ├── CNAME                  # GitHub Pages custom domain
-├── css/styles.css
+├── driver-sms-consent.html
+├── thank-you.html
+├── css/studio.css         # Studio design system (all pages)
 ├── js/
 │   ├── main.js            # Nav, form validation, smooth scroll, calculator handoff
-│   └── cost-calculator.js # Resources page cost estimator
+│   ├── cost-calculator.js # Cost estimator math (home + resources)
+│   └── studio.js          # Studio behaviour: header surface, route graphics, estimator controls
 └── images/
 ```
 
@@ -63,5 +66,5 @@ No build, no preview environment, no separate staging. The deployed site is what
 ## Conventions
 
 - Keep changes tightly scoped. Stage exact files; don't use `git add .` / `-A`.
-- Don't break: the contact form (field IDs, Web3Forms hidden inputs, success/error states), the cost estimator (15 input IDs, 7 result spans, `#request-coverage-btn`, calculator handoff URL shape), or the mobile nav (64px header, `.mobile-nav { top: 64px }`).
+- Don't break: the contact form (field IDs, Web3Forms hidden inputs, success/error states), the cost estimator (15 input IDs, 7 result spans, `#request-coverage-btn`, calculator handoff URL shape), or the mobile nav (`#mobile-menu-btn`, `#mobile-nav`, `.mobile-nav--open`, driven by `main.js`).
 - Do not touch the Operations Dashboard repo from here.
