@@ -6,6 +6,7 @@
   <meta name="description" content="Privacy Policy and SMS Terms for DriverLine, a service operated by ATOR Enterprises Inc. Learn how we collect, use, and protect your information.">
   <meta name="keywords" content="privacy policy, SMS terms, data protection, DriverLine, ATOR Enterprises">
   <meta name="author" content="DriverLine">
+  <meta name="theme-color" content="#050E22">
   <meta name="robots" content="index, follow">
 
   <!-- Canonical URL -->
@@ -38,59 +39,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/redesign.css">
-  <link rel="stylesheet" href="css/line.css">
+  <link rel="stylesheet" href="css/studio.css">
 
   <title>Privacy Policy & SMS Terms - DriverLine</title>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="page-legal">
   <!-- Skip Link for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Header -->
-  <header class="header" id="header">
-    <div class="container">
-      <div class="header__inner">
-        <!-- Logo -->
-        <a href="index.html" class="logo" aria-label="DriverLine Home">
-          <img src="images/driverline-logo.png" alt="DriverLine logo" class="logo__img">
-        </a>
+  <header class="hd hd--light" id="header">
+    <div class="hd__bar">
+      <a href="index.html" class="hd__logo" aria-label="DriverLine Home">
+        <img class="hd__logo-dark" src="images/driverline-logo-reverse.png" alt="DriverLine logo" width="500" height="196">
+        <img class="hd__logo-light" src="images/driverline-logo-cutout.png" alt="" width="500" height="196" aria-hidden="true">
+      </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="nav" aria-label="Main navigation">
-          <a href="index.html" class="nav__link">Home</a>
-          <a href="about.html" class="nav__link">About</a>
-          <a href="resources.html" class="nav__link">Resources</a>
-          <a href="contact.html" class="nav__link">Contact</a>
-        </nav>
+      <nav class="hd__nav" aria-label="Main navigation">
+        <a href="index.html" class="hd__link">Home</a>
+        <a href="about.html" class="hd__link">About</a>
+        <a href="resources.html" class="hd__link">Resources</a>
+        <a href="contact.html" class="hd__link">Contact</a>
+      </nav>
 
-        <!-- Header Actions -->
-        <div class="header__actions">
-          <a href="contact.html#request-coverage" class="btn btn--primary">Request Coverage</a>
-          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-            <svg class="mobile-menu-btn__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
-        </div>
+      <div class="hd__actions">
+        <a href="contact.html#request-coverage" class="bt bt--primary bt--sm hd__cta">Request Coverage</a>
+        <button class="hd__menu" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hd__menu-bar" aria-hidden="true"></span>
+          <span class="hd__menu-bar" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
 
     <!-- Mobile Navigation -->
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="index.html" class="mobile-nav__link">Home</a>
-      <a href="about.html" class="mobile-nav__link">About</a>
-      <a href="resources.html" class="mobile-nav__link">Resources</a>
-      <a href="contact.html" class="mobile-nav__link">Contact</a>
-      <div class="mobile-nav__cta">
-        <a href="contact.html#request-coverage" class="btn btn--primary btn--full">Request Coverage</a>
+    <nav class="mnav" id="mobile-nav" aria-label="Mobile navigation">
+      <div class="mnav__links">
+        <a href="index.html" class="mnav__link" style="--i:0">Home</a>
+        <a href="about.html" class="mnav__link" style="--i:1">About</a>
+        <a href="resources.html" class="mnav__link" style="--i:2">Resources</a>
+        <a href="contact.html" class="mnav__link" style="--i:3">Contact</a>
+      </div>
+      <div class="mnav__foot" style="--i:4">
+        <a href="contact.html#request-coverage" class="bt bt--primary bt--lg bt--block">Request Coverage</a>
       </div>
     </nav>
   </header>
 
   <!-- Main Content -->
-  <main id="main-content">
+  <main id="main-content" class="doc" data-surface="light">
     <!-- Privacy Hero -->
     <section class="about-hero">
       <div class="container">
@@ -229,55 +226,54 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="index.html" class="footer__logo">
-            <img src="images/driverline-logo.png" alt="DriverLine logo" class="footer__logo-img">
+  <footer class="ft" data-surface="dark">
+    <div class="wrap">
+      <div class="ft__grid">
+        <div class="ft__brand">
+          <a href="index.html" class="ft__logo">
+            <img src="images/driverline-logo-reverse.png" alt="DriverLine logo" width="500" height="196">
           </a>
-          <p class="footer__description">
-            Dedicated delivery drivers and managed route coverage for businesses that deliver every day.
-          </p>
-          <p class="footer__address">Cicero, NY 13039-9703, US</p>
+          <p class="ft__desc">Dedicated delivery drivers and managed route coverage for businesses that deliver every day.</p>
+          <p class="ft__addr">Cicero, NY 13039-9703, US</p>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Navigation</h4>
-          <nav class="footer__links" aria-label="Footer navigation">
-            <a href="index.html" class="footer__link">Home</a>
-            <a href="about.html" class="footer__link">About</a>
-            <a href="resources.html" class="footer__link">Resources</a>
-            <a href="contact.html" class="footer__link">Contact</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Navigation</h2>
+          <nav class="ft__links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="resources.html">Resources</a>
+            <a href="contact.html">Contact</a>
           </nav>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Legal</h4>
-          <nav class="footer__links" aria-label="Legal links">
-            <a href="privacy.html" class="footer__link">Privacy Policy</a>
-            <a href="terms.html" class="footer__link">Terms &amp; Conditions</a>
-            <a href="driver-sms-consent.html" class="footer__link">Driver SMS Consent (Onboarding)</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Legal</h2>
+          <nav class="ft__links" aria-label="Legal links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="driver-sms-consent.html">Driver SMS Consent (Onboarding)</a>
           </nav>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Contact</h4>
-          <div class="footer__links">
-            <a href="tel:+13155052365" class="footer__link">(315) 505-2365</a>
-            <a href="mailto:info@yourdriverline.com" class="footer__link">info@yourdriverline.com</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Contact</h2>
+          <div class="ft__links">
+            <a href="tel:+13155052365">(315) 505-2365</a>
+            <a href="mailto:info@yourdriverline.com">info@yourdriverline.com</a>
           </div>
         </div>
       </div>
 
-      <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2026 ATOR Enterprises Inc. All rights reserved.</p>
-        <p class="footer__legal-note">DriverLine is a service operated by ATOR Enterprises Inc.</p>
+      <div class="ft__bottom">
+        <p>&copy; 2026 ATOR Enterprises Inc. All rights reserved.</p>
+        <p>DriverLine is a service operated by ATOR Enterprises Inc.</p>
       </div>
     </div>
   </footer>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>
+  <script src="js/studio.js" defer></script>
 </body>
 </html>

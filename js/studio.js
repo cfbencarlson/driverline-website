@@ -251,6 +251,11 @@
     const steps = document.querySelector('[data-steps]');
     once(steps, function () { steps.classList.add('is-drawn'); }, { threshold: 0.4 });
 
+    // any other drawn-once route device on the page
+    document.querySelectorAll('[data-draw]').forEach(function (el) {
+      once(el, function () { el.classList.add('is-drawn'); }, { threshold: 0.3 });
+    });
+
     const close = document.querySelector('.close');
     once(close, function () { close.classList.add('is-drawn'); }, { threshold: 0.3 });
 
@@ -395,14 +400,49 @@
       });
     }
 
+    // Steppers: tap or hold − / +; the input itself stays the source of truth
+    form.querySelectorAll('.stp').forEach(function (box) {
+      const input = box.querySelector('.stp__input');
+      const btns = box.querySelectorAll('.stp__btn');
+      function sync() {
+        const v = parseFloat(input.value);
+        btns[0].disabled = Number.isFinite(v) && v <= parseFloat(input.min);
+        btns[1].disabled = Number.isFinite(v) && v >= parseFloat(input.max);
+      }
+      function nudge(dir) {
+        if (!Number.isFinite(parseFloat(input.value))) input.value = input.defaultValue;
+        if (dir > 0) input.stepUp(); else input.stepDown();
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        sync();
+      }
+      btns.forEach(function (btn) {
+        let hold = 0, rep = 0;
+        const stop = function () { clearTimeout(hold); clearInterval(rep); };
+        btn.addEventListener('pointerdown', function (e) {
+          if (btn.disabled) return;
+          e.preventDefault();
+          const dir = +btn.dataset.dir;
+          nudge(dir);
+          hold = setTimeout(function () { rep = setInterval(function () { nudge(dir); }, 70); }, 420);
+        });
+        ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { btn.addEventListener(t, stop); });
+        btn.addEventListener('click', function (e) { if (e.detail === 0) nudge(+btn.dataset.dir); });
+      });
+      input.addEventListener('input', sync);
+      sync();
+    });
+
     // Cost mix bar reads the calculator's results
     const ids = ['result-wages', 'result-burden', 'result-fuel', 'result-vehicle-fixed', 'result-admin'];
     const els = ids.map(function (id) { return document.getElementById(id); });
     const segs = Array.from(document.querySelectorAll('.mix__seg'));
+    const pcts = Array.from(document.querySelectorAll('.rows__pct'));
     function mix() {
       const vals = els.map(function (el) { return parseFloat((el.textContent || '0').replace(/[^\d.]/g, '')) || 0; });
       const total = vals.reduce(function (a, b) { return a + b; }, 0) || 1;
       segs.forEach(function (s, i) { s.style.setProperty('--w', (vals[i] / total * 100).toFixed(2)); });
+      pcts.forEach(function (p, i) { p.textContent = Math.round(vals[i] / total * 100) + '%'; });
     }
     mix();
     if ('MutationObserver' in window) {
@@ -433,13 +473,41 @@
     const tick = onFrame(update);
     window.addEventListener('scroll', tick, { passive: true });
     window.addEventListener('resize', tick);
-    const btn = document.getElementById('mobile-menu-btn');
-    if (btn) btn.addEventListener('click', function () { setTimeout(update, 0); });
+    // the menu opens dark; re-read the surface whenever it opens or closes (click, Escape, link)
+    if (menu && 'MutationObserver' in window) {
+      new MutationObserver(update).observe(menu, { attributes: true, attributeFilter: ['class'] });
+    }
     update();
+  }
+
+  // ===========================================
+  // Contact: show an estimate handed over from the cost estimator
+  // (main.js fills the hidden fields; this only presents them)
+  // ===========================================
+
+  function initHandoff() {
+    const box = document.querySelector('[data-handoff]');
+    if (!box || !document.getElementById('contact-form')) return;
+    let q = window.location.search.replace(/^\?/, '');
+    if (!q && window.location.hash.indexOf('?') > -1) q = window.location.hash.split('?')[1] || '';
+    if (!q) return;
+    const params = new URLSearchParams(q);
+    const total = parseInt(params.get('monthly_total'), 10);
+    if (!Number.isFinite(total) || total <= 0) return;
+    const drivers = parseInt(params.get('drivers'), 10);
+    const vehicles = parseInt(params.get('vehicles'), 10);
+    const plural = function (n, word) { return n + ' ' + word + (n === 1 ? '' : 's'); };
+    box.querySelector('[data-handoff-total]').textContent = '$' + total.toLocaleString('en-US');
+    const meta = [];
+    if (Number.isFinite(drivers) && drivers > 0) meta.push(plural(drivers, 'driver'));
+    if (Number.isFinite(vehicles) && vehicles > 0) meta.push(plural(vehicles, 'vehicle'));
+    box.querySelector('[data-handoff-meta]').textContent = meta.join(', ');
+    box.hidden = false;
   }
 
   function init() {
     initHeaderSurface();
+    initHandoff();
     initHero();
     initShift();
     initDrawn();

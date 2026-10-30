@@ -6,6 +6,7 @@
   <meta name="description" content="Use our free In-House Delivery Cost Estimator to understand the true cost of running your own delivery drivers and vehicles.">
   <meta name="keywords" content="delivery cost calculator, in-house delivery costs, driver cost estimator, route delivery costs">
   <meta name="author" content="DriverLine">
+  <meta name="theme-color" content="#050E22">
   <meta name="robots" content="index, follow">
 
   <!-- Canonical URL -->
@@ -38,15 +39,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/redesign.css">
-  <link rel="stylesheet" href="css/line.css">
+  <link rel="stylesheet" href="css/studio.css">
 
   <title>In-House Delivery Cost Estimator - DriverLine Resources</title>
 
   <!-- Analytics placeholder -->
   <script>
     window.dataLayer = window.dataLayer || [];
+    document.documentElement.classList.add('js');
   </script>
 </head>
 <body class="page-resources">
@@ -54,383 +54,353 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Header -->
-  <header class="header" id="header">
-    <div class="container">
-      <div class="header__inner">
-        <!-- Logo -->
-        <a href="index.html" class="logo" aria-label="DriverLine Home">
-          <img src="images/driverline-logo.png" alt="DriverLine logo" class="logo__img">
-        </a>
+  <header class="hd" id="header">
+    <div class="hd__bar">
+      <a href="index.html" class="hd__logo" aria-label="DriverLine Home">
+        <img class="hd__logo-dark" src="images/driverline-logo-reverse.png" alt="DriverLine logo" width="500" height="196">
+        <img class="hd__logo-light" src="images/driverline-logo-cutout.png" alt="" width="500" height="196" aria-hidden="true">
+      </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="nav" aria-label="Main navigation">
-          <a href="index.html" class="nav__link">Home</a>
-          <a href="about.html" class="nav__link">About</a>
-          <a href="resources.html" class="nav__link nav__link--active">Resources</a>
-          <a href="contact.html" class="nav__link">Contact</a>
-        </nav>
+      <nav class="hd__nav" aria-label="Main navigation">
+        <a href="index.html" class="hd__link">Home</a>
+        <a href="about.html" class="hd__link">About</a>
+        <a href="resources.html" class="hd__link" aria-current="page">Resources</a>
+        <a href="contact.html" class="hd__link">Contact</a>
+      </nav>
 
-        <!-- Header Actions -->
-        <div class="header__actions">
-          <a href="contact.html#request-coverage" class="btn btn--primary">Request Coverage</a>
-          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-            <svg class="mobile-menu-btn__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
-        </div>
+      <div class="hd__actions">
+        <a href="contact.html#request-coverage" class="bt bt--primary bt--sm hd__cta">Request Coverage</a>
+        <button class="hd__menu" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hd__menu-bar" aria-hidden="true"></span>
+          <span class="hd__menu-bar" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
 
     <!-- Mobile Navigation -->
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="index.html" class="mobile-nav__link">Home</a>
-      <a href="about.html" class="mobile-nav__link">About</a>
-      <a href="resources.html" class="mobile-nav__link mobile-nav__link--active">Resources</a>
-      <a href="contact.html" class="mobile-nav__link">Contact</a>
-      <div class="mobile-nav__cta">
-        <a href="contact.html#request-coverage" class="btn btn--primary btn--full">Request Coverage</a>
+    <nav class="mnav" id="mobile-nav" aria-label="Mobile navigation">
+      <div class="mnav__links">
+        <a href="index.html" class="mnav__link" style="--i:0">Home</a>
+        <a href="about.html" class="mnav__link" style="--i:1">About</a>
+        <a href="resources.html" class="mnav__link" aria-current="page" style="--i:2">Resources</a>
+        <a href="contact.html" class="mnav__link" style="--i:3">Contact</a>
+      </div>
+      <div class="mnav__foot" style="--i:4">
+        <a href="contact.html#request-coverage" class="bt bt--primary bt--lg bt--block">Request Coverage</a>
       </div>
     </nav>
   </header>
 
   <!-- Main Content -->
   <main id="main-content">
-    <!-- Resources Hero -->
-    <section class="ln-page-hero">
-      <div class="container">
-        <span class="ln-page-hero__eyebrow">DriverLine · Operations Resources</span>
-        <h1 class="ln-page-hero__title">Cost &amp; Operations Resources</h1>
-        <p class="ln-page-hero__lede">Plug in your numbers, see what in-house delivery really costs, and decide whether managed coverage makes more sense for your operation.</p>
+
+    <!-- Page header: what this page is for, and what's on it -->
+    <section class="ph ph--dark ph--tool" data-surface="dark" aria-labelledby="resources-title">
+      <div class="ph__light" aria-hidden="true"></div>
+      <div class="wrap ph__grid">
+        <div class="ph__head">
+          <p class="label label--dark">Operations Resources</p>
+          <h1 class="ph__title" id="resources-title">Cost &amp; Operations Resources</h1>
+        </div>
+        <div class="ph__body">
+          <p>Plug in your numbers, see what in-house delivery really costs, and decide whether managed coverage makes more sense for your operation.</p>
+          <nav class="toc" aria-label="On this page">
+            <a href="#cost-estimator" class="toc__link"><span class="toc__k">Tool</span><span class="toc__t">In-House Delivery Cost Estimator</span></a>
+            <a href="#what-counts" class="toc__link"><span class="toc__k">Reference</span><span class="toc__t">What Counts as Delivery Cost?</span></a>
+          </nav>
+        </div>
       </div>
     </section>
 
-    <!-- Cost Estimator Section -->
-    <section class="ln-sec ln-sec--tool" id="cost-estimator" aria-labelledby="estimator-title">
-      <div class="container">
-        <header class="ln-head ln-head--split">
-          <div class="ln-head__main">
-            <p class="ln-kicker ln-kicker--plain">Calculator</p>
-            <h2 class="ln-title" id="estimator-title">In-House Delivery Cost Estimator</h2>
+    <!-- The estimator -->
+    <section class="tool" id="cost-estimator" data-surface="dark" aria-labelledby="estimator-title">
+      <div class="wrap">
+        <header class="tool__head">
+          <div>
+            <h2 class="h2 h2--dark" id="estimator-title">In-House Delivery Cost Estimator</h2>
+            <p class="lede lede--dark">Many operations underestimate the true cost of in-house delivery. This estimator accounts for the expenses that are often overlooked.</p>
           </div>
-          <p class="ln-intro">Many operations underestimate the true cost of in-house delivery. This estimator accounts for the expenses that are often overlooked.</p>
+          <aside class="tool__note" aria-label="How to use this estimator">
+            <p class="tool__note-k">How to read this</p>
+            <p>Numbers update as you type. This reflects direct operating cost only &mdash; it doesn't price risk exposure, callouts, or management overhead.</p>
+          </aside>
         </header>
 
-        <aside class="estimator-note" aria-label="How to use this estimator">
-          <span class="estimator-note__label">How to read this</span>
-          <p class="estimator-note__text">Numbers update as you type. This reflects direct operating cost only &mdash; it doesn't price risk exposure, callouts, or management overhead.</p>
-        </aside>
-
-        <div class="calculator">
-          <form class="calculator__form" id="cost-calculator-form">
-            <!-- Labor Costs -->
-            <div class="calculator__section">
-              <h3 class="calculator__section-title">
-                <span class="calculator__section-num" aria-hidden="true">01</span>
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                </svg>
-                <span class="calculator__section-text">Labor Costs</span>
-              </h3>
-
-              <div class="calculator__grid">
-                <div class="form-group">
-                  <label for="drivers" class="form-label">Number of Drivers</label>
-                  <input type="number" id="drivers" name="drivers" class="form-input" value="1" min="1" max="50" step="1">
+        <div class="tool__grid">
+          <form class="tool__form" id="cost-calculator-form" novalidate>
+            <fieldset class="grp">
+              <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Labor Costs</legend>
+              <div class="grp__fields">
+              <div class="fld">
+                <label for="drivers" class="fld__label">Number of Drivers</label>
+                <div class="stp">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="drivers" name="drivers" class="stp__input" value="1" min="1" max="50" step="1" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
                 </div>
-
-                <div class="form-group">
-                  <label for="hourlyWage" class="form-label">Hourly Wage ($)</label>
-                  <input type="number" id="hourlyWage" name="hourlyWage" class="form-input" value="18" min="7" max="50" step="0.50">
+              </div>
+              <div class="fld">
+                <label for="hourlyWage" class="fld__label">Hourly Wage ($)</label>
+                <div class="stp" data-pre="$">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="hourlyWage" name="hourlyWage" class="stp__input" value="18" min="7" max="50" step="0.50" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
                 </div>
-
-                <div class="form-group">
-                  <label for="hoursPerDay" class="form-label">Hours per Day</label>
-                  <input type="number" id="hoursPerDay" name="hoursPerDay" class="form-input" value="8" min="1" max="12" step="0.5">
+              </div>
+              <div class="fld">
+                <label for="hoursPerDay" class="fld__label">Hours per Day</label>
+                <div class="stp">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="hoursPerDay" name="hoursPerDay" class="stp__input" value="8" min="1" max="12" step="0.5" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
                 </div>
-
-                <div class="form-group">
-                  <label for="daysPerWeek" class="form-label">Days per Week</label>
-                  <input type="number" id="daysPerWeek" name="daysPerWeek" class="form-input" value="5" min="1" max="7" step="1">
-                </div>
-
-                <div class="form-group">
-                  <label for="overtimeHours" class="form-label">Overtime Hours/Week</label>
-                  <input type="number" id="overtimeHours" name="overtimeHours" class="form-input" value="0" min="0" max="40" step="1">
-                </div>
-
-                <div class="form-group">
-                  <div class="form-label-row">
-                    <label for="employerBurden" class="form-label">Employer Burden (%)</label>
-                    <span class="tooltip-wrap">
-                      <button type="button" class="tooltip-trigger" aria-label="More information about employer burden" aria-describedby="employerBurden-tooltip">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                      </button>
-                      <span class="tooltip" id="employerBurden-tooltip" role="tooltip">Employer burden includes payroll taxes (FICA), federal and state unemployment insurance, workers' comp, and other employment-related costs. Many operations fall in the 15–25% range depending on state and coverage levels. 20% is a reasonable planning assumption. Benefit-heavy packages will increase total burden.</span>
-                    </span>
+              </div>
+              <div class="fld fld--days">
+                <span class="fld__label" id="days-label">Days per Week</span>
+                <div class="days" role="group" aria-labelledby="days-label">
+                  <input type="number" id="daysPerWeek" name="daysPerWeek" class="days__input" value="5" min="1" max="7" step="1" aria-labelledby="days-label">
+                  <div class="days__picks" data-days hidden>
+                    <span class="days__thumb" aria-hidden="true"></span>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="1"><span>1</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="2"><span>2</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="3"><span>3</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="4"><span>4</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="5" checked><span>5</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="6"><span>6</span></label>
+                    <label class="days__pick"><input type="radio" name="daysPick" value="7"><span>7</span></label>
                   </div>
-                  <input type="number" id="employerBurden" name="employerBurden" class="form-input" value="20" min="7" max="40" step="1" aria-describedby="employerBurden-tooltip">
                 </div>
               </div>
-            </div>
-
-            <!-- Vehicle Costs -->
-            <div class="calculator__section">
-              <h3 class="calculator__section-title">
-                <span class="calculator__section-num" aria-hidden="true">02</span>
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
-                </svg>
-                <span class="calculator__section-text">Vehicle Costs (Company-Owned)</span>
-              </h3>
-
-              <div class="calculator__grid">
-                <div class="form-group">
-                  <label for="vehicles" class="form-label">Number of Vehicles</label>
-                  <input type="number" id="vehicles" name="vehicles" class="form-input" value="1" min="1" max="50" step="1">
-                </div>
-
-                <div class="form-group">
-                  <label for="milesPerDay" class="form-label">Miles per Day (per vehicle)</label>
-                  <input type="number" id="milesPerDay" name="milesPerDay" class="form-input" value="80" min="10" max="500" step="10">
-                </div>
-
-                <div class="form-group">
-                  <label for="mpg" class="form-label">Average MPG</label>
-                  <input type="number" id="mpg" name="mpg" class="form-input" value="20" min="8" max="40" step="1">
-                </div>
-
-                <div class="form-group">
-                  <label for="gasPrice" class="form-label">Gas Price ($/gallon)</label>
-                  <input type="number" id="gasPrice" name="gasPrice" class="form-input" value="3.50" min="2" max="7" step="0.10">
-                </div>
-
-                <div class="form-group">
-                  <label for="insurancePerVehicle" class="form-label">Insurance ($/vehicle/month)</label>
-                  <input type="number" id="insurancePerVehicle" name="insurancePerVehicle" class="form-input" value="250" min="50" max="1000" step="25">
-                </div>
-
-                <div class="form-group">
-                  <label for="maintenancePerVehicle" class="form-label">Maintenance ($/vehicle/month)</label>
-                  <input type="number" id="maintenancePerVehicle" name="maintenancePerVehicle" class="form-input" value="150" min="50" max="500" step="25">
-                </div>
-
-                <div class="form-group">
-                  <label for="depreciationPerVehicle" class="form-label">Depreciation ($/vehicle/month)</label>
-                  <input type="number" id="depreciationPerVehicle" name="depreciationPerVehicle" class="form-input" value="450" min="100" max="1500" step="50">
+              <div class="fld">
+                <label for="overtimeHours" class="fld__label">Overtime Hours/Week</label>
+                <div class="stp">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="overtimeHours" name="overtimeHours" class="stp__input" value="0" min="0" max="40" step="1" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
                 </div>
               </div>
-            </div>
-
-            <!-- Admin Costs -->
-            <div class="calculator__section">
-              <h3 class="calculator__section-title">
-                <span class="calculator__section-num" aria-hidden="true">03</span>
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
-                </svg>
-                <span class="calculator__section-text">Administrative Costs</span>
-              </h3>
-
-              <div class="calculator__grid">
-                <div class="form-group">
-                  <label for="adminHoursPerWeek" class="form-label">Admin Hours per Week</label>
-                  <input type="number" id="adminHoursPerWeek" name="adminHoursPerWeek" class="form-input" value="3" min="0" max="40" step="1">
-                </div>
-
-                <div class="form-group">
-                  <label for="adminHourlyRate" class="form-label">Admin Hourly Rate ($)</label>
-                  <input type="number" id="adminHourlyRate" name="adminHourlyRate" class="form-input" value="25" min="10" max="75" step="1">
+              <div class="fld">
+                <label for="employerBurden" class="fld__label">Employer Burden (%)</label>
+                <div class="stp" data-unit="%">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="employerBurden" name="employerBurden" class="stp__input" value="20" min="7" max="40" step="1" inputmode="decimal" aria-describedby="employerBurden-note">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
                 </div>
               </div>
-            </div>
+              <p class="grp__note" id="employerBurden-note">Employer burden includes payroll taxes (FICA), federal and state unemployment insurance, workers' comp, and other employment-related costs. Many operations fall in the 15–25% range depending on state and coverage levels. 20% is a reasonable planning assumption. Benefit-heavy packages will increase total burden.</p>
+              </div>
+            </fieldset>
+
+            <fieldset class="grp">
+              <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Vehicle Costs</legend>
+              <div class="grp__fields">
+              <div class="fld">
+                <label for="vehicles" class="fld__label">Number of Vehicles</label>
+                <div class="stp">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="vehicles" name="vehicles" class="stp__input" value="1" min="1" max="50" step="1" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="milesPerDay" class="fld__label">Miles per Day (per vehicle)</label>
+                <div class="stp">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="milesPerDay" name="milesPerDay" class="stp__input" value="80" min="10" max="500" step="10" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="mpg" class="fld__label">Average MPG</label>
+                <div class="stp">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="mpg" name="mpg" class="stp__input" value="20" min="8" max="40" step="1" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="gasPrice" class="fld__label">Gas Price ($/gallon)</label>
+                <div class="stp" data-pre="$">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="gasPrice" name="gasPrice" class="stp__input" value="3.50" min="2" max="7" step="0.10" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="insurancePerVehicle" class="fld__label">Insurance ($/vehicle/month)</label>
+                <div class="stp" data-pre="$">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="insurancePerVehicle" name="insurancePerVehicle" class="stp__input" value="250" min="50" max="1000" step="25" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="maintenancePerVehicle" class="fld__label">Maintenance ($/vehicle/month)</label>
+                <div class="stp" data-pre="$">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="maintenancePerVehicle" name="maintenancePerVehicle" class="stp__input" value="150" min="50" max="500" step="25" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="depreciationPerVehicle" class="fld__label">Depreciation ($/vehicle/month)</label>
+                <div class="stp" data-pre="$">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="depreciationPerVehicle" name="depreciationPerVehicle" class="stp__input" value="450" min="100" max="1500" step="50" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="grp">
+              <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Administrative Costs</legend>
+              <div class="grp__fields">
+              <div class="fld">
+                <label for="adminHoursPerWeek" class="fld__label">Admin Hours per Week</label>
+                <div class="stp">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="adminHoursPerWeek" name="adminHoursPerWeek" class="stp__input" value="3" min="0" max="40" step="1" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="adminHourlyRate" class="fld__label">Admin Hourly Rate ($)</label>
+                <div class="stp" data-pre="$">
+                  <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
+                  <input type="number" id="adminHourlyRate" name="adminHourlyRate" class="stp__input" value="25" min="10" max="75" step="1" inputmode="decimal">
+                  <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
+                </div>
+              </div>
+              </div>
+            </fieldset>
           </form>
 
-          <!-- Results -->
-          <div class="calculator__results" id="calculator-results">
-            <div class="calculator__results-head">
-              <span class="calculator__results-eyebrow">Estimated Operating Cost</span>
-              <span class="calculator__results-live" aria-hidden="true">
-                <span class="calculator__results-live-dot"></span>
-                Updates live
-              </span>
+          <div class="sheet" id="calculator-results" aria-labelledby="results-title">
+            <div class="sheet__head">
+              <h3 class="sheet__title" id="results-title">In-House Delivery Cost Estimate</h3>
+              <span class="sheet__live" aria-hidden="true"><span class="sheet__live-dot"></span>Updates live</span>
             </div>
-            <h3 class="calculator__results-title">In-House Delivery Cost Estimate</h3>
-
-            <div class="calculator__results-breakdown">
-              <div class="calculator__result-row">
-                <span class="calculator__result-label">Monthly Wages</span>
-                <span class="calculator__result-value" id="result-wages">$0</span>
-              </div>
-              <div class="calculator__result-row">
-                <span class="calculator__result-label">Employer Burden</span>
-                <span class="calculator__result-value" id="result-burden">$0</span>
-              </div>
-              <div class="calculator__result-row">
-                <span class="calculator__result-label">Fuel Cost</span>
-                <span class="calculator__result-value" id="result-fuel">$0</span>
-              </div>
-              <div class="calculator__result-row">
-                <span class="calculator__result-label">Vehicle Fixed Costs</span>
-                <span class="calculator__result-value" id="result-vehicle-fixed">$0</span>
-              </div>
-              <div class="calculator__result-row">
-                <span class="calculator__result-label">Admin Cost</span>
-                <span class="calculator__result-value" id="result-admin">$0</span>
-              </div>
+            <div class="sheet__totals readout__totals" aria-live="polite">
+              <p class="readout__total">
+                <span class="readout__k">Monthly Operating Cost</span>
+                <span class="readout__big" id="result-total">$5,237</span>
+              </p>
+              <p class="readout__daily">
+                <span class="readout__k">Daily Operating Cost</span>
+                <span class="readout__mid" id="result-daily-total">$241</span>
+              </p>
             </div>
-
-            <div class="calculator__total calculator__total--daily">
-              <span class="calculator__total-label">Daily Operating Cost</span>
-              <span class="calculator__total-value" id="result-daily-total">$0</span>
+            <div class="mix" aria-hidden="true">
+              <span class="mix__seg mix__seg--0"></span><span class="mix__seg mix__seg--1"></span><span class="mix__seg mix__seg--2"></span><span class="mix__seg mix__seg--3"></span><span class="mix__seg mix__seg--4"></span>
             </div>
-
-            <div class="calculator__total calculator__total--monthly">
-              <span class="calculator__total-label">Monthly Operating Cost</span>
-              <span class="calculator__total-value" id="result-total">$0</span>
-            </div>
-
-            <div class="calculator__cta">
-              <a href="contact.html#request-coverage" class="btn btn--primary btn--lg" id="request-coverage-btn">Request Coverage</a>
-              <p class="calculator__cta-note">Reflects direct in-house operating cost. Risk, compliance, and driver oversight remain internal.</p>
+            <ul class="rows">
+              <li class="rows__row"><span class="rows__key rows__key--0">Monthly Wages</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-wages">$3,131</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--1">Employer Burden</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-burden">$626</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--2">Fuel Cost</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-fuel">$304</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--3">Vehicle Fixed Costs</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-vehicle-fixed">$850</span></li>
+              <li class="rows__row"><span class="rows__key rows__key--4">Admin Cost</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-admin">$326</span></li>
+            </ul>
+            <div class="sheet__act">
+              <a href="contact.html#request-coverage" class="bt bt--primary bt--lg bt--block" id="request-coverage-btn">Request Coverage</a>
+              <p class="sheet__note">Reflects direct in-house operating cost. Risk, compliance, and driver oversight remain internal.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- What Counts Section -->
-    <section class="ln-sec ln-sec--factors" aria-labelledby="what-counts-title">
-      <div class="container">
-        <header class="ln-head ln-head--split">
-          <div class="ln-head__main">
-            <p class="ln-kicker ln-kicker--plain">Cost Coverage</p>
-            <h2 class="ln-title" id="what-counts-title">What Counts as Delivery Cost?</h2>
+    <!-- Reference: what counts -->
+    <section class="sec sec--white" id="what-counts" data-surface="light" aria-labelledby="what-counts-title">
+      <div class="wrap">
+        <header class="split-head">
+          <div>
+            <p class="label">Cost Coverage</p>
+            <h2 class="h2" id="what-counts-title">What Counts as Delivery Cost?</h2>
           </div>
-          <p class="ln-intro">In-house delivery involves more than most operations realize. Here's what often gets overlooked.</p>
+          <p class="lede">In-house delivery involves more than most operations realize. Here's what often gets overlooked.</p>
         </header>
-
-        <div class="cost-factors">
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Wages &amp; Overtime</span>
+        <div class="ledger">
+          <div class="ledger__group">
+            <h3 class="ledger__title">People &amp; time</h3>
+            <ul class="ledger__list">
+              <li>Wages &amp; Overtime</li>
+              <li>Payroll Taxes (FICA, FUTA, SUTA)</li>
+              <li>Coverage Gaps &amp; Callouts</li>
+              <li>Scheduling &amp; Admin Time</li>
+            </ul>
           </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"/>
-            </svg>
-            <span>Payroll Taxes (FICA, FUTA, SUTA)</span>
-          </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-            </svg>
-            <span>Coverage Gaps &amp; Callouts</span>
-          </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
-            </svg>
-            <span>Vehicle Purchase or Lease</span>
-          </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
-            </svg>
-            <span>Vehicle Depreciation</span>
-          </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 22V6a2 2 0 012-2h8a2 2 0 012 2v16M3 22h12M5 10h6M15 22V10l4-4v10a2 2 0 01-2 2h-2"/>
-            </svg>
-            <span>Fuel Costs</span>
-          </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-            <span>Maintenance &amp; Repairs</span>
-          </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-            <span>Commercial Auto Insurance</span>
-          </div>
-          <div class="cost-factor">
-            <svg class="cost-factor__icon" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-            </svg>
-            <span>Scheduling &amp; Admin Time</span>
+          <div class="ledger__group">
+            <h3 class="ledger__title">Vehicles</h3>
+            <ul class="ledger__list">
+              <li>Vehicle Purchase or Lease</li>
+              <li>Vehicle Depreciation</li>
+              <li>Fuel Costs</li>
+              <li>Maintenance &amp; Repairs</li>
+              <li>Commercial Auto Insurance</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Band -->
-    <section class="cta-band" aria-labelledby="resources-cta-title">
-      <div class="container">
-        <h2 class="cta-band__title" id="resources-cta-title">Ready to Replace In-House Delivery with a Fully Managed Model?</h2>
-        <p class="cta-band__description">
-          Compare your estimated daily and monthly delivery expenses to a fully managed DriverLine coverage model.
-        </p>
-        <div class="cta-band__actions">
-          <a href="contact.html#request-coverage" class="btn btn--primary btn--lg">Request Coverage</a>
+    <!-- Close -->
+    <section data-surface="dark" class="close close--plain" aria-labelledby="resources-cta-title">
+      <div class="close__line" aria-hidden="true"><span class="close__trace"></span><span class="close__node"></span></div>
+      <div class="wrap close__inner">
+        <h2 class="close__title close__title--long" id="resources-cta-title">Ready to Replace In-House Delivery with a Fully Managed Model?</h2>
+        <p class="close__desc">Compare your estimated daily and monthly delivery expenses to a fully managed DriverLine coverage model.</p>
+        <div class="close__act">
+          <a href="contact.html#request-coverage" class="bt bt--primary bt--xl">Request Coverage</a>
+          <a href="tel:+13155052365" class="bt bt--quiet bt--xl">(315) 505-2365</a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="index.html" class="footer__logo">
-            <img src="images/driverline-logo.png" alt="DriverLine logo" class="footer__logo-img">
+  <footer class="ft" data-surface="dark">
+    <div class="wrap">
+      <div class="ft__grid">
+        <div class="ft__brand">
+          <a href="index.html" class="ft__logo">
+            <img src="images/driverline-logo-reverse.png" alt="DriverLine logo" width="500" height="196">
           </a>
-          <p class="footer__description">
-            Dedicated delivery drivers and managed route coverage for businesses that deliver every day.
-          </p>
-          <p class="footer__address">Cicero, NY 13039-9703, US</p>
+          <p class="ft__desc">Dedicated delivery drivers and managed route coverage for businesses that deliver every day.</p>
+          <p class="ft__addr">Cicero, NY 13039-9703, US</p>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Navigation</h4>
-          <nav class="footer__links" aria-label="Footer navigation">
-            <a href="index.html" class="footer__link">Home</a>
-            <a href="about.html" class="footer__link">About</a>
-            <a href="resources.html" class="footer__link">Resources</a>
-            <a href="contact.html" class="footer__link">Contact</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Navigation</h2>
+          <nav class="ft__links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="resources.html">Resources</a>
+            <a href="contact.html">Contact</a>
           </nav>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Legal</h4>
-          <nav class="footer__links" aria-label="Legal links">
-            <a href="privacy.html" class="footer__link">Privacy Policy</a>
-            <a href="terms.html" class="footer__link">Terms &amp; Conditions</a>
-            <a href="driver-sms-consent.html" class="footer__link">Driver SMS Consent (Onboarding)</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Legal</h2>
+          <nav class="ft__links" aria-label="Legal links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="driver-sms-consent.html">Driver SMS Consent (Onboarding)</a>
           </nav>
         </div>
 
-        <div>
-          <h4 class="footer__column-title">Contact</h4>
-          <div class="footer__links">
-            <a href="tel:+13155052365" class="footer__link">(315) 505-2365</a>
-            <a href="mailto:info@yourdriverline.com" class="footer__link">info@yourdriverline.com</a>
+        <div class="ft__col">
+          <h2 class="ft__title">Contact</h2>
+          <div class="ft__links">
+            <a href="tel:+13155052365">(315) 505-2365</a>
+            <a href="mailto:info@yourdriverline.com">info@yourdriverline.com</a>
           </div>
         </div>
       </div>
 
-      <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2026 ATOR Enterprises Inc. All rights reserved.</p>
-        <p class="footer__legal-note">DriverLine is a service operated by ATOR Enterprises Inc.</p>
+      <div class="ft__bottom">
+        <p>&copy; 2026 ATOR Enterprises Inc. All rights reserved.</p>
+        <p>DriverLine is a service operated by ATOR Enterprises Inc.</p>
       </div>
     </div>
   </footer>
@@ -438,5 +408,6 @@
   <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/cost-calculator.js"></script>
+  <script src="js/studio.js" defer></script>
 </body>
 </html>
