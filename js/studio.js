@@ -438,7 +438,65 @@
     const els = ids.map(function (id) { return document.getElementById(id); });
     const segs = Array.from(document.querySelectorAll('.mix__seg'));
     const pcts = Array.from(document.querySelectorAll('.rows__pct'));
+    // Resources: tie each input group to the result lines it feeds, and confirm changes
+    const sheet = document.querySelector('.sheet');
+    const rowsAll = Array.from(document.querySelectorAll('.rows__row'));
+    const FEEDS = [[0, 1], [2, 3], [4]];
+    function feed(map) {
+      rowsAll.forEach(function (r, i) { r.classList.toggle('is-dim', !!map && map.indexOf(i) < 0); });
+      segs.forEach(function (sg, i) { sg.classList.toggle('is-dim', !!map && map.indexOf(i) < 0); });
+    }
+    if (sheet) {
+      form.querySelectorAll('[data-feeds]').forEach(function (g, gi) {
+        g.addEventListener('focusin', function () { feed(FEEDS[gi]); });
+        g.addEventListener('focusout', function (e) { if (!g.contains(e.relatedTarget)) feed(null); });
+        g.addEventListener('pointerenter', function () { feed(FEEDS[gi]); });
+        g.addEventListener('pointerleave', function () { if (!g.contains(document.activeElement)) feed(null); });
+      });
+    }
+    const flashTargets = sheet ? els.concat([document.getElementById('result-total'), document.getElementById('result-daily-total')]) : [];
+    const last = new Map();
+    flashTargets.forEach(function (el) { last.set(el, el.textContent); });
+    function flash() {
+      flashTargets.forEach(function (el) {
+        if (last.get(el) === el.textContent) return;
+        last.set(el, el.textContent);
+        if (reduce.matches) return;
+        el.classList.add('is-changed');
+        clearTimeout(el._t);
+        el._t = setTimeout(function () { el.classList.remove('is-changed'); }, 90);
+      });
+    }
+    const basis = document.querySelector('[data-basis]');
+    function describe() {
+      if (!basis) return;
+      const n = function (id) { const v = parseFloat(document.getElementById(id).value); return Number.isFinite(v) ? Math.round(v) : null; };
+      const d = n('drivers'), v = n('vehicles'), w = n('daysPerWeek');
+      const parts = [];
+      if (d) parts.push(d + (d === 1 ? ' driver' : ' drivers'));
+      if (v) parts.push(v + (v === 1 ? ' vehicle' : ' vehicles'));
+      if (w) parts.push(w + (w === 1 ? ' day a week' : ' days a week'));
+      basis.textContent = parts.join(', ');
+    }
+    form.addEventListener('input', describe);
+    form.addEventListener('change', describe);
+
+    // the cost reference can jump to the input that prices each item
+    document.querySelectorAll('[data-focus-field]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        const input = document.getElementById(a.dataset.focusField);
+        if (!input) return;
+        e.preventDefault();
+        input.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'center' });
+        input.focus({ preventScroll: true });
+        const box = input.closest('.stp');
+        if (box) { box.classList.add('is-called'); setTimeout(function () { box.classList.remove('is-called'); }, 1400); }
+      });
+    });
+
     function mix() {
+      flash();
+      describe();
       const vals = els.map(function (el) { return parseFloat((el.textContent || '0').replace(/[^\d.]/g, '')) || 0; });
       const total = vals.reduce(function (a, b) { return a + b; }, 0) || 1;
       segs.forEach(function (s, i) { s.style.setProperty('--w', (vals[i] / total * 100).toFixed(2)); });
@@ -505,8 +563,57 @@
     box.hidden = false;
   }
 
+  // ===========================================
+  // About: the story spine draws with the reader; chapter stops light as reached
+  // ===========================================
+
+  function initStory() {
+    const story = document.querySelector('[data-story]');
+    if (!story) return;
+    const stops = Array.from(story.querySelectorAll('[data-chap]'));
+    function update() {
+      const line = window.innerHeight * 0.62;
+      const r = story.getBoundingClientRect();
+      const p = reduce.matches ? 1 : Math.min(Math.max((line - r.top) / r.height, 0), 1);
+      story.style.setProperty('--sp', p.toFixed(4));
+      stops.forEach(function (k) {
+        k.classList.toggle('is-lit', reduce.matches || k.getBoundingClientRect().top + 11 < line);
+      });
+    }
+    const tick = onFrame(update);
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+    update();
+  }
+
+  // ===========================================
+  // Contact: a group's stop fills once its required fields have something in them
+  // ===========================================
+
+  function initFormRail() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const groups = Array.from(form.querySelectorAll('[data-fgroup]'));
+    function check() {
+      groups.forEach(function (g) {
+        const req = Array.from(g.querySelectorAll('[required]'));
+        const fields = req.length ? req : Array.from(g.querySelectorAll('input, select, textarea'));
+        const done = req.length
+          ? req.every(function (f) { return f.value.trim() !== ''; })
+          : fields.some(function (f) { return f.value.trim() !== ''; });
+        g.classList.toggle('is-complete', done);
+      });
+    }
+    form.addEventListener('input', check);
+    form.addEventListener('change', check);
+    window.addEventListener('load', check);
+    check();
+  }
+
   function init() {
     initHeaderSurface();
+    initFormRail();
+    initStory();
     initHandoff();
     initHero();
     initShift();

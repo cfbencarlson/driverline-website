@@ -94,42 +94,32 @@
   <!-- Main Content -->
   <main id="main-content">
 
-    <!-- Page header: what this page is for, and what's on it -->
-    <section class="ph ph--dark ph--tool" data-surface="dark" aria-labelledby="resources-title">
-      <div class="ph__light" aria-hidden="true"></div>
-      <div class="wrap ph__grid">
-        <div class="ph__head">
-          <p class="label label--dark">Operations Resources</p>
-          <h1 class="ph__title" id="resources-title">Cost &amp; Operations Resources</h1>
-        </div>
-        <div class="ph__body">
-          <p>Plug in your numbers, see what in-house delivery really costs, and decide whether managed coverage makes more sense for your operation.</p>
-          <nav class="toc" aria-label="On this page">
-            <a href="#cost-estimator" class="toc__link"><span class="toc__k">Tool</span><span class="toc__t">In-House Delivery Cost Estimator</span></a>
-            <a href="#what-counts" class="toc__link"><span class="toc__k">Reference</span><span class="toc__t">What Counts as Delivery Cost?</span></a>
-          </nav>
-        </div>
-      </div>
-    </section>
-
-    <!-- The estimator -->
-    <section class="tool" id="cost-estimator" data-surface="dark" aria-labelledby="estimator-title">
+    <!-- The estimator is the page -->
+    <section class="tool tool--hero" id="cost-estimator" data-surface="dark" aria-labelledby="estimator-title">
+      <div class="tool__light" aria-hidden="true"></div>
       <div class="wrap">
         <header class="tool__head">
           <div>
-            <h2 class="h2 h2--dark" id="estimator-title">In-House Delivery Cost Estimator</h2>
-            <p class="lede lede--dark">Many operations underestimate the true cost of in-house delivery. This estimator accounts for the expenses that are often overlooked.</p>
+            <p class="label label--dark">Cost &amp; Operations Resources</p>
+            <h1 class="tool__title" id="estimator-title">In-House Delivery Cost Estimator</h1>
           </div>
-          <aside class="tool__note" aria-label="How to use this estimator">
-            <p class="tool__note-k">How to read this</p>
-            <p>Numbers update as you type. This reflects direct operating cost only &mdash; it doesn't price risk exposure, callouts, or management overhead.</p>
-          </aside>
+          <div class="tool__intro">
+            <p>Plug in your numbers, see what in-house delivery really costs, and decide whether managed coverage makes more sense for your operation.</p>
+            <p>Many operations underestimate the true cost of in-house delivery. This estimator accounts for the expenses that are often overlooked.</p>
+          </div>
         </header>
+
+        <aside class="tool__note" aria-label="How to use this estimator">
+          <p class="tool__note-k">How to read this</p>
+          <p>Numbers update as you type. This reflects direct operating cost only &mdash; it doesn't price risk exposure, callouts, or management overhead.</p>
+          <a class="tool__note-link" href="#what-counts">What Counts as Delivery Cost?</a>
+        </aside>
 
         <div class="tool__grid">
           <form class="tool__form" id="cost-calculator-form" novalidate>
-            <fieldset class="grp">
+            <fieldset class="grp" data-feeds>
               <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Labor Costs</legend>
+              <p class="grp__feeds" aria-hidden="true"><span class="feed feed--0">Monthly Wages</span><span class="feed feed--1">Employer Burden</span></p>
               <div class="grp__fields">
               <div class="fld">
                 <label for="drivers" class="fld__label">Number of Drivers</label>
@@ -191,8 +181,9 @@
               </div>
             </fieldset>
 
-            <fieldset class="grp">
+            <fieldset class="grp" data-feeds>
               <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Vehicle Costs</legend>
+              <p class="grp__feeds" aria-hidden="true"><span class="feed feed--2">Fuel Cost</span><span class="feed feed--3">Vehicle Fixed Costs</span></p>
               <div class="grp__fields">
               <div class="fld">
                 <label for="vehicles" class="fld__label">Number of Vehicles</label>
@@ -253,8 +244,9 @@
               </div>
             </fieldset>
 
-            <fieldset class="grp">
+            <fieldset class="grp" data-feeds>
               <legend class="grp__title"><span class="pin" aria-hidden="true"></span>Administrative Costs</legend>
+              <p class="grp__feeds" aria-hidden="true"><span class="feed feed--4">Admin Cost</span></p>
               <div class="grp__fields">
               <div class="fld">
                 <label for="adminHoursPerWeek" class="fld__label">Admin Hours per Week</label>
@@ -291,6 +283,7 @@
                 <span class="readout__mid" id="result-daily-total">$241</span>
               </p>
             </div>
+            <p class="sheet__basis" data-basis aria-hidden="true">1 driver, 1 vehicle, 5 days a week</p>
             <div class="mix" aria-hidden="true">
               <span class="mix__seg mix__seg--0"></span><span class="mix__seg mix__seg--1"></span><span class="mix__seg mix__seg--2"></span><span class="mix__seg mix__seg--3"></span><span class="mix__seg mix__seg--4"></span>
             </div>
@@ -301,9 +294,10 @@
               <li class="rows__row"><span class="rows__key rows__key--3">Vehicle Fixed Costs</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-vehicle-fixed">$850</span></li>
               <li class="rows__row"><span class="rows__key rows__key--4">Admin Cost</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-admin">$326</span></li>
             </ul>
+            <p class="sheet__note">Reflects direct in-house operating cost. Risk, compliance, and driver oversight remain internal.</p>
             <div class="sheet__act">
               <a href="contact.html#request-coverage" class="bt bt--primary bt--lg bt--block" id="request-coverage-btn">Request Coverage</a>
-              <p class="sheet__note">Reflects direct in-house operating cost. Risk, compliance, and driver oversight remain internal.</p>
+              <p class="sheet__carry"><span class="pin" aria-hidden="true"></span>Your estimate goes with your request.</p>
             </div>
           </div>
         </div>
@@ -322,22 +316,22 @@
         </header>
         <div class="ledger">
           <div class="ledger__group">
-            <h3 class="ledger__title">People &amp; time</h3>
-            <ul class="ledger__list">
-              <li>Wages &amp; Overtime</li>
-              <li>Payroll Taxes (FICA, FUTA, SUTA)</li>
-              <li>Coverage Gaps &amp; Callouts</li>
-              <li>Scheduling &amp; Admin Time</li>
+            <h3 class="ledger__title"><span class="pin pin--light" aria-hidden="true"></span>Priced in this estimator</h3>
+            <ul class="ledger__list ledger__list--in">
+              <li><a class="ledger__item" href="#hourlyWage" data-focus-field="hourlyWage"><span class="ledger__name">Wages &amp; Overtime</span><span class="ledger__field">Hourly Wage, Overtime Hours</span></a></li>
+              <li><a class="ledger__item" href="#employerBurden" data-focus-field="employerBurden"><span class="ledger__name">Payroll Taxes (FICA, FUTA, SUTA)</span><span class="ledger__field">Employer Burden</span></a></li>
+              <li><a class="ledger__item" href="#gasPrice" data-focus-field="gasPrice"><span class="ledger__name">Fuel Costs</span><span class="ledger__field">Miles, MPG, Gas Price</span></a></li>
+              <li><a class="ledger__item" href="#maintenancePerVehicle" data-focus-field="maintenancePerVehicle"><span class="ledger__name">Maintenance &amp; Repairs</span><span class="ledger__field">Maintenance</span></a></li>
+              <li><a class="ledger__item" href="#depreciationPerVehicle" data-focus-field="depreciationPerVehicle"><span class="ledger__name">Vehicle Depreciation</span><span class="ledger__field">Depreciation</span></a></li>
+              <li><a class="ledger__item" href="#insurancePerVehicle" data-focus-field="insurancePerVehicle"><span class="ledger__name">Commercial Auto Insurance</span><span class="ledger__field">Insurance</span></a></li>
+              <li><a class="ledger__item" href="#adminHoursPerWeek" data-focus-field="adminHoursPerWeek"><span class="ledger__name">Scheduling &amp; Admin Time</span><span class="ledger__field">Admin Hours, Admin Rate</span></a></li>
             </ul>
           </div>
           <div class="ledger__group">
-            <h3 class="ledger__title">Vehicles</h3>
-            <ul class="ledger__list">
-              <li>Vehicle Purchase or Lease</li>
-              <li>Vehicle Depreciation</li>
-              <li>Fuel Costs</li>
-              <li>Maintenance &amp; Repairs</li>
-              <li>Commercial Auto Insurance</li>
+            <h3 class="ledger__title ledger__title--out"><span class="ledger__gap" aria-hidden="true"></span>Not priced here</h3>
+            <ul class="ledger__list ledger__list--out">
+              <li><span class="ledger__item"><span class="ledger__name">Coverage Gaps &amp; Callouts</span></span></li>
+              <li><span class="ledger__item"><span class="ledger__name">Vehicle Purchase or Lease</span></span></li>
             </ul>
           </div>
         </div>
