@@ -34,159 +34,104 @@
   }
 
   // ===========================================
-  // Hero: delivery loops leave your location, visit their stops,
-  // return, and light the territory they cover
+  // The operation in layers (hero and board)
+  // ===========================================
+
+  // scale a stack to its box; W and H are the stack's own footprint at scale 1
+  function fitStack(stk, W, H, max) {
+    const r = stk.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    stk.style.setProperty('--fit', Math.min(r.width / W, r.height / H, max || 9).toFixed(3));
+  }
+
+  // pointing at a route shows its driver, its thread, and the backups that could take it
+  function pointable(stk) {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    stk.classList.add('is-live');
+    stk.querySelectorAll('.rt').forEach(function (rt) {
+      const parts = stk.querySelectorAll('[data-r="' + rt.dataset.r + '"]');
+      const hit = rt.querySelector('.rt__hit');
+      hit.addEventListener('pointerenter', function () {
+        parts.forEach(function (p) { p.classList.add('is-hover'); });
+        stk.classList.add('is-focus');
+      });
+      hit.addEventListener('pointerleave', function () {
+        parts.forEach(function (p) { p.classList.remove('is-hover'); });
+        stk.classList.remove('is-focus');
+      });
+    });
+  }
+
+  // ===========================================
+  // Hero: a plan of loose stops organizes into routes, then the camera
+  // turns to show the layer beneath — DriverLine, carrying the drivers
   // ===========================================
 
   function initHero() {
     const hero = document.querySelector('[data-hero]');
     if (!hero) return;
-
-    const svg = hero.querySelector('.hm');
     const map = hero.querySelector('.hero__map');
-    const tag = hero.querySelector('.hm-tag--depot');
-    const routes = Array.from(hero.querySelectorAll('.hm-route'));
-    const DEPOT = { x: 1160, y: 520 };
-    const AREA = { x: 1240, y: 560, w: 700, h: 620 }; // the coverage cluster
+    const stk = hero.querySelector('.stk--hero');
+    if (!stk) return;
 
-    // Fit the coverage cluster into a chosen part of the map at every size
     function frame() {
-      const r = map.getBoundingClientRect();
-      if (!r.width || !r.height) return;
-      const stacked = getComputedStyle(map).position !== 'absolute';
-      let s, cx, cy;
-      if (stacked) {
-        // its own band below the copy: centred, nearly full width
-        s = Math.min(0.94 * r.width / AREA.w, 0.88 * r.height / AREA.h);
-        cx = r.width / 2; cy = r.height / 2;
-      } else {
-        // beside the copy: fill whatever space the type leaves, clear of header and proof row
+      if (getComputedStyle(map).position === 'absolute') {
+        // beside the copy: whatever space the type leaves free
+        const m = map.getBoundingClientRect();
         let edge = 0;
         const range = document.createRange();
         hero.querySelectorAll('.hero__line > span, .hero__desc, .hero__kicker').forEach(function (el) {
           range.selectNodeContents(el); // the text itself, not its block box
-          edge = Math.max(edge, range.getBoundingClientRect().right - r.left);
+          edge = Math.max(edge, range.getBoundingClientRect().right - m.left);
         });
-        const left = edge + Math.max(48, r.width * 0.04);
-        const right = r.width - Math.max(24, r.width * 0.035);
-        const top = (header ? header.offsetHeight : 72) + 40;
-        const bottom = r.height - 96;
-        s = Math.min((right - left) / AREA.w, (bottom - top) / AREA.h, 1.05);
-        cx = (left + right) / 2; cy = (top + bottom) / 2;
+        stk.style.left = Math.round(edge + Math.max(32, m.width * 0.025)) + 'px';
+        stk.style.width = 'auto';
+      } else {
+        stk.style.left = ''; stk.style.width = '';
       }
-      const w = r.width / s, h = r.height / s;
-      const x = AREA.x - cx / s, y = AREA.y - cy / s;
-      svg.setAttribute('viewBox', [x, y, w, h].map(function (n) { return n.toFixed(1); }).join(' '));
-      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-
-      // strokes and markers keep their on-screen size whatever the scale
-      const u = (1 / s) * (r.width < 768 ? 0.78 : 1);
-      svg.style.setProperty('--u', u.toFixed(3));
-      svg.querySelectorAll('.hm-stop, .hm-depot').forEach(function (g) {
-        if (!g.dataset.at) g.dataset.at = g.getAttribute('transform');
-        g.setAttribute('transform', g.dataset.at + ' scale(' + u.toFixed(3) + ')');
-      });
-      svg.querySelectorAll('.hm-head').forEach(function (g) { g.style.setProperty('--hs', u.toFixed(3)); });
-
-      // the depot label sits inside the south-east territory, clear of the lanes
-      const sx = (DEPOT.x - x) * s, sy = (DEPOT.y - y) * s;
-      const dx = r.width < 768 ? 14 : 26, dy = r.width < 360 ? 12 : r.width < 768 ? 20 : 24;
-      tag.style.transform = 'translate(' + Math.round(sx + dx) + 'px,' + Math.round(sy + dy) + 'px)';
-      tag.classList.add('is-placed');
-      // where the south-east lane runs close, keep only the state line
-      const room = (1551 - x) * s - (sx + dx) - 10;
-      tag.classList.remove('is-compact');
-      if (tag.offsetWidth > room) tag.classList.add('is-compact');
+      fitStack(stk, 450, 400, 1.38);
     }
-
     frame();
     window.addEventListener('resize', onFrame(frame));
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(frame);
 
-    // Measure each loop and where its stops fall along it
-    const data = routes.map(function (g) {
-      const line = g.querySelector('.hm-line');
-      const head = g.querySelector('.hm-head');
-      const len = line.getTotalLength();
-      const stops = Array.from(g.querySelectorAll('.hm-stop')).map(function (st) {
-        const m = /translate\(([\d.]+)[ ,]+([\d.]+)\)/.exec(st.getAttribute('transform'));
-        const sx = parseFloat(m[1]), sy = parseFloat(m[2]);
-        let best = 0, bestD = Infinity;
-        for (let l = 0; l <= len; l += 3) {
-          const p = line.getPointAtLength(l);
-          const d = (p.x - sx) * (p.x - sx) + (p.y - sy) * (p.y - sy);
-          if (d < bestD) { bestD = d; best = l; }
-        }
-        return { el: st, at: best / len };
-      });
-      line.style.strokeDasharray = len + ' ' + len;
-      line.style.strokeDashoffset = len;
-      return { g: g, line: line, head: head, len: len, stops: stops };
-    });
-
-    function settle() {
-      data.forEach(function (r) {
-        r.line.style.strokeDashoffset = 0;
-        r.stops.forEach(function (st) { st.el.classList.add('is-lit'); });
-        r.g.classList.add('is-closed');
-      });
-      hero.classList.add('is-in', 'is-run', 'is-covered');
+    const STEPS = [['is-plan', 250], ['is-route', 900], ['is-lift', 1900], ['is-assign', 1200], ['is-ready', 1400]];
+    if (reduce.matches) {
+      hero.classList.add('is-in');
+      STEPS.forEach(function (s) { hero.classList.add(s[0]); });
+      pointable(stk);
+      return;
     }
 
-    function run() {
-      hero.classList.add('is-in', 'is-run');
-      const t0 = performance.now() + 620;
-      const DUR = 1500, GAP = 260;
-      const ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
-      const end = (data.length - 1) * GAP + DUR;
-
-      function step(now) {
-        const t = now - t0;
-        data.forEach(function (r, i) {
-          const k = Math.min(Math.max((t - i * GAP) / DUR, 0), 1);
-          const e = ease(k);
-          r.line.style.strokeDashoffset = (r.len * (1 - e)).toFixed(1);
-          if (k > 0 && k < 1) {
-            const pt = r.line.getPointAtLength(r.len * e);
-            r.head.setAttribute('transform', 'translate(' + pt.x.toFixed(1) + ' ' + pt.y.toFixed(1) + ')');
-            r.head.classList.add('is-moving');
-          } else {
-            r.head.classList.remove('is-moving');
-          }
-          r.stops.forEach(function (st) { if (e >= st.at) st.el.classList.add('is-lit'); });
-          if (k === 1) r.g.classList.add('is-closed');
-        });
-        if (t < end) requestAnimationFrame(step);
-        else hero.classList.add('is-covered');
-      }
-      requestAnimationFrame(step);
-    }
-
-    // Desktop: pointing at a loop isolates it (once the run has settled)
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      routes.forEach(function (g) {
-        const hit = g.querySelector('.hm-hit');
-        hit.addEventListener('pointerenter', function () {
-          if (!hero.classList.contains('is-covered')) return;
-          g.classList.add('is-hover'); hero.classList.add('is-focus');
-        });
-        hit.addEventListener('pointerleave', function () {
-          g.classList.remove('is-hover'); hero.classList.remove('is-focus');
-        });
+    let shown = false, seen = false, started = false;
+    function play() {
+      if (started || !shown || !seen) return;
+      if (document.hidden) { document.addEventListener('visibilitychange', play, { once: true }); return; }
+      started = true;
+      let at = 0;
+      STEPS.forEach(function (s, i) {
+        at += s[1];
+        setTimeout(function () {
+          hero.classList.add(s[0]);
+          if (i === STEPS.length - 1) setTimeout(function () { pointable(stk); }, 700);
+        }, at);
       });
     }
-
-    if (reduce.matches) { settle(); return; }
-
+    function show() {
+      if (shown) return;
+      shown = true;
+      hero.classList.add('is-in');
+      play();
+    }
     const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-    let started = false;
-    const go = function () { if (!started) { started = true; run(); } };
-    ready.then(function () { requestAnimationFrame(go); });
-    setTimeout(go, 900); // never hold the page for fonts
+    ready.then(function () { requestAnimationFrame(show); });
+    setTimeout(show, 900); // never hold the page for fonts
+    once(map, function () { seen = true; play(); }, { threshold: 0.35 });
   }
 
   // ===========================================
-  // Shift: the board follows the reader from uncovered to covered
+  // Shift: in-house on one layer, then DriverLine's layer beneath.
+  // Scroll picks the chapter; CSS plays each change and reverses it.
   // ===========================================
 
   function initShift() {
@@ -195,16 +140,45 @@
     const board = root.querySelector('[data-board]');
     const items = Array.from(root.querySelectorAll('.plist__item'));
     const solution = root.querySelector('[data-phase="solution"]');
-    const lines = Array.from(board.querySelectorAll('.bm-line'));
-    const stops = Array.from(board.querySelectorAll('.bm-stop, .board__dot[data-g]'));
     const caption = board.querySelector('[data-focus]');
     const titles = items.map(function (it) { return it.querySelector('.plist__title').textContent.trim(); });
     const wide = window.matchMedia('(min-width: 1024px)');
-    let shown = caption ? caption.textContent : '', swapT = 0;
+    const stk = board.querySelector('.stk--board');
+    let shown = caption ? caption.textContent : '', swapT = 0, timers = [];
+
+    // 0 operating · 1 a driver calls out · 2 the gap is yours · 3 DriverLine
+    function chapter() {
+      const vh = window.innerHeight, focus = vh * 0.45;
+      if (solution.getBoundingClientRect().top < vh * 0.7) return 3;
+      let reached = -1;
+      items.forEach(function (it, i) { if (it.getBoundingClientRect().top < focus) reached = i; });
+      return reached >= 3 ? 2 : reached === 2 ? 1 : 0;
+    }
+
+    function managed(on) {
+      timers.forEach(clearTimeout);
+      timers = [];
+      if (!on) {
+        board.classList.remove('is-managed', 'is-on', 'is-disrupt', 'is-backup', 'is-done');
+        return;
+      }
+      board.classList.add('is-managed', 'is-on');
+      // reduced motion keeps the clearest still: every route tied to a driver, backups on standby
+      if (reduce.matches) { board.classList.add('is-done'); return; }
+      const r = board.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) {
+        board.classList.add('is-disrupt', 'is-backup', 'is-done');
+        return;
+      }
+      // a pause once the layers settle, then the callout underneath, then the backup
+      timers.push(setTimeout(function () { board.classList.add('is-disrupt'); }, 3900));
+      timers.push(setTimeout(function () { board.classList.add('is-backup'); }, 5100));
+      timers.push(setTimeout(function () { board.classList.add('is-done'); }, 7400));
+    }
 
     function update() {
-      const vh = window.innerHeight;
-      const focus = vh * 0.45;
+      const vh = window.innerHeight, focus = vh * 0.45;
+      const ch = chapter();
 
       // active challenge: the item crossing the reading line
       let active = -1;
@@ -212,36 +186,25 @@
         const r = it.getBoundingClientRect();
         if (r.top < focus && r.bottom > focus * 0.5) active = i;
       });
-
-      // coverage: closes across the solution's opening
-      const s = solution.getBoundingClientRect();
-      const span = vh * 1.05;
-      const p = Math.min(Math.max((vh * 0.85 - s.top) / span, 0), 1);
-      const closed = Math.round(p * 6);
-      const on = s.top < vh * 0.7;
-
-      items.forEach(function (it, i) { it.classList.toggle('is-active', i === active && !on); });
-      const label = active >= 0 && wide.matches ? titles[active] : 'Coverage gaps';
+      items.forEach(function (it, i) { it.classList.toggle('is-active', i === active && ch < 3); });
+      const label = active >= 0 && wide.matches && ch < 3 ? titles[active] : 'Coverage gaps';
       if (caption && label !== shown) {
         shown = label;
         caption.classList.add('is-swap');
         clearTimeout(swapT);
         swapT = setTimeout(function () { caption.textContent = shown; caption.classList.remove('is-swap'); }, 160);
       }
-      lines.forEach(function (l) { l.classList.toggle('is-closed', +l.dataset.g < closed); });
-      stops.forEach(function (st) {
-        const g = +st.dataset.g;
-        st.classList.toggle('is-closed', g < closed);
-        st.classList.toggle('is-active', g === active && !on);
-      });
-      board.classList.toggle('is-on', on);
-      board.classList.toggle('is-done', closed >= 6);
-      board.style.setProperty('--cov', (closed / 6).toFixed(3));
+
+      board.classList.toggle('is-callout', ch >= 1);
+      board.classList.toggle('is-burden', ch >= 2);
+      if ((ch === 3) !== board.classList.contains('is-managed')) managed(ch === 3);
     }
 
+    const fit = function () { if (stk) fitStack(stk, 440, 420, 1.25); };
+    fit();
     const tick = onFrame(update);
     window.addEventListener('scroll', tick, { passive: true });
-    window.addEventListener('resize', tick);
+    window.addEventListener('resize', onFrame(function () { fit(); update(); }));
     update();
   }
 
@@ -261,38 +224,20 @@
     const close = document.querySelector('.close');
     once(close, function () { close.classList.add('is-drawn'); }, { threshold: 0.3 });
 
-    // the closing section carries a settled copy of the hero's map
-    const source = document.querySelector('.hero .hm');
+    // the closing section carries the settled operation, still
+    const source = document.querySelector('.hero .stk--hero');
     if (close && source) {
       const wrap = document.createElement('div');
       wrap.className = 'close__map';
       wrap.setAttribute('aria-hidden', 'true');
       const copy = source.cloneNode(true);
       copy.removeAttribute('style');
-      copy.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
-      copy.querySelectorAll('.hm-line').forEach(function (n) { n.removeAttribute('style'); });
-      copy.querySelectorAll('.hm-route').forEach(function (n) { n.classList.add('is-closed'); n.classList.remove('is-hover'); });
-      copy.querySelectorAll('.hm-stop').forEach(function (n) { n.classList.add('is-lit'); });
+      copy.removeAttribute('data-stack');
+      copy.classList.remove('is-live', 'is-focus');
+      copy.querySelectorAll('.is-hover').forEach(function (n) { n.classList.remove('is-hover'); });
       wrap.appendChild(copy);
       close.insertBefore(wrap, close.firstChild);
-
-      const AREA = { x: 1240, y: 560, w: 700, h: 620 };
-      const frameClose = function () {
-        const r = wrap.getBoundingClientRect();
-        if (!r.width || !r.height) return;
-        const band = r.width < 768;
-        const s = band
-          ? Math.min(0.9 * r.width / AREA.w, 0.84 * r.height / AREA.h)
-          : Math.min(0.4 * r.width / AREA.w, 0.72 * r.height / AREA.h);
-        const cx = band ? r.width / 2 : r.width * 0.74, cy = r.height / 2;
-        const u = (1 / s) * (band ? 0.78 : 1);
-        copy.setAttribute('viewBox', [AREA.x - cx / s, AREA.y - cy / s, r.width / s, r.height / s].map(function (n) { return n.toFixed(1); }).join(' '));
-        copy.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-        copy.style.setProperty('--u', u.toFixed(3));
-        copy.querySelectorAll('.hm-stop, .hm-depot').forEach(function (g) {
-          g.setAttribute('transform', g.dataset.at + ' scale(' + u.toFixed(3) + ')');
-        });
-      };
+      const frameClose = function () { fitStack(copy, 440, 370, 1.3); };
       frameClose();
       window.addEventListener('resize', onFrame(frameClose));
     }

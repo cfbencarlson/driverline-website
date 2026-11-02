@@ -99,322 +99,71 @@
     <!-- ============ Hero: routes from your location, resolving to covered ============ -->
     <section data-surface="dark" class="hero" data-hero aria-labelledby="hero-title">
       <div class="hero__map" aria-hidden="true">
-        <svg class="hm" viewBox="420 40 1240 900" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <defs>
-            <radialGradient id="hm-pool" cx="1240" cy="560" r="560" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#2F6BFF" stop-opacity="0.22"/>
-              <stop offset="0.55" stop-color="#2F6BFF" stop-opacity="0.05"/>
-              <stop offset="1" stop-color="#2F6BFF" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <rect class="hm-pool" x="-400" y="-300" width="2400" height="1600" fill="url(#hm-pool)"/>
-          <g class="hm-streets">
-          <path d="M-360 -300V91"/>
-          <path d="M-360 251V642"/>
-          <path d="M-360 642V896"/>
-          <path d="M-360 1056V1300"/>
-          <path d="M-280 -300V-92"/>
-          <path d="M-280 68V383"/>
-          <path d="M-280 383V589"/>
-          <path d="M-280 589V1053"/>
-          <path d="M-280 1213V1300"/>
-          <path d="M-200 -300V179"/>
-          <path d="M-200 179V609"/>
-          <path d="M-200 609V799"/>
-          <path d="M-200 799V1056"/>
-          <path d="M-200 1056V1300"/>
-          <path d="M-120 -300V258"/>
-          <path d="M-120 418V745"/>
-          <path d="M-120 905V1300"/>
-          <path d="M-40 -300V125"/>
-          <path d="M-40 125V612"/>
-          <path d="M-40 692V1107"/>
-          <path d="M-40 1107V1300"/>
-          <path d="M40 -300V94"/>
-          <path d="M40 174V542"/>
-          <path d="M40 542V1064"/>
-          <path d="M40 1144V1300"/>
-          <path d="M120 -300V122"/>
-          <path d="M120 202V377"/>
-          <path d="M120 377V825"/>
-          <path d="M120 825V1190"/>
-          <path d="M120 1190V1300"/>
-          <path d="M200 -300V-106"/>
-          <path d="M200 -106V404"/>
-          <path d="M200 404V673"/>
-          <path d="M200 673V859"/>
-          <path d="M200 1019V1300"/>
-          <path d="M280 -300V74"/>
-          <path d="M280 74V523"/>
-          <path d="M280 523V1081"/>
-          <path d="M280 1161V1300"/>
-          <path d="M360 -300V19"/>
-          <path d="M360 99V266"/>
-          <path d="M360 426V974"/>
-          <path d="M360 974V1202"/>
-          <path d="M360 1202V1300"/>
-          <path d="M440 -300V-135"/>
-          <path d="M440 -135V263"/>
-          <path d="M440 423V673"/>
-          <path d="M440 673V1062"/>
-          <path d="M440 1062V1300"/>
-          <path d="M520 -300V74"/>
-          <path d="M520 234V453"/>
-          <path d="M520 613V988"/>
-          <path d="M520 988V1148"/>
-          <path d="M520 1228V1300"/>
-          <path d="M600 -300V-130"/>
-          <path d="M600 -130V125"/>
-          <path d="M600 285V753"/>
-          <path d="M600 753V934"/>
-          <path d="M600 934V1203"/>
-          <path d="M680 -300V-8"/>
-          <path d="M680 -8V547"/>
-          <path d="M680 627V938"/>
-          <path d="M680 1098V1295"/>
-          <path d="M680 1295V1300"/>
-          <path d="M760 -300V158"/>
-          <path d="M760 158V325"/>
-          <path d="M760 405V755"/>
-          <path d="M760 915V1140"/>
-          <path d="M840 -300V154"/>
-          <path d="M840 154V511"/>
-          <path d="M840 511V992"/>
-          <path d="M840 992V1300"/>
-          <path d="M920 -300V172"/>
-          <path d="M920 172V703"/>
-          <path d="M920 703V944"/>
-          <path d="M920 944V1300"/>
-          <path d="M1000 -300V107"/>
-          <path d="M1000 107V482"/>
-          <path d="M1000 482V695"/>
-          <path d="M1000 695V874"/>
-          <path d="M1000 954V1236"/>
-          <path d="M1080 -300V-9"/>
-          <path d="M1080 151V616"/>
-          <path d="M1080 776V1086"/>
-          <path d="M1080 1086V1300"/>
-          <path d="M1160 -300V-76"/>
-          <path d="M1160 -76V329"/>
-          <path d="M1160 329V632"/>
-          <path d="M1160 632V896"/>
-          <path d="M1160 896V1091"/>
-          <path d="M1160 1171V1300"/>
-          <path d="M1240 -300V-13"/>
-          <path d="M1240 -13V170"/>
-          <path d="M1240 170V474"/>
-          <path d="M1240 554V985"/>
-          <path d="M1240 985V1192"/>
-          <path d="M1240 1272V1300"/>
-          <path d="M1320 -300V29"/>
-          <path d="M1320 29V491"/>
-          <path d="M1320 491V660"/>
-          <path d="M1320 820V1163"/>
-          <path d="M1320 1243V1300"/>
-          <path d="M1400 -300V166"/>
-          <path d="M1400 166V572"/>
-          <path d="M1400 572V1106"/>
-          <path d="M1400 1186V1300"/>
-          <path d="M1480 -300V-103"/>
-          <path d="M1480 -103V288"/>
-          <path d="M1480 368V905"/>
-          <path d="M1480 905V1300"/>
-          <path d="M1560 -300V34"/>
-          <path d="M1560 114V317"/>
-          <path d="M1560 477V676"/>
-          <path d="M1560 836V1011"/>
-          <path d="M1560 1171V1300"/>
-          <path d="M1640 -300V179"/>
-          <path d="M1640 339V693"/>
-          <path d="M1640 693V1164"/>
-          <path d="M1640 1164V1300"/>
-          <path d="M1720 -300V187"/>
-          <path d="M1720 187V478"/>
-          <path d="M1720 638V1170"/>
-          <path d="M1720 1250V1300"/>
-          <path d="M1800 -300V85"/>
-          <path d="M1800 245V682"/>
-          <path d="M1800 682V1107"/>
-          <path d="M1800 1107V1300"/>
-          <path d="M1880 -300V106"/>
-          <path d="M1880 106V383"/>
-          <path d="M1880 383V797"/>
-          <path d="M1880 957V1247"/>
-          <path d="M1880 1247V1300"/>
-          <path d="M1960 -300V-67"/>
-          <path d="M1960 -67V358"/>
-          <path d="M1960 358V903"/>
-          <path d="M1960 983V1300"/>
-          <path d="M-400 -280H55"/>
-          <path d="M55 -280H422"/>
-          <path d="M582 -280H1122"/>
-          <path d="M1202 -280H1503"/>
-          <path d="M1663 -280H2000"/>
-          <path d="M-400 -200H-91"/>
-          <path d="M69 -200H381"/>
-          <path d="M461 -200H768"/>
-          <path d="M768 -200H1036"/>
-          <path d="M1196 -200H1575"/>
-          <path d="M1575 -200H2000"/>
-          <path d="M-400 -120H-59"/>
-          <path d="M-59 -120H198"/>
-          <path d="M358 -120H799"/>
-          <path d="M879 -120H1188"/>
-          <path d="M1348 -120H1743"/>
-          <path d="M1903 -120H2000"/>
-          <path d="M-400 -40H166"/>
-          <path d="M326 -40H690"/>
-          <path d="M690 -40H1314"/>
-          <path d="M1314 -40H1656"/>
-          <path d="M1656 -40H2000"/>
-          <path d="M-400 40H92"/>
-          <path d="M172 40H530"/>
-          <path d="M530 40H1058"/>
-          <path d="M1058 40H1465"/>
-          <path d="M1625 40H1922"/>
-          <path d="M1922 40H2000"/>
-          <path d="M-400 120H-79"/>
-          <path d="M-79 120H528"/>
-          <path d="M528 120H1050"/>
-          <path d="M1050 120H1478"/>
-          <path d="M1478 120H2000"/>
-          <path d="M-400 200H-161"/>
-          <path d="M-161 200H141"/>
-          <path d="M301 200H632"/>
-          <path d="M632 200H1197"/>
-          <path d="M1197 200H1783"/>
-          <path d="M1943 200H2000"/>
-          <path d="M-400 280H-109"/>
-          <path d="M-109 280H230"/>
-          <path d="M310 280H786"/>
-          <path d="M786 280H1187"/>
-          <path d="M1187 280H1431"/>
-          <path d="M1591 280H2000"/>
-          <path d="M-400 360H-134"/>
-          <path d="M26 360H458"/>
-          <path d="M458 360H978"/>
-          <path d="M978 360H1370"/>
-          <path d="M1450 360H1887"/>
-          <path d="M1967 360H2000"/>
-          <path d="M-400 440H-150"/>
-          <path d="M-150 440H159"/>
-          <path d="M159 440H558"/>
-          <path d="M558 440H916"/>
-          <path d="M996 440H1330"/>
-          <path d="M1330 440H1708"/>
-          <path d="M1708 440H1927"/>
-          <path d="M-400 520H-25"/>
-          <path d="M135 520H728"/>
-          <path d="M808 520H1257"/>
-          <path d="M1257 520H1568"/>
-          <path d="M1568 520H1987"/>
-          <path d="M1987 520H2000"/>
-          <path d="M-400 600H151"/>
-          <path d="M151 600H591"/>
-          <path d="M591 600H1055"/>
-          <path d="M1215 600H1667"/>
-          <path d="M1667 600H2000"/>
-          <path d="M-400 680H24"/>
-          <path d="M104 680H729"/>
-          <path d="M729 680H1196"/>
-          <path d="M1276 680H1635"/>
-          <path d="M1795 680H2000"/>
-          <path d="M-400 760H-45"/>
-          <path d="M-45 760H433"/>
-          <path d="M513 760H1006"/>
-          <path d="M1166 760H1468"/>
-          <path d="M1628 760H2000"/>
-          <path d="M-400 840H57"/>
-          <path d="M57 840H566"/>
-          <path d="M726 840H940"/>
-          <path d="M940 840H1404"/>
-          <path d="M1564 840H2000"/>
-          <path d="M-400 920H51"/>
-          <path d="M51 920H604"/>
-          <path d="M604 920H837"/>
-          <path d="M997 920H1408"/>
-          <path d="M1568 920H1905"/>
-          <path d="M1905 920H2000"/>
-          <path d="M-400 1000H-135"/>
-          <path d="M-55 1000H367"/>
-          <path d="M527 1000H995"/>
-          <path d="M1075 1000H1330"/>
-          <path d="M1330 1000H1744"/>
-          <path d="M1744 1000H2000"/>
-          <path d="M-400 1080H159"/>
-          <path d="M159 1080H377"/>
-          <path d="M377 1080H656"/>
-          <path d="M656 1080H862"/>
-          <path d="M942 1080H1306"/>
-          <path d="M1386 1080H1711"/>
-          <path d="M1871 1080H2000"/>
-          <path d="M-400 1160H174"/>
-          <path d="M174 1160H810"/>
-          <path d="M890 1160H1457"/>
-          <path d="M1457 1160H2000"/>
-          <path d="M-400 1240H-189"/>
-          <path d="M-29 1240H495"/>
-          <path d="M655 1240H1277"/>
-          <path d="M1277 1240H1752"/>
-          <path d="M1752 1240H2000"/>
-          </g><g class="hm-streets hm-streets--major">
-          <path d="M920 -300V1300"/>
-          <path d="M1160 -300V1300"/>
-          <path d="M1400 -300V1300"/>
-          <path d="M1560 -300V1300"/>
-          <path d="M-400 360H2000"/>
-          <path d="M-400 520H2000"/>
-          <path d="M-400 680H2000"/>
-          <path d="M-400 840H2000"/>
-          <path d="M420 1300C700 1080 900 960 1240 960S1700 1060 2000 1000"/><path d="M2000 60C1800 120 1680 200 1640 360S1700 700 2000 800"/>
-          </g><g class="hm-routes">
-          <g class="hm-route" data-route="0">
-          <path class="hm-area" d="M1169 511L1169.0 389.0Q1169 369 1189.0 369.0L1309.0 369.0Q1329 369 1329.0 349.0L1329.0 309.0Q1329 289 1349.0 289.0L1451.0 289.0Q1471 289 1471.0 309.0L1471.0 411.0Q1471 431 1451.0 431.0L1411.0 431.0Q1391 431 1391.0 451.0L1391.0 491.0Q1391 511 1371.0 511.0L1169 511Z"/>
-          <path class="hm-hit" d="M1169 511L1169.0 389.0Q1169 369 1189.0 369.0L1309.0 369.0Q1329 369 1329.0 349.0L1329.0 309.0Q1329 289 1349.0 289.0L1451.0 289.0Q1471 289 1471.0 309.0L1471.0 411.0Q1471 431 1451.0 431.0L1411.0 431.0Q1391 431 1391.0 451.0L1391.0 491.0Q1391 511 1371.0 511.0L1169 511Z"/>
-          <path class="hm-track" d="M1169 511L1169.0 389.0Q1169 369 1189.0 369.0L1309.0 369.0Q1329 369 1329.0 349.0L1329.0 309.0Q1329 289 1349.0 289.0L1451.0 289.0Q1471 289 1471.0 309.0L1471.0 411.0Q1471 431 1451.0 431.0L1411.0 431.0Q1391 431 1391.0 451.0L1391.0 491.0Q1391 511 1371.0 511.0L1169 511Z"/>
-          <path class="hm-line" d="M1169 511L1169.0 389.0Q1169 369 1189.0 369.0L1309.0 369.0Q1329 369 1329.0 349.0L1329.0 309.0Q1329 289 1349.0 289.0L1451.0 289.0Q1471 289 1471.0 309.0L1471.0 411.0Q1471 431 1451.0 431.0L1411.0 431.0Q1391 431 1391.0 451.0L1391.0 491.0Q1391 511 1371.0 511.0L1169 511Z"/>
-          <g class="hm-stop" transform="translate(1236.6 369.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1361.0 289.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1471.0 341.4)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1391.0 463.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-head" transform="translate(1169 511)"><circle class="hm-head__halo" r="11"/><circle class="hm-head__dot" r="4"/></g>
-          </g>
-          <g class="hm-route" data-route="1">
-          <path class="hm-area" d="M1169 529L1531.0 529.0Q1551 529 1551.0 549.0L1551.0 651.0Q1551 671 1531.0 671.0L1411.0 671.0Q1391 671 1391.0 691.0L1391.0 811.0Q1391 831 1371.0 831.0L1189.0 831.0Q1169 831 1169.0 811.0L1169 529Z"/>
-          <path class="hm-hit" d="M1169 529L1531.0 529.0Q1551 529 1551.0 549.0L1551.0 651.0Q1551 671 1531.0 671.0L1411.0 671.0Q1391 671 1391.0 691.0L1391.0 811.0Q1391 831 1371.0 831.0L1189.0 831.0Q1169 831 1169.0 811.0L1169 529Z"/>
-          <path class="hm-track" d="M1169 529L1531.0 529.0Q1551 529 1551.0 549.0L1551.0 651.0Q1551 671 1531.0 671.0L1411.0 671.0Q1391 671 1391.0 691.0L1391.0 811.0Q1391 831 1371.0 831.0L1189.0 831.0Q1169 831 1169.0 811.0L1169 529Z"/>
-          <path class="hm-line" d="M1169 529L1531.0 529.0Q1551 529 1551.0 549.0L1551.0 651.0Q1551 671 1531.0 671.0L1411.0 671.0Q1391 671 1391.0 691.0L1391.0 811.0Q1391 831 1371.0 831.0L1189.0 831.0Q1169 831 1169.0 811.0L1169 529Z"/>
-          <g class="hm-stop" transform="translate(1415.2 529.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1519.0 671.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1391.0 799.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1169.0 775.2)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-head" transform="translate(1169 529)"><circle class="hm-head__halo" r="11"/><circle class="hm-head__dot" r="4"/></g>
-          </g>
-          <g class="hm-route" data-route="2">
-          <path class="hm-area" d="M1151 529L1151.0 571.0Q1151 591 1131.0 591.0L1091.0 591.0Q1071 591 1071.0 611.0L1071.0 731.0Q1071 751 1051.0 751.0L949.0 751.0Q929 751 929.0 731.0L929.0 629.0Q929 609 949.0 609.0L989.0 609.0Q1009 609 1009.0 589.0L1009.0 549.0Q1009 529 1029.0 529.0L1151 529Z"/>
-          <path class="hm-hit" d="M1151 529L1151.0 571.0Q1151 591 1131.0 591.0L1091.0 591.0Q1071 591 1071.0 611.0L1071.0 731.0Q1071 751 1051.0 751.0L949.0 751.0Q929 751 929.0 731.0L929.0 629.0Q929 609 949.0 609.0L989.0 609.0Q1009 609 1009.0 589.0L1009.0 549.0Q1009 529 1029.0 529.0L1151 529Z"/>
-          <path class="hm-track" d="M1151 529L1151.0 571.0Q1151 591 1131.0 591.0L1091.0 591.0Q1071 591 1071.0 611.0L1071.0 731.0Q1071 751 1051.0 751.0L949.0 751.0Q929 751 929.0 731.0L929.0 629.0Q929 609 949.0 609.0L989.0 609.0Q1009 609 1009.0 589.0L1009.0 549.0Q1009 529 1029.0 529.0L1151 529Z"/>
-          <path class="hm-line" d="M1151 529L1151.0 571.0Q1151 591 1131.0 591.0L1091.0 591.0Q1071 591 1071.0 611.0L1071.0 731.0Q1071 751 1051.0 751.0L949.0 751.0Q929 751 929.0 731.0L929.0 629.0Q929 609 949.0 609.0L989.0 609.0Q1009 609 1009.0 589.0L1009.0 549.0Q1009 529 1029.0 529.0L1151 529Z"/>
-          <g class="hm-stop" transform="translate(1071.0 644.4)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(973.4 751.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(929.0 641.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1009.0 561.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-head" transform="translate(1151 529)"><circle class="hm-head__halo" r="11"/><circle class="hm-head__dot" r="4"/></g>
-          </g>
-          <g class="hm-route" data-route="3">
-          <path class="hm-area" d="M1151 511L949.0 511.0Q929 511 929.0 491.0L929.0 389.0Q929 369 949.0 369.0L989.0 369.0Q1009 369 1009.0 349.0L1009.0 309.0Q1009 289 1029.0 289.0L1131.0 289.0Q1151 289 1151.0 309.0L1151 511Z"/>
-          <path class="hm-hit" d="M1151 511L949.0 511.0Q929 511 929.0 491.0L929.0 389.0Q929 369 949.0 369.0L989.0 369.0Q1009 369 1009.0 349.0L1009.0 309.0Q1009 289 1029.0 289.0L1131.0 289.0Q1151 289 1151.0 309.0L1151 511Z"/>
-          <path class="hm-track" d="M1151 511L949.0 511.0Q929 511 929.0 491.0L929.0 389.0Q929 369 949.0 369.0L989.0 369.0Q1009 369 1009.0 349.0L1009.0 309.0Q1009 289 1029.0 289.0L1131.0 289.0Q1151 289 1151.0 309.0L1151 511Z"/>
-          <path class="hm-line" d="M1151 511L949.0 511.0Q929 511 929.0 491.0L929.0 389.0Q929 369 949.0 369.0L989.0 369.0Q1009 369 1009.0 349.0L1009.0 309.0Q1009 289 1029.0 289.0L1131.0 289.0Q1151 289 1151.0 309.0L1151 511Z"/>
-          <g class="hm-stop" transform="translate(961.0 511.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(977.0 369.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-stop" transform="translate(1119.0 289.0)"><circle class="hm-stop__halo" r="10"/><circle class="hm-stop__dot" r="3.75"/></g>
-          <g class="hm-head" transform="translate(1151 511)"><circle class="hm-head__halo" r="11"/><circle class="hm-head__dot" r="4"/></g>
-          </g>
-          </g>
-          <g class="hm-depot" transform="translate(1160 520)"><circle class="hm-depot__ring" r="30"/><rect class="hm-depot__base" x="-14" y="-14" width="28" height="28" rx="6"/><rect class="hm-depot__core" x="-5.5" y="-5.5" width="11" height="11" rx="2"/></g>
-        </svg>
-        <p class="hm-tag hm-tag--depot"><span class="hm-tag__place">Your location</span><span class="hm-tag__state"><span class="hm-tag__dot"></span>Coverage Ready</span></p>
+<div class="stk stk--hero" data-stack="hero">
+<div class="stk__space">
+<div class="stk__plane stk__plane--base"><svg viewBox="0 0 300 300" focusable="false"><g class="stk__links"><path data-r="0" d="M140 160L80 112"/><path data-r="0" d="M160 140L80 112"/><path data-r="1" d="M140 160L194 92"/><path data-r="1" d="M160 140L194 92"/><path data-r="2" d="M140 160L110 190"/><path data-r="2" d="M160 140L110 190"/><path data-r="3" d="M140 160L212 190"/><path data-r="3" d="M160 140L212 190"/></g></svg></div>
+<span class="stk__thread stk__thread--a" data-r="0" style="--x:80;--y:112"></span>
+<span class="stk__thread stk__thread--b" data-r="1" style="--x:194;--y:92"></span>
+<span class="stk__thread stk__thread--c" data-r="2" style="--x:110;--y:190"></span>
+<span class="stk__thread stk__thread--d" data-r="3" style="--x:212;--y:190"></span>
+<span class="stk__chip stk__chip--a" style="--x:80;--y:112" data-r="0"></span>
+<span class="stk__chip stk__chip--b" style="--x:194;--y:92" data-r="1"></span>
+<span class="stk__chip stk__chip--c" style="--x:110;--y:190" data-r="2"></span>
+<span class="stk__chip stk__chip--d" style="--x:212;--y:190" data-r="3"></span>
+<span class="stk__chip stk__chip--backup stk__chip--k1" style="--x:140;--y:160"></span>
+<span class="stk__chip stk__chip--backup stk__chip--k2" style="--x:160;--y:140"></span>
+<div class="stk__plane stk__plane--top"><svg viewBox="0 0 300 300" focusable="false">
+<g class="rt rt--a" data-r="0">
+<path class="rt__area" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__hit" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__track" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__line" pathLength="1" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<circle class="rt__seat" cx="80" cy="112" r="6"/>
+<g class="rt__stop" style="--d:190;--jx:-5.6px;--jy:-11.2px"><circle class="rt__halo" cx="124" cy="100" r="9"/><circle class="rt__dot" cx="124" cy="100" r="3.6"/></g>
+<g class="rt__stop" style="--d:457;--jx:4.8px;--jy:-13.7px"><circle class="rt__halo" cx="76" cy="64" r="9"/><circle class="rt__dot" cx="76" cy="64" r="3.6"/></g>
+<g class="rt__stop" style="--d:668;--jx:1.1px;--jy:-4.3px"><circle class="rt__halo" cx="52" cy="104" r="9"/><circle class="rt__dot" cx="52" cy="104" r="3.6"/></g>
+<g class="rt__stop" style="--d:940;--jx:-14.1px;--jy:0.2px"><circle class="rt__halo" cx="96" cy="141" r="9"/><circle class="rt__dot" cx="96" cy="141" r="3.6"/></g>
+</g>
+<g class="rt rt--b" data-r="1">
+<path class="rt__area" d="M159 141V76Q159 64 171 64H236Q248 64 248 76V100Q248 112 236 112H212Q200 112 200 124V129Q200 141 188 141Z"/>
+<path class="rt__hit" d="M159 141V76Q159 64 171 64H236Q248 64 248 76V100Q248 112 236 112H212Q200 112 200 124V129Q200 141 188 141Z"/>
+<path class="rt__track" d="M159 141V76Q159 64 171 64H236Q248 64 248 76V100Q248 112 236 112H212Q200 112 200 124V129Q200 141 188 141Z"/>
+<path class="rt__line" pathLength="1" d="M159 141V76Q159 64 171 64H236Q248 64 248 76V100Q248 112 236 112H212Q200 112 200 124V129Q200 141 188 141Z"/>
+<circle class="rt__seat" cx="194" cy="92" r="6"/>
+<g class="rt__stop" style="--d:132;--jx:-14.8px;--jy:-2.1px"><circle class="rt__halo" cx="159" cy="104" r="9"/><circle class="rt__dot" cx="159" cy="104" r="3.6"/></g>
+<g class="rt__stop" style="--d:439;--jx:-13.8px;--jy:-13.1px"><circle class="rt__halo" cx="210" cy="64" r="9"/><circle class="rt__dot" cx="210" cy="64" r="3.6"/></g>
+<g class="rt__stop" style="--d:650;--jx:-2.4px;--jy:10.5px"><circle class="rt__halo" cx="248" cy="90" r="9"/><circle class="rt__dot" cx="248" cy="90" r="3.6"/></g>
+<g class="rt__stop" style="--d:798;--jx:-12.0px;--jy:-8.9px"><circle class="rt__halo" cx="224" cy="112" r="9"/><circle class="rt__dot" cx="224" cy="112" r="3.6"/></g>
+</g>
+<g class="rt rt--c" data-r="2">
+<path class="rt__area" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__hit" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__track" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__line" pathLength="1" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<circle class="rt__seat" cx="110" cy="190" r="6"/>
+<g class="rt__stop" style="--d:139;--jx:4.1px;--jy:14.3px"><circle class="rt__halo" cx="102" cy="159" r="9"/><circle class="rt__dot" cx="102" cy="159" r="3.6"/></g>
+<g class="rt__stop" style="--d:354;--jx:2.5px;--jy:-3.3px"><circle class="rt__halo" cx="64" cy="186" r="9"/><circle class="rt__dot" cx="64" cy="186" r="3.6"/></g>
+<g class="rt__stop" style="--d:613;--jx:15.2px;--jy:-14.5px"><circle class="rt__halo" cx="104" cy="228" r="9"/><circle class="rt__dot" cx="104" cy="228" r="3.6"/></g>
+<g class="rt__stop" style="--d:940;--jx:11.5px;--jy:-6.7px"><circle class="rt__halo" cx="141" cy="204" r="9"/><circle class="rt__dot" cx="141" cy="204" r="3.6"/></g>
+</g>
+<g class="rt rt--d" data-r="3">
+<path class="rt__area" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__hit" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__track" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__line" pathLength="1" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<circle class="rt__seat" cx="212" cy="190" r="6"/>
+<g class="rt__stop" style="--d:167;--jx:-11.4px;--jy:-12.2px"><circle class="rt__halo" cx="206" cy="159" r="9"/><circle class="rt__dot" cx="206" cy="159" r="3.6"/></g>
+<g class="rt__stop" style="--d:439;--jx:-6.1px;--jy:10.1px"><circle class="rt__halo" cx="248" cy="198" r="9"/><circle class="rt__dot" cx="248" cy="198" r="3.6"/></g>
+<g class="rt__stop" style="--d:665;--jx:-10.2px;--jy:2.6px"><circle class="rt__halo" cx="218" cy="236" r="9"/><circle class="rt__dot" cx="218" cy="236" r="3.6"/></g>
+<g class="rt__stop" style="--d:1040;--jx:4.4px;--jy:-4.1px"><circle class="rt__halo" cx="159" cy="176" r="9"/><circle class="rt__dot" cx="159" cy="176" r="3.6"/></g>
+</g>
+<g class="stk__node"><rect class="stk__node-base" x="141" y="141" width="18" height="18" rx="5"/><rect class="stk__node-core" x="146.5" y="146.5" width="7" height="7" rx="1.5"/></g></svg></div>
+<span class="stk__pin" style="--x:150;--y:150"></span>
+<span class="stk__label stk__label--loc" style="--x:150;--y:150"><span class="stk__label-place">Your location</span><span class="stk__label-state"><span class="stk__ok"></span>Coverage Ready</span></span>
+<span class="stk__label stk__label--backup" style="--x:150;--y:180">Backup</span>
+<span class="stk__label stk__label--managed" style="--x:150;--y:300">Managed by DriverLine</span>
+</div>
+</div>
       </div>
 
       <div class="hero__inner wrap">
@@ -446,38 +195,108 @@
               <span class="board__state board__state--on">Managed by DriverLine</span>
             </div>
             <div class="board__route">
-<svg class="board__map board__map--v" viewBox="0 0 420 530" focusable="false">
-<path class="bm-track" d="M70 480L70 380"/><path class="bm-line" data-g="0" pathLength="1" d="M70 480L70 380"/>
-<path class="bm-track" d="M70 380L70.0 336.0Q70 310 96.0 310.0L210 310"/><path class="bm-line" data-g="1" pathLength="1" d="M70 380L70.0 336.0Q70 310 96.0 310.0L210 310"/>
-<path class="bm-track" d="M210 310L324.0 310.0Q350 310 350.0 284.0L350 240"/><path class="bm-line" data-g="2" pathLength="1" d="M210 310L324.0 310.0Q350 310 350.0 284.0L350 240"/>
-<path class="bm-track" d="M350 240L350.0 206.0Q350 180 324.0 180.0L210 180"/><path class="bm-line" data-g="3" pathLength="1" d="M350 240L350.0 206.0Q350 180 324.0 180.0L210 180"/>
-<path class="bm-track" d="M210 180L96.0 180.0Q70 180 70.0 154.0L70 110"/><path class="bm-line" data-g="4" pathLength="1" d="M210 180L96.0 180.0Q70 180 70.0 154.0L70 110"/>
-<path class="bm-track" d="M70 110L70.0 76.0Q70 50 96.0 50.0L350 50"/><path class="bm-line" data-g="5" pathLength="1" d="M70 110L70.0 76.0Q70 50 96.0 50.0L350 50"/>
-<rect class="bm-origin" x="59" y="469" width="22" height="22" rx="6"/>
-<g class="bm-stop" data-g="0" transform="translate(70 380)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
-<g class="bm-stop" data-g="1" transform="translate(210 310)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
-<g class="bm-stop" data-g="2" transform="translate(350 240)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
-<g class="bm-stop" data-g="3" transform="translate(210 180)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
-<g class="bm-stop" data-g="4" transform="translate(70 110)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
-<g class="bm-stop bm-stop--end" data-g="5" transform="translate(350 50)"><circle class="bm-stop__halo" r="15"/><circle class="bm-stop__dot" r="7"/></g>
-</svg>
-<svg class="board__map board__map--h" viewBox="0 0 360 28" preserveAspectRatio="none" focusable="false">
-<path class="bm-track" d="M10.0 14H66.7"/><path class="bm-line" data-g="0" pathLength="1" d="M10.0 14H66.7"/>
-<path class="bm-track" d="M66.7 14H123.3"/><path class="bm-line" data-g="1" pathLength="1" d="M66.7 14H123.3"/>
-<path class="bm-track" d="M123.3 14H180.0"/><path class="bm-line" data-g="2" pathLength="1" d="M123.3 14H180.0"/>
-<path class="bm-track" d="M180.0 14H236.7"/><path class="bm-line" data-g="3" pathLength="1" d="M180.0 14H236.7"/>
-<path class="bm-track" d="M236.7 14H293.3"/><path class="bm-line" data-g="4" pathLength="1" d="M236.7 14H293.3"/>
-<path class="bm-track" d="M293.3 14H350.0"/><path class="bm-line" data-g="5" pathLength="1" d="M293.3 14H350.0"/>
-</svg>
-<div class="board__dots" aria-hidden="true">
-<span class="board__dot board__dot--origin"></span>
-<span class="board__dot" data-g="0"></span>
-<span class="board__dot" data-g="1"></span>
-<span class="board__dot" data-g="2"></span>
-<span class="board__dot" data-g="3"></span>
-<span class="board__dot" data-g="4"></span>
-<span class="board__dot" data-g="5"></span>
+<div class="stk stk--board" data-stack="board">
+<div class="stk__space">
+<div class="stk__plane stk__plane--base"></div>
+<span class="stk__thread stk__thread--a" data-r="0" style="--x:80;--y:112"></span>
+<span class="stk__thread stk__thread--b" data-r="1" style="--x:110;--y:190"></span>
+<span class="stk__thread stk__thread--c" data-r="2" style="--x:212;--y:190"></span>
+<span class="stk__chip stk__chip--a" style="--x:80;--y:112"></span>
+<span class="stk__chip stk__chip--b1" style="--x:110;--y:190"></span>
+<span class="stk__chip stk__chip--b2" style="--x:110;--y:190"></span>
+<span class="stk__chip stk__chip--c" style="--x:212;--y:190"></span>
+<span class="stk__chip stk__chip--backup stk__chip--k1" style="--x:212;--y:272;--tx:110;--ty:190"></span>
+<span class="stk__chip stk__chip--backup stk__chip--k2" style="--x:242;--y:282"></span>
+<div class="stk__plane stk__plane--top"><svg viewBox="0 0 300 300" focusable="false">
+<g class="rt rt--a" data-r="0">
+<path class="rt__area" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__hit" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__track" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__line" pathLength="1" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<circle class="rt__seat" cx="80" cy="112" r="6"/>
+<g class="rt__stop" style="--d:190;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="124" cy="100" r="11"/><circle class="rt__dot" cx="124" cy="100" r="4.4"/></g>
+<g class="rt__stop" style="--d:457;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="76" cy="64" r="11"/><circle class="rt__dot" cx="76" cy="64" r="4.4"/></g>
+<g class="rt__stop" style="--d:668;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="52" cy="104" r="11"/><circle class="rt__dot" cx="52" cy="104" r="4.4"/></g>
+<g class="rt__stop" style="--d:940;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="96" cy="141" r="11"/><circle class="rt__dot" cx="96" cy="141" r="4.4"/></g>
+</g>
+<g class="rt rt--b" data-r="1">
+<path class="rt__area" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__hit" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__track" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__line" pathLength="1" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<circle class="rt__seat" cx="110" cy="190" r="6"/>
+<g class="rt__stop" style="--d:139;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="102" cy="159" r="11"/><circle class="rt__dot" cx="102" cy="159" r="4.4"/></g>
+<g class="rt__stop" style="--d:354;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="64" cy="186" r="11"/><circle class="rt__dot" cx="64" cy="186" r="4.4"/></g>
+<g class="rt__stop" style="--d:613;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="104" cy="228" r="11"/><circle class="rt__dot" cx="104" cy="228" r="4.4"/></g>
+<g class="rt__stop" style="--d:940;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="141" cy="204" r="11"/><circle class="rt__dot" cx="141" cy="204" r="4.4"/></g>
+</g>
+<g class="rt rt--c" data-r="2">
+<path class="rt__area" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__hit" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__track" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__line" pathLength="1" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<circle class="rt__seat" cx="212" cy="190" r="6"/>
+<g class="rt__stop" style="--d:167;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="206" cy="159" r="11"/><circle class="rt__dot" cx="206" cy="159" r="4.4"/></g>
+<g class="rt__stop" style="--d:439;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="248" cy="198" r="11"/><circle class="rt__dot" cx="248" cy="198" r="4.4"/></g>
+<g class="rt__stop" style="--d:665;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="218" cy="236" r="11"/><circle class="rt__dot" cx="218" cy="236" r="4.4"/></g>
+<g class="rt__stop" style="--d:1040;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="159" cy="176" r="11"/><circle class="rt__dot" cx="159" cy="176" r="4.4"/></g>
+</g>
+<circle class="stk__search stk__search--1" cx="150" cy="150" r="26"/><circle class="stk__search stk__search--2" cx="150" cy="150" r="26"/><circle class="stk__open" cx="150" cy="150" r="24"/><g class="stk__node"><rect class="stk__node-base" x="141" y="141" width="18" height="18" rx="5"/><rect class="stk__node-core" x="146.5" y="146.5" width="7" height="7" rx="1.5"/></g></svg></div>
+<span class="stk__label stk__label--callout-top" style="--x:74;--y:292">Callout</span>
+<span class="stk__label stk__label--callout-base" style="--x:74;--y:292">Callout</span>
+<span class="stk__label stk__label--backup" style="--x:242;--y:282">Backup</span>
 </div>
+</div>
+<svg class="tier" viewBox="0 0 360 140" focusable="false">
+<g class="tier__base"><rect class="tier__plate" x="2" y="84" width="356" height="52" rx="11"/></g>
+<g class="tier__top"><rect class="tier__plate tier__plate--top" x="2" y="2" width="356" height="64" rx="11"/>
+<g transform="translate(11.75 -17.25) scale(0.5)"><g class="rt rt--a" data-r="0">
+<path class="rt__area" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__hit" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__track" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<path class="rt__line" pathLength="1" d="M141 141V112Q141 100 129 100H112Q100 100 100 88V76Q100 64 88 64H64Q52 64 52 76V129Q52 141 64 141Z"/>
+<circle class="rt__seat" cx="80" cy="112" r="6"/>
+<g class="rt__stop" style="--d:190;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="124" cy="100" r="14"/><circle class="rt__dot" cx="124" cy="100" r="6"/></g>
+<g class="rt__stop" style="--d:457;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="76" cy="64" r="14"/><circle class="rt__dot" cx="76" cy="64" r="6"/></g>
+<g class="rt__stop" style="--d:668;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="52" cy="104" r="14"/><circle class="rt__dot" cx="52" cy="104" r="6"/></g>
+<g class="rt__stop" style="--d:940;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="96" cy="141" r="14"/><circle class="rt__dot" cx="96" cy="141" r="6"/></g>
+</g></g>
+<g transform="translate(188.75 -67.75) scale(0.5)"><g class="rt rt--b" data-r="1">
+<path class="rt__area" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__hit" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__track" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<path class="rt__line" pathLength="1" d="M141 159H76Q64 159 64 171V196Q64 208 76 208H92Q104 208 104 220V236Q104 248 116 248H129Q141 248 141 236Z"/>
+<circle class="rt__seat" cx="110" cy="190" r="6"/>
+<g class="rt__stop" style="--d:139;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="102" cy="159" r="14"/><circle class="rt__dot" cx="102" cy="159" r="6"/></g>
+<g class="rt__stop" style="--d:354;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="64" cy="186" r="14"/><circle class="rt__dot" cx="64" cy="186" r="6"/></g>
+<g class="rt__stop" style="--d:613;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="104" cy="228" r="14"/><circle class="rt__dot" cx="104" cy="228" r="6"/></g>
+<g class="rt__stop" style="--d:940;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="141" cy="204" r="14"/><circle class="rt__dot" cx="141" cy="204" r="6"/></g>
+</g></g>
+<g transform="translate(48.25 -64.75) scale(0.5)"><g class="rt rt--c" data-r="2">
+<path class="rt__area" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__hit" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__track" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<path class="rt__line" pathLength="1" d="M159 159H236Q248 159 248 171V224Q248 236 236 236H200Q188 236 188 224V212Q188 200 176 200H171Q159 200 159 188Z"/>
+<circle class="rt__seat" cx="212" cy="190" r="6"/>
+<g class="rt__stop" style="--d:167;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="206" cy="159" r="14"/><circle class="rt__dot" cx="206" cy="159" r="6"/></g>
+<g class="rt__stop" style="--d:439;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="248" cy="198" r="14"/><circle class="rt__dot" cx="248" cy="198" r="6"/></g>
+<g class="rt__stop" style="--d:665;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="218" cy="236" r="14"/><circle class="rt__dot" cx="218" cy="236" r="6"/></g>
+<g class="rt__stop" style="--d:1040;--jx:0.0px;--jy:0.0px"><circle class="rt__halo" cx="159" cy="176" r="14"/><circle class="rt__dot" cx="159" cy="176" r="6"/></g>
+</g></g>
+</g>
+<line class="tier__thread tier__thread--a" pathLength="1" x1="51.8" y1="44.8" x2="51.8" y2="99"/>
+<line class="tier__thread tier__thread--b" pathLength="1" x1="243.8" y1="33.2" x2="243.8" y2="99"/>
+<line class="tier__thread tier__thread--c" pathLength="1" x1="154.2" y1="36.2" x2="154.2" y2="99"/>
+<circle class="tier__chip tier__chip--a" r="5.5" style="--x:51.8px;--yt:68.8px;--yb:106.0px"/>
+<circle class="tier__chip tier__chip--b1" r="5.5" style="--x:243.8px;--yt:57.2px;--yb:106.0px"/>
+<circle class="tier__chip tier__chip--b2" r="5.5" style="--x:243.8px;--yt:57.2px;--yb:106.0px"/>
+<circle class="tier__chip tier__chip--c" r="5.5" style="--x:154.2px;--yt:60.2px;--yb:106.0px"/>
+<circle class="tier__chip tier__chip--backup tier__chip--k1" r="5.5" style="--x:304.0px;--yt:106.0px;--yb:106.0px;--tx:243.8px"/>
+<circle class="tier__chip tier__chip--backup tier__chip--k2" r="5.5" style="--x:330.0px;--yt:106.0px;--yb:106.0px"/>
+<text class="tier__label tier__label--callout-top" x="243.8" y="100">Callout</text>
+<text class="tier__label tier__label--callout-base" x="243.8" y="128">Callout</text>
+<text class="tier__label tier__label--backup" x="317" y="128">Backup</text>
+</svg>
 </div>
             <div class="board__foot">
               <span class="board__result board__result--off"><span class="board__focus" data-focus>Coverage gaps</span></span>
