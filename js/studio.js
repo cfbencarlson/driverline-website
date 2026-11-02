@@ -171,9 +171,9 @@
         return;
       }
       // a pause once the layers settle, then the callout underneath, then the backup
-      timers.push(setTimeout(function () { board.classList.add('is-disrupt'); }, 3900));
-      timers.push(setTimeout(function () { board.classList.add('is-backup'); }, 5100));
-      timers.push(setTimeout(function () { board.classList.add('is-done'); }, 7400));
+      timers.push(setTimeout(function () { board.classList.add('is-disrupt'); }, 3400));
+      timers.push(setTimeout(function () { board.classList.add('is-backup'); }, 4500));
+      timers.push(setTimeout(function () { board.classList.add('is-done'); }, 6800));
     }
 
     function update() {
