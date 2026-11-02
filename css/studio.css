@@ -312,58 +312,9 @@ button, input { font: inherit; color: inherit; }
     linear-gradient(0deg, var(--night) 0%, rgba(5, 14, 34, 0) 20%),
     linear-gradient(180deg, var(--night) 0%, rgba(5, 14, 34, 0.6) 9%, rgba(5, 14, 34, 0) 24%);
 }
-.hm { --u: 1; width: 100%; height: 100%; }
-.hm-streets path { fill: none; stroke: rgba(150, 178, 232, 0.05); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.hm-streets--major path { stroke: rgba(150, 178, 232, 0.1); stroke-width: 1.25; }
-
-/* a route: dotted while uncovered, a drawn lane once driven, territory lit once closed */
-.hm-area { fill: #3E76F2; fill-opacity: 0; stroke: none; transition: fill-opacity 1100ms var(--ease); }
-.hm-route.is-closed .hm-area, html:not(.js) .hm-area { fill-opacity: 0.075; }
-.hm-track { fill: none; stroke: rgba(160, 184, 226, 0.3); stroke-width: 1.25; stroke-dasharray: 1 6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.hm-line { fill: none; stroke: #8DB4FF; stroke-width: calc(2px * var(--u)); stroke-linecap: round; stroke-linejoin: round; }
-.hm-hit { fill: none; stroke: transparent; stroke-width: calc(22px * var(--u)); pointer-events: stroke; }
-.hm-routes { transition: filter 900ms var(--ease); }
-.hero.is-covered .hm-routes { filter: drop-shadow(0 0 5px rgba(61, 123, 255, 0.5)); }
-
-.hm-stop__halo { fill: rgba(110, 159, 255, 0.18); transform-box: fill-box; transform-origin: center; transition: transform 650ms var(--ease), opacity 650ms var(--ease); }
-.hm-stop__dot { fill: var(--white); stroke: none; transition: fill var(--t-med) var(--ease); }
-.js .hm-stop:not(.is-lit) .hm-stop__halo { transform: scale(0.2); opacity: 0; }
-.js .hm-stop:not(.is-lit) .hm-stop__dot { fill: rgba(160, 184, 226, 0.5); }
-
-.hm-head { opacity: 0; transition: opacity 240ms var(--ease); }
-.hm-head.is-moving { opacity: 1; }
-.hm-head > circle { transform: scale(var(--hs, 1)); transform-box: fill-box; transform-origin: center; }
-.hm-head__halo { fill: rgba(110, 159, 255, 0.3); }
-.hm-head__dot { fill: var(--white); }
-
-.hm-depot__ring { fill: rgba(110, 159, 255, 0.07); stroke: rgba(110, 159, 255, 0.34); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.hm-depot__base { fill: var(--white); }
-.hm-depot__core { fill: var(--blue); }
-
-/* hover isolation (desktop) */
-.hm-line, .hm-stop, .hm-area { transition: opacity var(--t-med) var(--ease), stroke var(--t-med) var(--ease), fill-opacity 1100ms var(--ease); }
-.hero.is-focus .hm-route:not(.is-hover) .hm-line { opacity: 0.28; }
-.hero.is-focus .hm-route:not(.is-hover) .hm-stop { opacity: 0.35; }
-.hero.is-focus .hm-route:not(.is-hover) .hm-area { fill-opacity: 0.02; }
-.hero.is-focus .hm-route.is-hover .hm-line { stroke: #C4D7FF; }
-.hero.is-focus .hm-route.is-hover .hm-area { fill-opacity: 0.16; }
-.hero.is-focus .hm-route.is-hover .hm-stop__halo { transform: scale(1.3); }
 .hero__inner, .hero__proof { pointer-events: none; }
 .hero__copy, .hero__proof li { pointer-events: auto; }
 
-/* depot label: where the routes start, then that they are covered */
-.hm-tag {
-  position: absolute; left: 0; top: 0; display: none;
-  font-size: 0.8125rem; font-weight: 520; line-height: 1.35; letter-spacing: 0.003em;
-  white-space: nowrap;
-}
-.js .hm-tag.is-placed { display: grid; justify-items: start; gap: 3px; }
-.hm-tag__place { color: var(--ice); }
-.hm-tag.is-compact .hm-tag__place { display: none; }
-.hm-tag__state { display: inline-flex; align-items: center; gap: 8px; color: var(--white); font-weight: 580; }
-.hm-tag__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ready); box-shadow: 0 0 0 3px rgba(65, 201, 142, 0.18); }
-.js .hm-tag__state { opacity: 0; transform: translateY(-4px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
-.js .hero.is-covered .hm-tag__state { opacity: 1; transform: none; }
 
 .hero__inner {
   position: relative; flex: 1;
@@ -410,8 +361,6 @@ button, input { font: inherit; color: inherit; }
 /* Load choreography (one sequence) */
 .js .hero .hero__line > span { transform: translateY(105%); }
 .js .hero .hero__kicker, .js .hero .hero__desc, .js .hero .hero__actions, .js .hero .hero__proof { opacity: 0; transform: translateY(10px); }
-.js .hero .hm-depot { opacity: 0; transition: opacity 700ms var(--ease) 300ms; }
-.js .hero.is-in .hm-depot { opacity: 1; }
 .js .hero.is-in .hero__line > span { transform: none; transition: transform 1100ms var(--ease); }
 .js .hero.is-in .hero__line:nth-child(2) > span { transition-delay: 80ms; }
 .js .hero.is-in .hero__kicker, .js .hero.is-in .hero__desc, .js .hero.is-in .hero__actions, .js .hero.is-in .hero__proof {
@@ -420,7 +369,6 @@ button, input { font: inherit; color: inherit; }
 .js .hero.is-in .hero__desc { transition-delay: 220ms; }
 .js .hero.is-in .hero__actions { transition-delay: 320ms; }
 .js .hero.is-in .hero__proof { transition-delay: 460ms; }
-.js .hero:not(.is-run) .hm-line { opacity: 0; }
 
 /* Stacked: tablet portrait and phones get the map as its own band */
 @media (max-width: 1023px) {
@@ -444,8 +392,6 @@ button, input { font: inherit; color: inherit; }
   .hero__actions { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; margin-top: 28px; }
   .hero__actions .bt { width: 100%; padding: 0 12px; font-size: 0.9375rem; }
   .hero__map { height: clamp(240px, 74vw, 320px); margin-top: 4px; }
-  .hm-tag { font-size: 0.75rem; }
-  .hm-tag__state { gap: 6px; }
   .hero__proof { flex-direction: column; gap: 12px; padding-top: 22px; padding-bottom: 32px; }
 }
 @media (max-width: 359px) {
@@ -491,7 +437,7 @@ button, input { font: inherit; color: inherit; }
 }
 .board > * { position: relative; z-index: 1; }
 .board__head, .board__foot { position: relative; height: 22px; font-size: 0.875rem; font-weight: 560; letter-spacing: 0.003em; }
-.board__state, .board__result { position: absolute; left: 0; top: 0; display: inline-flex; align-items: center; gap: 10px; transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease); }
+.board__state, .board__result { position: absolute; left: 0; top: 0; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease); }
 .board__state--off, .board__result--off { color: var(--mist); }
 .board__state--on, .board__result--on { color: var(--white); opacity: 0; transform: translateY(6px); }
 .board.is-on .board__state--off, .board.is-done .board__result--off { opacity: 0; transform: translateY(-6px); }
@@ -501,21 +447,6 @@ button, input { font: inherit; color: inherit; }
 .board__focus.is-swap { opacity: 0; }
 .board__ok { width: 8px; height: 8px; border-radius: 50%; background: var(--ready); box-shadow: 0 0 0 4px rgba(65, 201, 142, 0.16); }
 
-.board__route { position: relative; display: grid; place-items: center; min-height: 0; padding: 20px 0; }
-.board__map--v { width: 100%; height: 100%; max-width: 420px; overflow: visible; }
-.board__map--h, .board__dots { display: none; }
-.bm-track { fill: none; stroke: rgba(160, 184, 226, 0.36); stroke-width: 2; stroke-dasharray: 2 9; stroke-linecap: round; }
-.bm-line { fill: none; stroke: var(--signal); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1 1; stroke-dashoffset: 0; filter: drop-shadow(0 0 6px rgba(61, 123, 255, 0.6)); transition: stroke-dashoffset 760ms var(--ease-in-out); }
-.bm-origin { fill: var(--white); }
-.bm-stop__halo { fill: rgba(110, 159, 255, 0.16); transform-box: fill-box; transform-origin: center; transition: transform 600ms var(--ease), opacity 600ms var(--ease); }
-.bm-stop__dot { fill: var(--white); stroke: var(--signal); stroke-width: 3; transition: fill var(--t-med) var(--ease), stroke var(--t-med) var(--ease), transform var(--t-med) var(--ease); transform-box: fill-box; transform-origin: center; }
-
-/* JS: route starts uncovered and closes with the reader */
-.js .bm-line:not(.is-closed) { stroke-dashoffset: 1; }
-.js .bm-stop:not(.is-closed) .bm-stop__halo { transform: scale(0); opacity: 0; }
-.js .bm-stop:not(.is-closed) .bm-stop__dot { fill: var(--night); stroke: rgba(160, 184, 226, 0.5); }
-.js .bm-stop.is-active:not(.is-closed) .bm-stop__dot { stroke: var(--white); transform: scale(1.25); }
-.js .bm-stop.is-active:not(.is-closed) .bm-stop__halo { transform: scale(1.2); opacity: 1; fill: rgba(195, 213, 247, 0.12); }
 
 .shift__body { min-width: 0; }
 
@@ -570,17 +501,6 @@ button, input { font: inherit; color: inherit; }
   .board__head { grid-column: 1; grid-row: 1; height: 18px; font-size: 0.8125rem; min-width: 11.5em; }
   .board__foot { grid-column: 2; grid-row: 1; height: 18px; font-size: 0.8125rem; justify-self: end; min-width: 8.5em; text-align: right; }
   .board__foot .board__result { left: auto; right: 0; }
-  .board__route { grid-column: 1 / -1; grid-row: 2; padding: 0; height: 22px; display: block; }
-  .board__map--v { display: none; }
-  .board__map--h { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-  .board__map--h .bm-track, .board__map--h .bm-line { vector-effect: non-scaling-stroke; }
-  .board__map--h .bm-line { stroke-width: 2.5; filter: none; }
-  .board__dots { display: flex; justify-content: space-between; position: absolute; inset: 0; align-items: center; padding: 0 calc(10 / 360 * 100% - 6px); }
-  .board__dot { width: 12px; height: 12px; border-radius: 50%; background: var(--night); box-shadow: inset 0 0 0 2px rgba(160, 184, 226, 0.55); transition: background-color var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease), transform var(--t-med) var(--ease); }
-  .board__dot--origin { border-radius: 3px; background: var(--white); box-shadow: none; }
-  .board__dot.is-closed { background: var(--white); box-shadow: inset 0 0 0 2.5px var(--signal), 0 0 0 4px rgba(110, 159, 255, 0.18); }
-  .board__dot.is-active:not(.is-closed) { box-shadow: inset 0 0 0 2px var(--white); transform: scale(1.2); }
-  html:not(.js) .board__dot:not(.board__dot--origin) { background: var(--white); box-shadow: inset 0 0 0 2.5px var(--signal); }
   .shift__body { padding-top: clamp(56px, 9vw, 88px); }
 }
 @media (min-width: 1024px) and (max-width: 1239px) {
@@ -947,9 +867,6 @@ html:not(.js) .days__picks { display: none; }
 .close__map { position: absolute; inset: 0; z-index: -1; pointer-events: none;
   -webkit-mask-image: linear-gradient(90deg, transparent 34%, #000 58%), linear-gradient(0deg, transparent 0%, #000 18%);
   -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 34%, #000 58%); }
-.close__map .hm { width: 100%; height: 100%; }
-.close__map .hm-head, .close__map .hm-pool, .close__map .hm-hit { display: none; }
-.close__map .hm-routes { filter: none; }
 
 .close__inner { position: relative; }
 .close__title { font-size: clamp(2.5rem, 0.6rem + 4.4vw, 4.75rem); line-height: 0.98; font-weight: 610; letter-spacing: -0.04em; font-variation-settings: "wdth" 92; max-width: 9.5em; text-wrap: balance; }
@@ -1583,6 +1500,283 @@ ol.legal-content__list li::before { content: counter(doc); position: absolute; l
 /* small grey text on the paper surfaces keeps AA contrast (4.5:1) */
 .contact-form-wrapper .form-required-legend, .contact-form-wrapper .form-help, .contact-form-wrapper .fgroup__opt, .contact-form-wrapper .form-after,
 .consent-doc__brand-sub, .consent-doc__meta, .consent-doc__footer { color: #5F6F86; }
+
+/* ==========================================================================
+   The operation in layers: the customer's routes above, DriverLine beneath.
+   Drivers live on the lower layer, tied to the route they cover by a thread.
+   Every state is a set of variables on .stk; children follow by transition.
+   ========================================================================== */
+.stk {
+  --fit: 1; --g: 120; --rx: 56deg; --rz: -36deg;
+  --top: calc(var(--g) * 0.5px); --base: calc(var(--g) * -0.5px);
+  position: relative; perspective: 2000px; perspective-origin: 50% 42%; pointer-events: none;
+}
+.stk__space {
+  position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px;
+  transform-style: preserve-3d;
+  transform: scale3d(var(--fit), var(--fit), var(--fit)) rotateX(var(--rx)) rotateZ(var(--rz));
+  transition: transform 1800ms var(--ease-in-out);
+}
+.stk__plane { position: absolute; inset: 0; border-radius: 26px; transition: transform 1500ms var(--ease-in-out), opacity 900ms var(--ease); }
+.stk__plane svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+/* your routes: a quiet, translucent surface */
+.stk__plane--top {
+  transform: translateZ(var(--top));
+  background:
+    linear-gradient(rgba(150, 178, 232, 0.06) 1px, transparent 1px) 0 0 / 30px 30px,
+    linear-gradient(90deg, rgba(150, 178, 232, 0.06) 1px, transparent 1px) 0 0 / 30px 30px,
+    rgba(14, 34, 72, 0.46);
+  box-shadow: inset 0 0 0 1px rgba(160, 184, 226, 0.2);
+}
+/* DriverLine's layer: lit from within */
+.stk__plane--base::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  background: radial-gradient(70% 70% at 40% 70%, rgba(110, 159, 255, 0.28), rgba(110, 159, 255, 0) 70%);
+  box-shadow: inset 0 0 0 1.5px rgba(160, 195, 255, 0.85);
+}
+.stk__plane--base {
+  transform: translateZ(var(--base));
+  background: radial-gradient(62% 62% at 50% 50%, rgba(47, 102, 224, 0.42), rgba(47, 102, 224, 0.08) 72%, rgba(47, 102, 224, 0.02)), rgba(9, 24, 54, 0.82);
+  box-shadow: inset 0 0 0 1px rgba(110, 159, 255, 0.42), 0 0 70px rgba(47, 102, 224, 0.2);
+}
+
+/* a route: dotted while exposed, a lit line once covered, its territory lit */
+.rt__area { fill: #3E76F2; fill-opacity: 0.09; transition: fill-opacity 900ms var(--ease); }
+.rt__hit { fill: transparent; pointer-events: none; }
+.rt__track { fill: none; stroke: rgba(160, 184, 226, 0.44); stroke-width: 1.4; stroke-dasharray: 1.5 5; stroke-linecap: round; transition: opacity 600ms var(--ease); }
+.rt__line { fill: none; stroke: #8DB4FF; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 0; filter: drop-shadow(0 0 4px rgba(61, 123, 255, 0.8)); transition: stroke-dashoffset 1100ms var(--ease-in-out), opacity 400ms var(--ease); }
+.rt__seat { fill: none; stroke: rgba(196, 215, 255, 0.55); stroke-width: 1.2; stroke-dasharray: 2 2.4; transform-box: fill-box; transform-origin: center; transition: opacity 600ms var(--ease); }
+.rt__stop { transition: transform 800ms var(--ease), opacity 500ms var(--ease); }
+.rt__halo { fill: rgba(110, 159, 255, 0.22); transform-box: fill-box; transform-origin: center; transition: transform 600ms var(--ease), opacity 600ms var(--ease); }
+.rt__dot { fill: var(--white); stroke: rgba(160, 184, 226, 0); stroke-width: 1.5; transition: fill 400ms var(--ease), stroke 400ms var(--ease); }
+.stk__node-base { fill: var(--white); }
+.stk__node-core { fill: var(--blue); }
+
+/* a driver: a disc lying on the layer it works from */
+.stk__chip {
+  --z: calc(var(--base) + 1px);
+  position: absolute; left: 0; top: 0; width: 13px; height: 13px; margin: -6.5px 0 0 -6.5px; border-radius: 50%;
+  background: var(--white); box-shadow: 0 0 0 4px rgba(110, 159, 255, 0.3), 0 0 18px 3px rgba(110, 159, 255, 0.45);
+  transform: translate3d(calc(var(--px, var(--x)) * 1px), calc(var(--py, var(--y)) * 1px), var(--z)) scale(var(--cs, 1));
+  transition: transform 1000ms var(--ease-in-out), opacity 600ms var(--ease), background-color 400ms var(--ease), box-shadow 400ms var(--ease);
+}
+/* a backup: standing by, hollow, until it is called */
+.stk__chip--backup { background: var(--night); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.92), 0 0 0 4px rgba(110, 159, 255, 0.12); }
+/* the thread: which route a driver covers */
+.stk__thread {
+  position: absolute; left: 0; top: 0; width: 2px; height: calc(var(--g) * 1px); margin-left: -1px;
+  background: linear-gradient(180deg, rgba(210, 225, 255, 0.95), rgba(110, 159, 255, 0.4));
+  transform-origin: 50% 0;
+  transform: translate3d(calc(var(--x) * 1px), calc(var(--y) * 1px), var(--top)) rotateX(-90deg) scaleY(var(--k, 1));
+  transition: transform 1000ms var(--ease-in-out), opacity 400ms var(--ease);
+}
+/* labels face the reader wherever they sit in the stack */
+.stk__label {
+  --lz: var(--top);
+  position: absolute; left: 0; top: 0; display: grid; justify-items: center; gap: 3px; white-space: nowrap;
+  font-size: 0.8125rem; font-weight: 560; line-height: 1.3; letter-spacing: 0.003em; color: var(--ice);
+  transform: translate3d(calc(var(--x) * 1px), calc(var(--y) * 1px), var(--lz)) rotateZ(calc(var(--rz) * -1)) rotateX(calc(var(--rx) * -1)) scale(calc(1 / var(--fit))) translate(var(--ltx, -50%), var(--lty, -100%));
+  transition: opacity 700ms var(--ease), transform 1800ms var(--ease-in-out);
+}
+.stk__label-place { color: var(--ice); font-weight: 520; }
+.stk__label-state { display: inline-flex; align-items: center; gap: 8px; color: var(--white); font-weight: 580; }
+.stk__ok { width: 7px; height: 7px; border-radius: 50%; background: var(--ready); box-shadow: 0 0 0 3px rgba(65, 201, 142, 0.18); }
+.stk__label--backup, .stk__label--managed { --lz: var(--base); }
+/* your location: a label held above the routes on a short pin */
+.stk__label--loc { --lz: calc(var(--top) + 64px); }
+.stk__pin {
+  position: absolute; left: 0; top: 0; width: 1px; height: 58px; margin-left: -0.5px;
+  background: linear-gradient(0deg, rgba(196, 215, 255, 0.7), rgba(196, 215, 255, 0.15));
+  transform-origin: 50% 0;
+  transform: translate3d(calc(var(--x) * 1px), calc(var(--y) * 1px), var(--top)) rotateX(90deg);
+  transition: transform 1800ms var(--ease-in-out), opacity 700ms var(--ease);
+}
+.stk__label--managed { color: #A9C4FF; font-weight: 600; }
+
+/* ---------- Hero: plan view → routes organize → the layer beneath appears ---------- */
+.stk--hero { position: absolute; top: calc(var(--hd-h) + 24px); bottom: 92px; right: 5%; width: 50%; }
+.stk--hero .rt[data-r="1"] { --rd: 180; }
+.stk--hero .rt[data-r="2"] { --rd: 360; }
+.stk--hero .rt[data-r="3"] { --rd: 540; }
+.stk--hero .rt { --rd: 0; }
+.stk--hero .stk__links path { fill: none; stroke: rgba(196, 215, 255, 0.6); stroke-width: 1.2; stroke-dasharray: 2 4; stroke-linecap: round; opacity: 0; transition: opacity 300ms var(--ease); }
+
+.js .hero:not(.is-lift) .stk { --rx: 0deg; --rz: 0deg; --top: 0px; --base: 0px; }
+.js .hero:not(.is-lift) .stk__plane--base { opacity: 0; }
+.js .hero.is-lift .stk__plane--base { transition-delay: 0ms, 500ms; }
+.js .hero:not(.is-plan) .stk__plane--top, .js .hero:not(.is-plan) .stk__node, .js .hero:not(.is-plan) .rt__stop { opacity: 0; }
+.js .hero:not(.is-route) .rt__stop { transform: translate(var(--jx), var(--jy)); }
+.js .hero:not(.is-route) .rt__dot { fill: var(--night); stroke: rgba(160, 184, 226, 0.8); }
+.js .hero:not(.is-route) .rt__halo { transform: scale(0.2); opacity: 0; }
+.js .hero:not(.is-route) .rt__line { stroke-dashoffset: 1; }
+.js .hero:not(.is-route) .rt__track { opacity: 0; }
+.js .hero.is-plan:not(.is-route) .rt__stop { transition: opacity 600ms var(--ease) calc((var(--rd) + var(--d)) * 0.4ms); }
+.js .hero.is-route .rt__stop { transition: transform 700ms var(--ease) calc((var(--rd) + var(--d)) * 1ms - 300ms), opacity 500ms var(--ease); }
+.js .hero.is-route .rt__dot, .js .hero.is-route .rt__halo { transition-delay: calc((var(--rd) + var(--d)) * 1ms); }
+.js .hero.is-route .rt__line, .js .hero.is-route .rt__track { transition-delay: calc(var(--rd) * 1ms); }
+.js .hero:not(.is-assign) .rt__area, .js .hero:not(.is-assign) .rt__seat { fill-opacity: 0; opacity: 0; }
+.js .hero:not(.is-assign) .stk__chip { --cs: 0.2; opacity: 0; }
+.js .hero:not(.is-assign) .stk__thread { --k: 0; }
+.js .hero.is-assign .stk__chip[data-r="1"], .js .hero.is-assign .stk__thread[data-r="1"] { transition-delay: 140ms; }
+.js .hero.is-assign .stk__chip[data-r="2"], .js .hero.is-assign .stk__thread[data-r="2"] { transition-delay: 280ms; }
+.js .hero.is-assign .stk__chip[data-r="3"], .js .hero.is-assign .stk__thread[data-r="3"] { transition-delay: 420ms; }
+.js .hero.is-assign .stk__chip--backup { transition-delay: 800ms; }
+.js .hero:not(.is-lift) .stk__label--loc, .js .hero:not(.is-lift) .stk__pin, .js .hero:not(.is-assign) .stk__label--backup, .js .hero:not(.is-assign) .stk__label--managed { opacity: 0; }
+.js .hero.is-assign .stk__label--backup { transition-delay: 1000ms, 0ms; }
+.js .hero.is-assign .stk__label--managed { transition-delay: 600ms, 0ms; }
+.js .hero.is-lift .stk__label--loc, .js .hero.is-lift .stk__pin { transition-delay: 1100ms, 0ms; }
+.js .hero:not(.is-ready) .stk__label-state { opacity: 0; transform: translateY(-4px); }
+.stk__label-state { transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+/* pointing at a route shows its driver, its thread, and the backups that could take it */
+.stk.is-live .rt__hit { pointer-events: fill; }
+.stk.is-focus .rt:not(.is-hover) { opacity: 0.3; }
+.stk.is-focus .stk__chip[data-r]:not(.is-hover), .stk.is-focus .stk__thread:not(.is-hover) { opacity: 0.2; }
+.stk.is-focus .rt.is-hover .rt__area { fill-opacity: 0.18; }
+.stk.is-focus .stk__links path.is-hover { opacity: 1; }
+.rt { transition: opacity 300ms var(--ease); }
+
+/* ---------- Board: in-house on one layer → DriverLine's layer beneath ---------- */
+.board__route { position: relative; min-height: 0; }
+.stk--board { position: absolute; inset: 0; --g: 160; }
+.tier { display: none; }
+.stk__search, .stk__open { fill: none; stroke: rgba(196, 215, 255, 0.55); stroke-width: 1.2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.stk__open { stroke-dasharray: 3 4; stroke-width: 1.5; stroke: rgba(214, 226, 247, 0.75); transition: opacity 600ms var(--ease); }
+/* an exposed route must still read as a responsibility */
+.board .rt__track { stroke: rgba(176, 198, 236, 0.62); stroke-width: 1.7; }
+.board.is-callout .rt--b .rt__dot { stroke: rgba(214, 226, 247, 0.9); }
+.stk--board .stk__label { opacity: 0; }
+/* the backup label sits beside the standby discs, not on them */
+.stk--board .stk__label--backup { --ltx: 16px; --lty: -50%; }
+/* DriverLine owns the lower layer; backup is a resource within it */
+.stk--board .stk__label--backup { font-size: 0.75rem; font-weight: 520; color: rgba(169, 196, 255, 0.78); }
+.stk--board .stk__label--managed { --ltx: -50%; --lty: 22px; }
+:is(.board.is-managed, html:not(.js) .board) .stk--board .stk__label--managed { opacity: 1; transition-delay: 700ms; }
+.board.is-managed.is-disrupt .stk--board .stk__plane--base::after { animation: stk-respond 1900ms var(--ease) 300ms 1 both; }
+@keyframes stk-respond { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
+
+/* in-house: one layer; your drivers sit on your routes */
+.board .stk--board { --top: 0px; --base: calc(var(--g) * -1.2px); }
+.board .stk--board .stk__plane--base { opacity: 0; }
+.board .stk__chip--a, .board .stk__chip--b1, .board .stk__chip--c { --z: calc(var(--top) + 1px); }
+.board .stk__chip--b2 { --z: calc(var(--base) + 40px); opacity: 0; }
+.board .stk--board .stk__chip--backup { opacity: 0; --cs: 0.4; }
+.board .stk--board .stk__thread { --k: 0; }
+/* a callout: your driver falls out of the operation and the route goes dark */
+.board.is-callout .stk__chip--b1 { --z: calc(var(--top) - 90px); opacity: 0; transition: transform 900ms cubic-bezier(0.55, 0, 0.9, 0.45), opacity 700ms var(--ease) 200ms; }
+.board.is-callout .rt--b .rt__line { stroke-dashoffset: 1; transition-delay: 350ms; transition-duration: 1300ms; }
+.board.is-callout .rt--b .rt__dot { fill: var(--night); stroke: rgba(160, 184, 226, 0.8); transition-delay: 900ms; }
+.board.is-callout .rt--b .rt__halo { transform: scale(0.2); opacity: 0; transition-delay: 900ms; }
+.board.is-callout .rt--b .rt__area { fill-opacity: 0; transition-delay: 700ms; }
+.board.is-callout .rt--b .rt__seat { stroke-dasharray: 1 3; }
+.board.is-callout .stk__label--callout-top, .board.is-callout .tier__label--callout-top { opacity: 1; transition-delay: 800ms; }
+/* the replacement is yours to find: a search ring, then an open responsibility at your location */
+.board.is-burden .stk__search--1 { animation: stk-search 1700ms var(--ease) 200ms 1 both; }
+.board.is-burden .stk__search--2 { animation: stk-search 1700ms var(--ease) 900ms 1 both; }
+.board.is-burden .stk__open { opacity: 1; transition-delay: 2000ms; }
+@keyframes stk-search { from { opacity: 0.8; transform: scale(0.5); } to { opacity: 0; transform: scale(2.4); } }
+
+/* DriverLine: the same system separates; the drivers move onto DriverLine's layer */
+:is(.board.is-managed, html:not(.js) .board) .stk--board { --top: calc(var(--g) * 0.5px); --base: calc(var(--g) * -0.5px); }
+:is(.board.is-managed, html:not(.js) .board) .stk--board .stk__plane--base { opacity: 1; }
+:is(.board.is-managed, html:not(.js) .board) .stk__chip--a,
+:is(.board.is-managed, html:not(.js) .board) .stk__chip--c { --z: calc(var(--base) + 1px); transition-delay: 300ms; }
+:is(.board.is-managed, html:not(.js) .board) .stk__thread--a,
+:is(.board.is-managed, html:not(.js) .board) .stk__thread--c { --k: 1; transition-delay: 300ms; }
+:is(.board.is-managed, html:not(.js) .board) .stk__chip--b1 { --z: calc(var(--top) - 90px); opacity: 0; transition-duration: 0ms; }
+:is(.board.is-managed, html:not(.js) .board) .stk__chip--b2 { --z: calc(var(--base) + 1px); opacity: 1; transition-delay: 1100ms; }
+:is(.board.is-managed, html:not(.js) .board) .stk__thread--b { --k: 1; transition-delay: 1200ms; }
+:is(.board.is-managed, html:not(.js) .board) .rt--b .rt__line { stroke-dashoffset: 0; transition-delay: 1700ms; transition-duration: 1100ms; }
+:is(.board.is-managed, html:not(.js) .board) .rt--b .rt__dot { fill: var(--white); stroke: rgba(160, 184, 226, 0); transition-delay: calc(1700ms + var(--d) * 1ms); }
+:is(.board.is-managed, html:not(.js) .board) .rt--b .rt__halo { transform: none; opacity: 1; transition-delay: calc(1700ms + var(--d) * 1ms); }
+:is(.board.is-managed, html:not(.js) .board) .rt--b .rt__area { fill-opacity: 0.09; transition-delay: 2600ms; }
+:is(.board.is-managed, html:not(.js) .board) .rt--b .rt__seat { stroke-dasharray: 2 2.4; }
+:is(.board.is-managed, html:not(.js) .board) .stk__open { opacity: 0; transition-delay: 1700ms; }
+:is(.board.is-managed, html:not(.js) .board) .stk__label--callout-top,
+:is(.board.is-managed, html:not(.js) .board) .tier__label--callout-top { opacity: 0; transition-delay: 0ms; }
+:is(.board.is-managed, html:not(.js) .board) .stk--board .stk__chip--backup { opacity: 1; --cs: 1; transition-delay: 1800ms; }
+:is(.board.is-managed, html:not(.js) .board) .stk--board .stk__label--backup,
+:is(.board.is-managed, html:not(.js) .board) .tier__label--backup { opacity: 1; transition-delay: 2100ms; }
+/* a callout under DriverLine happens underneath: the driver drops away, the route above holds */
+.board.is-managed.is-disrupt .stk__chip--b2 { --z: calc(var(--base) - 70px); opacity: 0; background: var(--night); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8); transition: background-color 300ms var(--ease), box-shadow 300ms var(--ease), transform 900ms cubic-bezier(0.55, 0, 0.9, 0.45) 350ms, opacity 600ms var(--ease) 550ms; }
+.board.is-managed.is-disrupt .stk__thread--b { --k: 0; transition-delay: 250ms; transition-duration: 600ms; }
+.board.is-managed.is-disrupt .stk__label--callout-base, .board.is-managed.is-disrupt .tier__label--callout-base { opacity: 1; transition-delay: 350ms; }
+/* the prepared backup takes the seat; the thread reconnects */
+.board.is-managed.is-backup .stk--board .stk__chip--k1 { --px: var(--tx); --py: var(--ty); background: var(--white); box-shadow: 0 0 0 4px rgba(110, 159, 255, 0.3), 0 0 18px 3px rgba(110, 159, 255, 0.45); transition: background-color 300ms var(--ease), box-shadow 300ms var(--ease), transform 1300ms var(--ease-in-out) 250ms; }
+.board.is-managed.is-backup .stk__thread--b { --k: 1; transition-delay: 1450ms; transition-duration: 700ms; }
+.board.is-managed.is-backup .stk__label--callout-base, .board.is-managed.is-backup .tier__label--callout-base { opacity: 0; transition-delay: 600ms; }
+.board.is-managed.is-backup .rt--b .rt__seat { animation: stk-seat 900ms var(--ease) 2000ms 1 both; }
+@keyframes stk-seat { 0% { transform: scale(1); } 40% { transform: scale(1.9); stroke: #fff; } 100% { transform: scale(1); } }
+html:not(.js) .board__state--off, html:not(.js) .board__result--off { opacity: 0; }
+html:not(.js) .board__state--on, html:not(.js) .board__result--on { opacity: 1; transform: none; }
+/* while DriverLine handles the day, the result stays unstated until it settles */
+.board.is-managed:not(.is-done) .board__result--off { opacity: 0; }
+
+/* ---------- Phones and tablets: the same idea as two flat tiers ---------- */
+@media (max-width: 1023px) {
+  .board__route { grid-column: 1 / -1; grid-row: 2; height: auto; padding: 0; display: block; }
+  .stk--board { display: none; }
+  .tier { display: block; width: 100%; height: auto; max-height: 172px; margin: 6px auto 0; overflow: visible; }
+  .tier .rt__line, .tier .rt__track, .tier .rt__seat { vector-effect: non-scaling-stroke; }
+  .tier .rt__line { stroke-width: 2; }
+  .tier__plate { fill: rgba(9, 24, 54, 0.85); stroke: rgba(110, 159, 255, 0.42); stroke-width: 1; }
+  .tier__plate--top { fill: rgba(14, 34, 72, 0.5); stroke: rgba(160, 184, 226, 0.18); }
+  .tier__top { transform: translateY(30px); transition: transform 900ms var(--ease-in-out); }
+  .tier__base { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--ease), transform 900ms var(--ease-in-out); }
+  .tier__chip { fill: var(--white); stroke: rgba(110, 159, 255, 0.4); stroke-width: 4; transform: translate(var(--px, var(--x)), var(--yt)); transition: transform 900ms var(--ease-in-out), opacity 500ms var(--ease), fill 300ms var(--ease), stroke 300ms var(--ease); }
+  .tier__chip--b2, .tier__chip--backup { opacity: 0; transform: translate(var(--px, var(--x)), var(--yb)); }
+  .tier__chip--backup { fill: var(--night); stroke: rgba(255, 255, 255, 0.92); stroke-width: 1.8; }
+  .tier__thread { stroke: rgba(210, 225, 255, 0.9); stroke-width: 1.5; stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 800ms var(--ease-in-out); }
+  .tier__label { font-size: 11px; font-weight: 560; fill: var(--ice); text-anchor: middle; opacity: 0; transition: opacity 600ms var(--ease); }
+  /* the lower tier is DriverLine's: it carries the name, and the standby drivers sit in its bay */
+  .tier__name { font-size: 12px; font-weight: 600; letter-spacing: 0.01em; fill: #A9C4FF; }
+  .tier__bay { fill: rgba(47, 102, 224, 0.16); stroke: rgba(110, 159, 255, 0.34); stroke-width: 1; opacity: 0; transition: opacity 500ms var(--ease); }
+  :is(.board.is-managed, html:not(.js) .board) .tier__bay { opacity: 1; transition-delay: 1100ms; }
+  .tier__label--backup { font-size: 10px; font-weight: 520; fill: rgba(169, 196, 255, 0.75); }
+  :is(.board.is-managed, html:not(.js) .board) .board__state--on { opacity: 0; }
+  /* in-house, the empty seat stays open on your route */
+  .tier__open { fill: none; stroke: rgba(214, 226, 247, 0.85); stroke-width: 1.3; stroke-dasharray: 2.4 2.8; opacity: 0; transition: opacity 600ms var(--ease); }
+  .board.is-callout .tier__open { opacity: 1; transition-delay: 1000ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__open { opacity: 0; transition-delay: 0ms; }
+  /* a callout under DriverLine: the layer answers before the replacement moves */
+  .board.is-managed.is-disrupt .tier__base .tier__plate { animation: tier-respond 1900ms var(--ease) 300ms 1 both; }
+  .board.is-callout .tier__chip--b1 { transform: translate(var(--x), calc(var(--yt) + 26px)); opacity: 0; transition: transform 800ms cubic-bezier(0.55, 0, 0.9, 0.45), opacity 600ms var(--ease) 200ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__top { transform: none; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__base { opacity: 1; transform: none; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__chip--a,
+  :is(.board.is-managed, html:not(.js) .board) .tier__chip--c { transform: translate(var(--x), var(--yb)); transition-delay: 300ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__thread--a,
+  :is(.board.is-managed, html:not(.js) .board) .tier__thread--c { stroke-dashoffset: 0; transition-delay: 500ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__chip--b1 { opacity: 0; transition-duration: 0ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__chip--b2 { opacity: 1; transition-delay: 1100ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__thread--b { stroke-dashoffset: 0; transition-delay: 1300ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__chip--backup { opacity: 1; transition-delay: 1300ms; }
+  :is(.board.is-managed, html:not(.js) .board) .tier__label--backup { transition-delay: 1500ms; }
+  .board.is-managed.is-disrupt .tier__chip--b2 { transform: translate(var(--x), calc(var(--yb) + 20px)); opacity: 0; fill: var(--night); stroke: rgba(255, 255, 255, 0.8); stroke-width: 1.8; transition: fill 300ms, stroke 300ms, transform 800ms cubic-bezier(0.55, 0, 0.9, 0.45) 350ms, opacity 500ms var(--ease) 550ms; }
+  .board.is-managed.is-disrupt .tier__thread--b { stroke-dashoffset: 1; transition-delay: 200ms; }
+  .board.is-managed.is-backup .tier__chip--k1 { --px: var(--tx); fill: var(--white); stroke: rgba(110, 159, 255, 0.4); stroke-width: 4; transition: fill 300ms, stroke 300ms, transform 1300ms var(--ease-in-out) 250ms; }
+  .board.is-managed.is-backup .tier__thread--b { stroke-dashoffset: 0; transition-delay: 1450ms; }
+
+  .stk--hero { position: absolute; inset: 0; width: auto; }
+  .stk__label { font-size: 0.6875rem; }
+}
+
+@keyframes tier-respond {
+  0% { stroke: rgba(110, 159, 255, 0.42); fill: rgba(9, 24, 54, 0.85); }
+  30% { stroke: rgba(160, 195, 255, 0.9); fill: rgba(16, 40, 88, 0.9); }
+  100% { stroke: rgba(110, 159, 255, 0.42); fill: rgba(9, 24, 54, 0.85); }
+}
+
+/* the tier's type scales with the band; keep it readable on the narrowest phones */
+@media (max-width: 359px) {
+  .tier__name { font-size: 13.5px; }
+  .tier__label { font-size: 13px; }
+  .tier__label--backup { font-size: 11.5px; }
+}
+
+/* the close: the settled operation, still */
+.close__map .stk { position: absolute; right: 3%; top: 8%; bottom: 8%; width: 46%; }
+.close__map .stk__label, .close__map .stk__links { display: none; }
+@media (max-width: 767px) { .close__map .stk { inset: 0; width: auto; } }
 
 /* ==========================================================================
    Reduced motion: everything arrives settled
