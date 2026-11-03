@@ -1575,7 +1575,7 @@ ol.legal-content__list li::before { content: counter(doc); position: absolute; l
   --lz: var(--top);
   position: absolute; left: 0; top: 0; display: grid; justify-items: center; gap: 3px; white-space: nowrap;
   font-size: 0.8125rem; font-weight: 560; line-height: 1.3; letter-spacing: 0.003em; color: var(--ice);
-  transform: translate3d(calc(var(--x) * 1px), calc(var(--y) * 1px), var(--lz)) rotateZ(calc(var(--rz) * -1)) rotateX(calc(var(--rx) * -1)) scale(calc(1 / var(--fit))) translate(var(--ltx, -50%), var(--lty, -100%));
+  transform: translate3d(calc(var(--lx, var(--x)) * 1px), calc(var(--ly, var(--y)) * 1px), var(--lz)) rotateZ(calc(var(--rz) * -1)) rotateX(calc(var(--rx) * -1)) scale(calc(1 / var(--fit))) translate(var(--ltx, -50%), var(--lty, -100%));
   transition: opacity 700ms var(--ease), transform 1800ms var(--ease-in-out);
 }
 .stk__label-place { color: var(--ice); font-weight: 520; }
@@ -1757,6 +1757,12 @@ html:not(.js) .board__state--on, html:not(.js) .board__result--on { opacity: 1; 
   .board.is-managed.is-backup .tier__thread--b { stroke-dashoffset: 0; transition-delay: 1450ms; }
 
   .stk--hero { position: absolute; inset: 0; width: auto; }
+  /* stacked, the stack renders small around fixed-size labels: give the lower two clear ground,
+     Backup beside its standby discs and the layer's name off the drivers and threads */
+  .hero .stk--hero .stk__label--backup { --lx: 125; --ly: 205; --ltx: 10px; --lty: -50%; }
+  .hero .stk--hero .stk__label--managed { --lx: 130; --ly: 310; --ltx: calc(-100% - 10px); --lty: -50%; }
+  /* and your location's label fades in once the tilt has carried the routes clear of it */
+  .js .hero.is-lift .stk__label--loc, .js .hero.is-lift .stk__pin { transition-delay: 1500ms, 0ms; }
   .stk__label { font-size: 0.6875rem; }
 }
 
