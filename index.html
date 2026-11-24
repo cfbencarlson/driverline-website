@@ -485,8 +485,9 @@
               <div class="est__more-body">
                 <fieldset class="nums">
                   <legend class="nums__legend">Labor</legend>
-                  <div class="num"><label for="overtimeHours">Overtime Hours/Week</label><input type="number" id="overtimeHours" name="overtimeHours" value="0" min="0" max="40" step="1"></div>
-                  <div class="num"><label for="employerBurden">Employer Burden (%)</label><input type="number" id="employerBurden" name="employerBurden" value="20" min="7" max="40" step="1" aria-describedby="employerBurden-note"></div>
+                  <div class="num"><label for="overtimeHours">Additional Hours per Driver / Week</label><input type="number" id="overtimeHours" name="overtimeHours" value="0" min="0" max="40" step="1" aria-describedby="overtimeHours-note"></div>
+                  <div class="num"><label for="employerBurden">Employer Burden (%)</label><input type="number" id="employerBurden" name="employerBurden" value="20" min="8" max="40" step="1" aria-describedby="employerBurden-note"></div>
+                  <p class="nums__note" id="overtimeHours-note">Additional hours are added to each driver's scheduled hours. Hours over 40 per driver each week are priced at 1.5&times;. State daily-overtime and other wage rules may differ.</p>
                   <p class="nums__note" id="employerBurden-note">Employer burden includes payroll taxes (FICA), federal and state unemployment insurance, workers' comp, and other employment-related costs. Many operations fall in the 15–25% range depending on state and coverage levels. 20% is a reasonable planning assumption. Benefit-heavy packages will increase total burden.</p>
                 </fieldset>
                 <fieldset class="nums">
@@ -537,7 +538,7 @@
               <a href="contact.html#request-coverage" class="bt bt--primary bt--lg" id="request-coverage-btn">Request Coverage</a>
               <a href="resources.html#cost-estimator" class="bt bt--quiet-dark">Use the Cost Estimator</a>
             </div>
-            <p class="readout__note">Based on the assumptions shown in our cost estimator. Actual costs vary. Reflects direct in-house operating cost. Risk, compliance, and driver oversight remain internal.</p>
+            <p class="readout__note">Based on the assumptions shown in our cost estimator. Actual costs vary. Daily operating cost is the average per operating day. Reflects direct in-house operating cost only, not recruiting, training or turnover. Risk, compliance, and driver oversight remain internal.</p>
           </div>
         </div>
       </div>

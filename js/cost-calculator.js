@@ -7,6 +7,9 @@
   'use strict';
 
   const WEEKS_PER_MONTH = 4.348;
+  const OVERTIME_THRESHOLD = 40; // federal (FLSA) weekly threshold per driver
+  const OVERTIME_RATE = 1.5;
+  const WHOLE_NUMBERS = ['drivers', 'vehicles', 'daysPerWeek']; // counts can't be fractional
 
   // DOM Elements
   const form = document.getElementById('cost-calculator-form');
@@ -50,10 +53,23 @@
       value = fallback !== null ? fallback : (min !== null ? min : 0);
     }
 
+    if (WHOLE_NUMBERS.indexOf(id) > -1) value = Math.round(value);
     if (min !== null && value < min) value = min;
     if (max !== null && value > max) value = max;
 
     return value;
+  }
+
+  /**
+   * Once a field is committed (change/blur), show the value the estimate
+   * actually uses, so the field, the summary and the totals always agree.
+   */
+  function normalizeInputs() {
+    form.querySelectorAll('input[type="number"]').forEach(function (input) {
+      if (!input.id) return;
+      const used = getInputValue(input.id);
+      if (parseFloat(input.value) !== used || input.value.trim() === '') input.value = String(used);
+    });
   }
 
   /**
@@ -75,7 +91,7 @@
     const hourlyWage = getInputValue('hourlyWage');
     const hoursPerDay = getInputValue('hoursPerDay');
     const daysPerWeek = getInputValue('daysPerWeek');
-    const overtimeHours = getInputValue('overtimeHours');
+    const additionalHours = getInputValue('overtimeHours'); // added to each driver's schedule
     const employerBurden = getInputValue('employerBurden') / 100;
 
     const vehicles = getInputValue('vehicles');
@@ -89,11 +105,12 @@
     const adminHoursPerWeek = getInputValue('adminHoursPerWeek');
     const adminHourlyRate = getInputValue('adminHourlyRate');
 
-    // Calculate monthly wages
-    const regularHoursPerWeek = hoursPerDay * daysPerWeek;
-    const regularWeeklyWage = regularHoursPerWeek * hourlyWage;
-    const overtimeWeeklyWage = overtimeHours * hourlyWage * 1.5;
-    const totalWeeklyWage = regularWeeklyWage + overtimeWeeklyWage;
+    // Calculate monthly wages: scheduled plus additional hours per driver; hours
+    // up to 40 a week are regular pay, hours above 40 are paid at 1.5x
+    const weeklyHours = hoursPerDay * daysPerWeek + additionalHours;
+    const overtimeHoursPerWeek = Math.max(0, weeklyHours - OVERTIME_THRESHOLD);
+    const regularHoursPerWeek = weeklyHours - overtimeHoursPerWeek;
+    const totalWeeklyWage = regularHoursPerWeek * hourlyWage + overtimeHoursPerWeek * hourlyWage * OVERTIME_RATE;
     const monthlyWages = totalWeeklyWage * WEEKS_PER_MONTH * drivers;
 
     // Calculate employer burden
@@ -178,11 +195,14 @@
     // Sync vehicles to drivers initially
     syncVehiclesToDrivers();
 
-    // Calculate on any input change
+    // Calculate on any input change; a committed entry also shows the value used
     const inputs = form.querySelectorAll('input');
     inputs.forEach(function (input) {
       input.addEventListener('input', calculateCosts);
-      input.addEventListener('change', calculateCosts);
+      input.addEventListener('change', function () {
+        normalizeInputs();
+        calculateCosts();
+      });
     });
 
     // Initial calculation

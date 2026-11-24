@@ -418,7 +418,14 @@
     const basis = document.querySelector('[data-basis]');
     function describe() {
       if (!basis) return;
-      const n = function (id) { const v = parseFloat(document.getElementById(id).value); return Number.isFinite(v) ? Math.round(v) : null; };
+      // the same value the estimate uses: whole, within the field's limits, its default when blank
+      const n = function (id) {
+        const el = document.getElementById(id);
+        let v = parseFloat(el.value);
+        if (!Number.isFinite(v)) v = parseFloat(el.defaultValue);
+        if (!Number.isFinite(v)) return null;
+        return Math.min(Math.max(Math.round(v), parseFloat(el.min) || 0), parseFloat(el.max) || Infinity);
+      };
       const d = n('drivers'), v = n('vehicles'), w = n('daysPerWeek');
       const parts = [];
       if (d) parts.push(d + (d === 1 ? ' driver' : ' drivers'));

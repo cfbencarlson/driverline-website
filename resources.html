@@ -113,7 +113,7 @@
 
         <aside class="tool__note" aria-label="How to use this estimator">
           <p class="tool__note-k">How to read this</p>
-          <p>Numbers update as you type. This reflects direct operating cost only &mdash; it doesn't price risk exposure, callouts, or management overhead.</p>
+          <p>Numbers update as you type. This reflects direct operating cost only &mdash; it doesn't price recruiting, training, turnover, risk exposure, callouts, or management overhead.</p>
           <a class="tool__note-link" href="#what-counts">What Counts as Delivery Cost?</a>
         </aside>
 
@@ -164,10 +164,10 @@
                 </div>
               </div>
               <div class="fld">
-                <label for="overtimeHours" class="fld__label">Overtime Hours/Week</label>
+                <label for="overtimeHours" class="fld__label">Additional Hours per Driver / Week</label>
                 <div class="stp">
                   <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
-                  <input type="number" id="overtimeHours" name="overtimeHours" class="stp__input" value="0" min="0" max="40" step="1" inputmode="decimal">
+                  <input type="number" id="overtimeHours" name="overtimeHours" class="stp__input" value="0" min="0" max="40" step="1" inputmode="decimal" aria-describedby="overtimeHours-note">
                   <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
                 </div>
               </div>
@@ -175,10 +175,11 @@
                 <label for="employerBurden" class="fld__label">Employer Burden (%)</label>
                 <div class="stp" data-unit="%">
                   <button type="button" class="stp__btn" data-dir="-1" tabindex="-1" aria-hidden="true"><span class="stp__minus"></span></button>
-                  <input type="number" id="employerBurden" name="employerBurden" class="stp__input" value="20" min="7" max="40" step="1" inputmode="decimal" aria-describedby="employerBurden-note">
+                  <input type="number" id="employerBurden" name="employerBurden" class="stp__input" value="20" min="8" max="40" step="1" inputmode="decimal" aria-describedby="employerBurden-note">
                   <button type="button" class="stp__btn" data-dir="1" tabindex="-1" aria-hidden="true"><span class="stp__plus"></span></button>
                 </div>
               </div>
+              <p class="grp__note" id="overtimeHours-note">Additional hours are added to each driver's scheduled hours. Hours over 40 per driver each week are priced at 1.5&times;. State daily-overtime and other wage rules may differ.</p>
               <p class="grp__note" id="employerBurden-note">Employer burden includes payroll taxes (FICA), federal and state unemployment insurance, workers' comp, and other employment-related costs. Many operations fall in the 15–25% range depending on state and coverage levels. 20% is a reasonable planning assumption. Benefit-heavy packages will increase total burden.</p>
               </div>
             </fieldset>
@@ -296,7 +297,7 @@
               <li class="rows__row"><span class="rows__key rows__key--3">Vehicle Fixed Costs</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-vehicle-fixed">$850</span></li>
               <li class="rows__row"><span class="rows__key rows__key--4">Admin Cost</span><span class="rows__pct" aria-hidden="true"></span><span class="rows__val" id="result-admin">$326</span></li>
             </ul>
-            <p class="sheet__note">Reflects direct in-house operating cost. Risk, compliance, and driver oversight remain internal.</p>
+            <p class="sheet__note">Based on the assumptions above. Actual costs vary. Daily operating cost is the average per operating day. Reflects direct in-house operating cost only, not recruiting, training or turnover. Risk, compliance, and driver oversight remain internal.</p>
             <div class="sheet__act">
               <a href="contact.html#request-coverage" class="bt bt--primary bt--lg bt--block" id="request-coverage-btn">Request Coverage</a>
               <p class="sheet__carry"><span class="pin" aria-hidden="true"></span>Your estimate goes with your request.</p>
@@ -320,7 +321,7 @@
           <div class="ledger__group">
             <h3 class="ledger__title"><span class="pin pin--light" aria-hidden="true"></span>Priced in this estimator</h3>
             <ul class="ledger__list ledger__list--in">
-              <li><a class="ledger__item" href="#hourlyWage" data-focus-field="hourlyWage"><span class="ledger__name">Wages &amp; Overtime</span><span class="ledger__field">Hourly Wage, Overtime Hours</span></a></li>
+              <li><a class="ledger__item" href="#hourlyWage" data-focus-field="hourlyWage"><span class="ledger__name">Wages &amp; Overtime</span><span class="ledger__field">Hourly Wage, Additional Hours</span></a></li>
               <li><a class="ledger__item" href="#employerBurden" data-focus-field="employerBurden"><span class="ledger__name">Payroll Taxes (FICA, FUTA, SUTA)</span><span class="ledger__field">Employer Burden</span></a></li>
               <li><a class="ledger__item" href="#gasPrice" data-focus-field="gasPrice"><span class="ledger__name">Fuel Costs</span><span class="ledger__field">Miles, MPG, Gas Price</span></a></li>
               <li><a class="ledger__item" href="#maintenancePerVehicle" data-focus-field="maintenancePerVehicle"><span class="ledger__name">Maintenance &amp; Repairs</span><span class="ledger__field">Maintenance</span></a></li>
@@ -332,6 +333,7 @@
           <div class="ledger__group">
             <h3 class="ledger__title ledger__title--out"><span class="ledger__gap" aria-hidden="true"></span>Not priced here</h3>
             <ul class="ledger__list ledger__list--out">
+              <li><span class="ledger__item"><span class="ledger__name">Recruiting, Training &amp; Turnover</span></span></li>
               <li><span class="ledger__item"><span class="ledger__name">Coverage Gaps &amp; Callouts</span></span></li>
               <li><span class="ledger__item"><span class="ledger__name">Vehicle Purchase or Lease</span></span></li>
             </ul>
